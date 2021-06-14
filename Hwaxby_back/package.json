@@ -1,0 +1,21 @@
+{
+  "name": "hwaxby_back",
+  "version": "1.0.0",
+  "description": "Hwaxby project backend Repo",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "fs": "^0.0.1-security",
+    "nunjucks": "^3.2.3",
+    "qs": "^6.7.0",
+    "request": "^2.88.2",
+    "sample-rate": "^2.0.1",
+    "session": "^0.1.0",
+    "wav": "^1.0.2"
+  }
+}
