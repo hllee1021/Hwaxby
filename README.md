@@ -12,7 +12,7 @@ P-TTS(개인화 음성합성 기술)을 활용한 실시간 날씨 알리미
 
 실시간 날씨 알리미 프로젝트(Hwaxby)는 앱에서 실시간으로 사용자의 위치 정보를 확인하여 원하는 날씨 정보를 알려주는 기능에 원하는 보이스를 더하여 서비스를 제공하는 것을 목표로 합니다.
 
-![image-20210618160021975](C:/Users/USER/AppData/Roaming/Typora/typora-user-images/image-20210618160021975.png)
+![image-20210618160021975](https://user-images.githubusercontent.com/69628269/122520687-e4d31f80-d04e-11eb-889a-2ba6314f5ad6.png)
 
 
 
