@@ -1,3 +1,4 @@
+
 /* eslint-disable prettier/prettier */
 import React, { useState } from 'react';
 import {SafeAreaView, StyleSheet, Text, View, Image, TouchableHighlight} from 'react-native';
@@ -10,8 +11,9 @@ function App() {
 
   const [name, setName] = useState('not yet');
   const onName = async () => {
-    let response = await axios.get('http://10.0.2.2:1818/test',{params: {id: 123}});
-    setName(response.data.result);
+    let response = await axios.get('http://10.0.2.2:8080/');
+    console.log(response);
+    setName(response.data.name);
   };
 
   return (
