@@ -37,4 +37,4 @@ out/
 .vscode/
 
 ### add ###
-src/main/resources/api-key.properties
+api-key.properties
