@@ -11,7 +11,7 @@ function App() {
   const [name, setName] = useState('not yet');
   const onName = async () => {
     console.log("a");
-    let response = await axios.get('http://192.168.35.227:8080/');
+    let response = await axios.get('http://10.0.2.2:8080/');
     console.log(response);
     setName(response.data.name);
   };
