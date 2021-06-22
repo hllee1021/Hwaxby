@@ -7,8 +7,8 @@ public class Weather {
 
     private Long id;
 
-    private  apiData;
+    private String apiData;
 
-    private JsonArray displayData;
+    private String displayData;
 
 }

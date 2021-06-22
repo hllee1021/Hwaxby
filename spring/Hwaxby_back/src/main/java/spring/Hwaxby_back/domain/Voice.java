@@ -3,8 +3,6 @@ package spring.Hwaxby_back.domain;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.nio.ByteBuffer;
-
 @Getter @Setter
 public class Voice {
 
