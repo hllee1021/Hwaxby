@@ -14,4 +14,6 @@ public class Voice {
 
     private Long weatherId;
 
+    private String filePath;
+
 }
