@@ -15,7 +15,7 @@ public class HomeController {
     public ResponseEntity<Member> home() {
         Member member = new Member();
         member.setName("김희진");
-
+        System.out.println("out");
         return new ResponseEntity<> (member, HttpStatus.OK);
     }
 }
