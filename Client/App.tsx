@@ -16,23 +16,24 @@ function App() {
   };
 
   return (
-    <SafeAreaView style={styles.container}>
-      <View style={styles.top}>
-        <Text style={styles.title}>Hwaxby</Text>
-      </View>
-      <View style={styles.center}>
-        <Image source={micImage} style={styles.image}/>
-      </View>
-      <View style={styles.bottom}>
-        <TouchableHighlight
-          onPress={onName}
-          underlayColor="red"
-          style={styles.button}>
-          <Text style={styles.title}>Click to talk {name}</Text>
-        </TouchableHighlight>
-      </View>
-      <Recorder/>
-    </SafeAreaView>
+    <Recorder/>
+    // <SafeAreaView style={styles.container}>
+    //   <View style={styles.top}>
+    //     <Text style={styles.title}>Hwaxby</Text>
+    //   </View>
+    //   <View style={styles.center}>
+    //     <Image source={micImage} style={styles.image}/>
+    //   </View>
+    //   <View style={styles.bottom}>
+    //     <TouchableHighlight
+    //       onPress={onName}
+    //       underlayColor="red"
+    //       style={styles.button}>
+    //       <Text style={styles.title}>Click to talk {name}</Text>
+    //     </TouchableHighlight>
+    //   </View>
+    //   <Recorder/>
+    // </SafeAreaView>
   );
 }
 export default App;
