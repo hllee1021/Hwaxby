@@ -3,7 +3,7 @@ require_relative '../node_modules/@react-native-community/cli-platform-ios/nativ
 
 platform :ios, '10.0'
 
-target 'mobileHwaxby' do
+target 'Hwaxby_front' do
   config = use_native_modules!
 
   use_react_native!(
@@ -12,7 +12,9 @@ target 'mobileHwaxby' do
     :hermes_enabled => false
   )
 
-  target 'mobileHwaxbyTests' do
+  pod 'RNAudioRecorderPlayer', :path => '../node_modules/react-native-audio-recorder-player'
+
+  target 'Hwaxby_frontTests' do
     inherit! :complete
     # Pods for testing
   end

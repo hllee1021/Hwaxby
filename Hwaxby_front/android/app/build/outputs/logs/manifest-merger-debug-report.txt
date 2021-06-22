@@ -1,0 +1,313 @@
+-- Merging decision tree log ---
+manifest
+ADDED from C:\Users\hllee\Desktop\Hwaxby\Hwaxby_front\android\app\src\main\AndroidManifest.xml:1:1-27:12
+INJECTED from C:\Users\hllee\Desktop\Hwaxby\Hwaxby_front\android\app\src\main\AndroidManifest.xml:1:1-27:12
+INJECTED from C:\Users\hllee\Desktop\Hwaxby\Hwaxby_front\android\app\src\main\AndroidManifest.xml:1:1-27:12
+INJECTED from C:\Users\hllee\Desktop\Hwaxby\Hwaxby_front\android\app\src\main\AndroidManifest.xml:1:1-27:12
+MERGED from C:\Users\hllee\Desktop\Hwaxby\Hwaxby_front\android\app\src\main\AndroidManifest.xml:1:1-27:12
+MERGED from [com.facebook.flipper:flipper:0.75.1] C:\Users\hllee\.gradle\caches\transforms-2\files-2.1\34486defb8932e228f51477bb3ebbc00\jetified-flipper-0.75.1\AndroidManifest.xml:8:1-18:12
+MERGED from [com.facebook.flipper:flipper-network-plugin:0.75.1] C:\Users\hllee\.gradle\caches\transforms-2\files-2.1\58f24def73b12a72c5626a4d4dc9b2a3\jetified-flipper-network-plugin-0.75.1\AndroidManifest.xml:8:1-15:12
+MERGED from [com.facebook.flipper:flipper-fresco-plugin:0.75.1] C:\Users\hllee\.gradle\caches\transforms-2\files-2.1\044860cb5d1f620c755802fa0bba28e2\jetified-flipper-fresco-plugin-0.75.1\AndroidManifest.xml:8:1-15:12
+MERGED from [:react-native-audio-recorder-player] C:\Users\hllee\Desktop\Hwaxby\Hwaxby_front\node_modules\react-native-audio-recorder-player\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-14:12
+MERGED from [:rn-fetch-blob] C:\Users\hllee\Desktop\Hwaxby\Hwaxby_front\node_modules\rn-fetch-blob\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-47:12
+MERGED from [com.facebook.react:react-native:0.64.2] C:\Users\hllee\.gradle\caches\transforms-2\files-2.1\e59ad37ff06ccf3332126abe13609866\jetified-react-native-0.64.2\AndroidManifest.xml:2:1-13:12
+MERGED from [androidx.swiperefreshlayout:swiperefreshlayout:1.0.0] C:\Users\hllee\.gradle\caches\transforms-2\files-2.1\6bc2f576503f74b401679a93422befca\swiperefreshlayout-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [org.webkit:android-jsc:r245459] C:\Users\hllee\.gradle\caches\transforms-2\files-2.1\32e375833a2da8948e2eabfc0e4cba87\jetified-android-jsc-r245459\AndroidManifest.xml:2:1-11:12
+MERGED from [com.facebook.fresco:flipper:2.2.0] C:\Users\hllee\.gradle\caches\transforms-2\files-2.1\b01ce9869ac8c5111d9e43f5eeea8649\jetified-flipper-2.2.0\AndroidManifest.xml:2:1-9:12
+MERGED from [com.facebook.fresco:stetho:2.2.0] C:\Users\hllee\.gradle\caches\transforms-2\files-2.1\497d2fe372a0d0d93db34b8144c0cc74\jetified-stetho-2.2.0\AndroidManifest.xml:2:1-9:12
+MERGED from [com.facebook.fresco:fresco:2.2.0] C:\Users\hllee\.gradle\caches\transforms-2\files-2.1\522e7ca86c2788663a1e22cecdda9735\jetified-fresco-2.2.0\AndroidManifest.xml:2:1-9:12
+MERGED from [com.facebook.fresco:drawee:2.2.0] C:\Users\hllee\.gradle\caches\transforms-2\files-2.1\6e0e385176a0b3dd657a139519c50252\jetified-drawee-2.2.0\AndroidManifest.xml:2:1-9:12
+MERGED from [com.facebook.fresco:nativeimagefilters:2.2.0] C:\Users\hllee\.gradle\caches\transforms-2\files-2.1\5f24b395f5276990c743ae532248d957\jetified-nativeimagefilters-2.2.0\AndroidManifest.xml:2:1-9:12
+MERGED from [com.facebook.fresco:memory-type-native:2.2.0] C:\Users\hllee\.gradle\caches\transforms-2\files-2.1\8b98d1d5c0123c3d5d5211572d24efbf\jetified-memory-type-native-2.2.0\AndroidManifest.xml:2:1-9:12
+MERGED from [com.facebook.fresco:memory-type-java:2.2.0] C:\Users\hllee\.gradle\caches\transforms-2\files-2.1\2df3e451edbd5c35509133592e49f9e8\jetified-memory-type-java-2.2.0\AndroidManifest.xml:2:1-9:12
+MERGED from [com.facebook.fresco:imagepipeline-native:2.2.0] C:\Users\hllee\.gradle\caches\transforms-2\files-2.1\7dad27901f5778835631587375af7ff1\jetified-imagepipeline-native-2.2.0\AndroidManifest.xml:2:1-9:12
+MERGED from [com.facebook.fresco:soloader:2.2.0] C:\Users\hllee\.gradle\caches\transforms-2\files-2.1\9289d8e2701c81e2825a868220aad7d3\jetified-soloader-2.2.0\AndroidManifest.xml:2:1-9:12
+MERGED from [com.facebook.soloader:soloader:0.10.1] C:\Users\hllee\.gradle\caches\transforms-2\files-2.1\7b4e5d942e7fdcaf4a39b27e4d6eda9f\jetified-soloader-0.10.1\AndroidManifest.xml:2:1-13:12
+MERGED from [androidx.appcompat:appcompat:1.1.0] C:\Users\hllee\.gradle\caches\transforms-2\files-2.1\f401eeb7de97e4ea1d225e44f8414969\appcompat-1.1.0\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.sqlite:sqlite-framework:2.1.0] C:\Users\hllee\.gradle\caches\transforms-2\files-2.1\e22749de6a917cdcc31d0b0d0df11b1c\sqlite-framework-2.1.0\AndroidManifest.xml:17:1-24:12
+MERGED from [com.facebook.fresco:imagepipeline-okhttp3:2.0.0] C:\Users\hllee\.gradle\caches\transforms-2\files-2.1\a2777c6176646411f8e4864e4502bb58\jetified-imagepipeline-okhttp3-2.0.0\AndroidManifest.xml:2:1-9:12
+MERGED from [com.facebook.fresco:memory-type-ashmem:2.2.0] C:\Users\hllee\.gradle\caches\transforms-2\files-2.1\2fb82d4169b24c226f0d73a4d239feeb\jetified-memory-type-ashmem-2.2.0\AndroidManifest.xml:2:1-9:12
+MERGED from [com.facebook.fresco:imagepipeline:2.2.0] C:\Users\hllee\.gradle\caches\transforms-2\files-2.1\a0a3f0a80dd04ce4d0ebc8facff1a585\jetified-imagepipeline-2.2.0\AndroidManifest.xml:2:1-9:12
+MERGED from [com.facebook.fresco:nativeimagetranscoder:2.2.0] C:\Users\hllee\.gradle\caches\transforms-2\files-2.1\b4ed2052253c9ac9d9e5ec678f58bd41\jetified-nativeimagetranscoder-2.2.0\AndroidManifest.xml:2:1-9:12
+MERGED from [com.facebook.fresco:imagepipeline-base:2.2.0] C:\Users\hllee\.gradle\caches\transforms-2\files-2.1\7b4346173eae1e5d0f0ed52205e161cf\jetified-imagepipeline-base-2.2.0\AndroidManifest.xml:2:1-9:12
+MERGED from [androidx.browser:browser:1.3.0] C:\Users\hllee\.gradle\caches\transforms-2\files-2.1\b9b8f052bc5826289bbfec44a273bb35\browser-1.3.0\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.appcompat:appcompat-resources:1.1.0] C:\Users\hllee\.gradle\caches\transforms-2\files-2.1\d02c7117c7c5028e9b749603e0ff90d4\jetified-appcompat-resources-1.1.0\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0] C:\Users\hllee\.gradle\caches\transforms-2\files-2.1\5deccd5fc87a40d99612758fa0156e05\vectordrawable-animated-1.1.0\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.interpolator:interpolator:1.0.0] C:\Users\hllee\.gradle\caches\transforms-2\files-2.1\302682d93129c63da9a172e62f7109fe\interpolator-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.fragment:fragment:1.1.0] C:\Users\hllee\.gradle\caches\transforms-2\files-2.1\014b4fd3a86321a4a383a47577aeeaf2\fragment-1.1.0\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.drawerlayout:drawerlayout:1.0.0] C:\Users\hllee\.gradle\caches\transforms-2\files-2.1\da6620b9bc48bf5ee4250ed2d4243100\drawerlayout-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.viewpager:viewpager:1.0.0] C:\Users\hllee\.gradle\caches\transforms-2\files-2.1\31e636660de7a70a8c70169a01b3097c\viewpager-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.loader:loader:1.0.0] C:\Users\hllee\.gradle\caches\transforms-2\files-2.1\6f08dd0d2840d2a87019f03205248ed7\loader-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.activity:activity:1.0.0] C:\Users\hllee\.gradle\caches\transforms-2\files-2.1\c9681820cefbffba475ee1f1635b097b\jetified-activity-1.0.0\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.vectordrawable:vectordrawable:1.1.0] C:\Users\hllee\.gradle\caches\transforms-2\files-2.1\8e5375a27263550e78dde8efb2387044\vectordrawable-1.1.0\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.customview:customview:1.0.0] C:\Users\hllee\.gradle\caches\transforms-2\files-2.1\cf33851c0b68ab053faa8b9471deed8b\customview-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.core:core:1.1.0] C:\Users\hllee\.gradle\caches\transforms-2\files-2.1\cce7fc7978e83e59072fb33c8a3b27e7\core-1.1.0\AndroidManifest.xml:17:1-26:12
+MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] C:\Users\hllee\.gradle\caches\transforms-2\files-2.1\52196ac41bf2fb7cc27efac53557f75a\cursoradapter-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.sqlite:sqlite:2.1.0] C:\Users\hllee\.gradle\caches\transforms-2\files-2.1\0db415345da1939dca931e24784a5597\sqlite-2.1.0\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] C:\Users\hllee\.gradle\caches\transforms-2\files-2.1\cc5af0cc49ff014b9b5fb670cb8197e9\versionedparcelable-1.1.0\AndroidManifest.xml:17:1-27:12
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.1.0] C:\Users\hllee\.gradle\caches\transforms-2\files-2.1\6fee099f88f516c3cb29e8c9c09f2aa8\lifecycle-runtime-2.1.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.1.0] C:\Users\hllee\.gradle\caches\transforms-2\files-2.1\9905c36032b6ac61a5aea5685ff9a410\lifecycle-viewmodel-2.1.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.savedstate:savedstate:1.0.0] C:\Users\hllee\.gradle\caches\transforms-2\files-2.1\828cec7cd81cd3aed3d3156583763c38\jetified-savedstate-1.0.0\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.0.0] C:\Users\hllee\.gradle\caches\transforms-2\files-2.1\ee62cc2054f782a126419a788ca31b2c\lifecycle-livedata-2.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.0.0] C:\Users\hllee\.gradle\caches\transforms-2\files-2.1\5bd4b2f330ee10ee3d5f3bda8e665ab4\lifecycle-livedata-core-2.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.arch.core:core-runtime:2.0.0] C:\Users\hllee\.gradle\caches\transforms-2\files-2.1\38e7ea33dc85c71bb384c2378f5b1a46\core-runtime-2.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [com.facebook.fresco:fbcore:2.2.0] C:\Users\hllee\.gradle\caches\transforms-2\files-2.1\4bd9029969a86bd7182ef3fd90dacab5\jetified-fbcore-2.2.0\AndroidManifest.xml:2:1-9:12
+MERGED from [com.facebook.fresco:ui-common:2.2.0] C:\Users\hllee\.gradle\caches\transforms-2\files-2.1\80004153104dbdefebe721a565d18dfd\jetified-ui-common-2.2.0\AndroidManifest.xml:2:1-9:12
+INJECTED from C:\Users\hllee\Desktop\Hwaxby\Hwaxby_front\android\app\src\debug\AndroidManifest.xml:2:1-13:12
+INJECTED from C:\Users\hllee\Desktop\Hwaxby\Hwaxby_front\android\app\src\debug\AndroidManifest.xml:2:1-13:12
+INJECTED from C:\Users\hllee\Desktop\Hwaxby\Hwaxby_front\android\app\src\debug\AndroidManifest.xml:2:1-13:12
+	package
+		ADDED from C:\Users\hllee\Desktop\Hwaxby\Hwaxby_front\android\app\src\main\AndroidManifest.xml:2:3-29
+		INJECTED from C:\Users\hllee\Desktop\Hwaxby\Hwaxby_front\android\app\src\main\AndroidManifest.xml
+		ADDED from C:\Users\hllee\Desktop\Hwaxby\Hwaxby_front\android\app\src\main\AndroidManifest.xml:2:3-29
+		INJECTED from C:\Users\hllee\Desktop\Hwaxby\Hwaxby_front\android\app\src\debug\AndroidManifest.xml
+	android:versionName
+		INJECTED from C:\Users\hllee\Desktop\Hwaxby\Hwaxby_front\android\app\src\main\AndroidManifest.xml
+		ADDED from C:\Users\hllee\Desktop\Hwaxby\Hwaxby_front\android\app\src\main\AndroidManifest.xml:1:1-27:12
+		INJECTED from C:\Users\hllee\Desktop\Hwaxby\Hwaxby_front\android\app\src\debug\AndroidManifest.xml
+	xmlns:tools
+		ADDED from C:\Users\hllee\Desktop\Hwaxby\Hwaxby_front\android\app\src\debug\AndroidManifest.xml:3:5-51
+	android:versionCode
+		INJECTED from C:\Users\hllee\Desktop\Hwaxby\Hwaxby_front\android\app\src\main\AndroidManifest.xml
+		ADDED from C:\Users\hllee\Desktop\Hwaxby\Hwaxby_front\android\app\src\main\AndroidManifest.xml:1:1-27:12
+		INJECTED from C:\Users\hllee\Desktop\Hwaxby\Hwaxby_front\android\app\src\debug\AndroidManifest.xml
+	xmlns:android
+		ADDED from C:\Users\hllee\Desktop\Hwaxby\Hwaxby_front\android\app\src\main\AndroidManifest.xml:1:11-69
+uses-permission#android.permission.INTERNET
+ADDED from C:\Users\hllee\Desktop\Hwaxby\Hwaxby_front\android\app\src\main\AndroidManifest.xml:4:5-67
+MERGED from [com.facebook.flipper:flipper:0.75.1] C:\Users\hllee\.gradle\caches\transforms-2\files-2.1\34486defb8932e228f51477bb3ebbc00\jetified-flipper-0.75.1\AndroidManifest.xml:15:5-67
+MERGED from [com.facebook.flipper:flipper:0.75.1] C:\Users\hllee\.gradle\caches\transforms-2\files-2.1\34486defb8932e228f51477bb3ebbc00\jetified-flipper-0.75.1\AndroidManifest.xml:15:5-67
+MERGED from [:rn-fetch-blob] C:\Users\hllee\Desktop\Hwaxby\Hwaxby_front\node_modules\rn-fetch-blob\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:15:5-67
+MERGED from [:rn-fetch-blob] C:\Users\hllee\Desktop\Hwaxby\Hwaxby_front\node_modules\rn-fetch-blob\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:15:5-67
+	android:name
+		ADDED from C:\Users\hllee\Desktop\Hwaxby\Hwaxby_front\android\app\src\main\AndroidManifest.xml:4:22-64
+uses-permission#android.permission.RECORD_AUDIO
+ADDED from C:\Users\hllee\Desktop\Hwaxby\Hwaxby_front\android\app\src\main\AndroidManifest.xml:5:5-71
+MERGED from [:react-native-audio-recorder-player] C:\Users\hllee\Desktop\Hwaxby\Hwaxby_front\node_modules\react-native-audio-recorder-player\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:11:5-71
+MERGED from [:react-native-audio-recorder-player] C:\Users\hllee\Desktop\Hwaxby\Hwaxby_front\node_modules\react-native-audio-recorder-player\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:11:5-71
+	android:name
+		ADDED from C:\Users\hllee\Desktop\Hwaxby\Hwaxby_front\android\app\src\main\AndroidManifest.xml:5:22-68
+uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
+ADDED from C:\Users\hllee\Desktop\Hwaxby\Hwaxby_front\android\app\src\main\AndroidManifest.xml:6:5-81
+MERGED from [:react-native-audio-recorder-player] C:\Users\hllee\Desktop\Hwaxby\Hwaxby_front\node_modules\react-native-audio-recorder-player\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:12:5-81
+MERGED from [:react-native-audio-recorder-player] C:\Users\hllee\Desktop\Hwaxby\Hwaxby_front\node_modules\react-native-audio-recorder-player\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:12:5-81
+MERGED from [:rn-fetch-blob] C:\Users\hllee\Desktop\Hwaxby\Hwaxby_front\node_modules\rn-fetch-blob\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:33:5-81
+MERGED from [:rn-fetch-blob] C:\Users\hllee\Desktop\Hwaxby\Hwaxby_front\node_modules\rn-fetch-blob\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:33:5-81
+	android:name
+		ADDED from C:\Users\hllee\Desktop\Hwaxby\Hwaxby_front\android\app\src\main\AndroidManifest.xml:6:22-78
+uses-permission#android.permission.READ_EXTERNAL_STORAGE
+ADDED from C:\Users\hllee\Desktop\Hwaxby\Hwaxby_front\android\app\src\main\AndroidManifest.xml:7:5-80
+	android:name
+		ADDED from C:\Users\hllee\Desktop\Hwaxby\Hwaxby_front\android\app\src\main\AndroidManifest.xml:7:22-77
+application
+ADDED from C:\Users\hllee\Desktop\Hwaxby\Hwaxby_front\android\app\src\main\AndroidManifest.xml:8:5-26:19
+MERGED from C:\Users\hllee\Desktop\Hwaxby\Hwaxby_front\android\app\src\main\AndroidManifest.xml:8:5-26:19
+MERGED from C:\Users\hllee\Desktop\Hwaxby\Hwaxby_front\android\app\src\main\AndroidManifest.xml:8:5-26:19
+MERGED from [:rn-fetch-blob] C:\Users\hllee\Desktop\Hwaxby\Hwaxby_front\node_modules\rn-fetch-blob\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:35:5-45:19
+MERGED from [:rn-fetch-blob] C:\Users\hllee\Desktop\Hwaxby\Hwaxby_front\node_modules\rn-fetch-blob\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:35:5-45:19
+MERGED from [com.facebook.react:react-native:0.64.2] C:\Users\hllee\.gradle\caches\transforms-2\files-2.1\e59ad37ff06ccf3332126abe13609866\jetified-react-native-0.64.2\AndroidManifest.xml:11:5-20
+MERGED from [com.facebook.react:react-native:0.64.2] C:\Users\hllee\.gradle\caches\transforms-2\files-2.1\e59ad37ff06ccf3332126abe13609866\jetified-react-native-0.64.2\AndroidManifest.xml:11:5-20
+MERGED from [com.facebook.soloader:soloader:0.10.1] C:\Users\hllee\.gradle\caches\transforms-2\files-2.1\7b4e5d942e7fdcaf4a39b27e4d6eda9f\jetified-soloader-0.10.1\AndroidManifest.xml:11:5-20
+MERGED from [com.facebook.soloader:soloader:0.10.1] C:\Users\hllee\.gradle\caches\transforms-2\files-2.1\7b4e5d942e7fdcaf4a39b27e4d6eda9f\jetified-soloader-0.10.1\AndroidManifest.xml:11:5-20
+MERGED from [androidx.core:core:1.1.0] C:\Users\hllee\.gradle\caches\transforms-2\files-2.1\cce7fc7978e83e59072fb33c8a3b27e7\core-1.1.0\AndroidManifest.xml:24:5-89
+MERGED from [androidx.core:core:1.1.0] C:\Users\hllee\.gradle\caches\transforms-2\files-2.1\cce7fc7978e83e59072fb33c8a3b27e7\core-1.1.0\AndroidManifest.xml:24:5-89
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] C:\Users\hllee\.gradle\caches\transforms-2\files-2.1\cc5af0cc49ff014b9b5fb670cb8197e9\versionedparcelable-1.1.0\AndroidManifest.xml:24:5-25:19
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] C:\Users\hllee\.gradle\caches\transforms-2\files-2.1\cc5af0cc49ff014b9b5fb670cb8197e9\versionedparcelable-1.1.0\AndroidManifest.xml:24:5-25:19
+	android:appComponentFactory
+		ADDED from [androidx.core:core:1.1.0] C:\Users\hllee\.gradle\caches\transforms-2\files-2.1\cce7fc7978e83e59072fb33c8a3b27e7\core-1.1.0\AndroidManifest.xml:24:18-86
+	android:label
+		ADDED from C:\Users\hllee\Desktop\Hwaxby\Hwaxby_front\android\app\src\main\AndroidManifest.xml:10:7-39
+		ADDED from C:\Users\hllee\Desktop\Hwaxby\Hwaxby_front\android\app\src\main\AndroidManifest.xml:10:7-39
+	tools:ignore
+		ADDED from C:\Users\hllee\Desktop\Hwaxby\Hwaxby_front\android\app\src\debug\AndroidManifest.xml:10:9-48
+	android:roundIcon
+		ADDED from C:\Users\hllee\Desktop\Hwaxby\Hwaxby_front\android\app\src\main\AndroidManifest.xml:12:7-52
+		ADDED from C:\Users\hllee\Desktop\Hwaxby\Hwaxby_front\android\app\src\main\AndroidManifest.xml:12:7-52
+	tools:targetApi
+		ADDED from C:\Users\hllee\Desktop\Hwaxby\Hwaxby_front\android\app\src\debug\AndroidManifest.xml:9:9-29
+	android:icon
+		ADDED from C:\Users\hllee\Desktop\Hwaxby\Hwaxby_front\android\app\src\main\AndroidManifest.xml:11:7-41
+		ADDED from C:\Users\hllee\Desktop\Hwaxby\Hwaxby_front\android\app\src\main\AndroidManifest.xml:11:7-41
+	android:allowBackup
+		ADDED from C:\Users\hllee\Desktop\Hwaxby\Hwaxby_front\android\app\src\main\AndroidManifest.xml:13:7-34
+		ADDED from C:\Users\hllee\Desktop\Hwaxby\Hwaxby_front\android\app\src\main\AndroidManifest.xml:13:7-34
+	android:theme
+		ADDED from C:\Users\hllee\Desktop\Hwaxby\Hwaxby_front\android\app\src\main\AndroidManifest.xml:14:7-38
+		ADDED from C:\Users\hllee\Desktop\Hwaxby\Hwaxby_front\android\app\src\main\AndroidManifest.xml:14:7-38
+	android:usesCleartextTraffic
+		ADDED from C:\Users\hllee\Desktop\Hwaxby\Hwaxby_front\android\app\src\debug\AndroidManifest.xml:8:9-44
+	android:name
+		ADDED from C:\Users\hllee\Desktop\Hwaxby\Hwaxby_front\android\app\src\main\AndroidManifest.xml:9:7-38
+		ADDED from C:\Users\hllee\Desktop\Hwaxby\Hwaxby_front\android\app\src\main\AndroidManifest.xml:9:7-38
+activity#com.hwaxby_front.MainActivity
+ADDED from C:\Users\hllee\Desktop\Hwaxby\Hwaxby_front\android\app\src\main\AndroidManifest.xml:15:7-25:18
+	android:label
+		ADDED from C:\Users\hllee\Desktop\Hwaxby\Hwaxby_front\android\app\src\main\AndroidManifest.xml:17:9-41
+	android:launchMode
+		ADDED from C:\Users\hllee\Desktop\Hwaxby\Hwaxby_front\android\app\src\main\AndroidManifest.xml:19:9-40
+	android:windowSoftInputMode
+		ADDED from C:\Users\hllee\Desktop\Hwaxby\Hwaxby_front\android\app\src\main\AndroidManifest.xml:20:9-51
+	android:configChanges
+		ADDED from C:\Users\hllee\Desktop\Hwaxby\Hwaxby_front\android\app\src\main\AndroidManifest.xml:18:9-86
+	android:name
+		ADDED from C:\Users\hllee\Desktop\Hwaxby\Hwaxby_front\android\app\src\main\AndroidManifest.xml:16:9-37
+intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
+ADDED from C:\Users\hllee\Desktop\Hwaxby\Hwaxby_front\android\app\src\main\AndroidManifest.xml:21:9-24:25
+action#android.intent.action.MAIN
+ADDED from C:\Users\hllee\Desktop\Hwaxby\Hwaxby_front\android\app\src\main\AndroidManifest.xml:22:13-65
+	android:name
+		ADDED from C:\Users\hllee\Desktop\Hwaxby\Hwaxby_front\android\app\src\main\AndroidManifest.xml:22:21-62
+category#android.intent.category.LAUNCHER
+ADDED from C:\Users\hllee\Desktop\Hwaxby\Hwaxby_front\android\app\src\main\AndroidManifest.xml:23:13-73
+	android:name
+		ADDED from C:\Users\hllee\Desktop\Hwaxby\Hwaxby_front\android\app\src\main\AndroidManifest.xml:23:23-70
+uses-sdk
+INJECTED from C:\Users\hllee\Desktop\Hwaxby\Hwaxby_front\android\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from C:\Users\hllee\Desktop\Hwaxby\Hwaxby_front\android\app\src\main\AndroidManifest.xml
+INJECTED from C:\Users\hllee\Desktop\Hwaxby\Hwaxby_front\android\app\src\main\AndroidManifest.xml
+MERGED from [com.facebook.flipper:flipper:0.75.1] C:\Users\hllee\.gradle\caches\transforms-2\files-2.1\34486defb8932e228f51477bb3ebbc00\jetified-flipper-0.75.1\AndroidManifest.xml:11:5-13:41
+MERGED from [com.facebook.flipper:flipper:0.75.1] C:\Users\hllee\.gradle\caches\transforms-2\files-2.1\34486defb8932e228f51477bb3ebbc00\jetified-flipper-0.75.1\AndroidManifest.xml:11:5-13:41
+MERGED from [com.facebook.flipper:flipper-network-plugin:0.75.1] C:\Users\hllee\.gradle\caches\transforms-2\files-2.1\58f24def73b12a72c5626a4d4dc9b2a3\jetified-flipper-network-plugin-0.75.1\AndroidManifest.xml:11:5-13:41
+MERGED from [com.facebook.flipper:flipper-network-plugin:0.75.1] C:\Users\hllee\.gradle\caches\transforms-2\files-2.1\58f24def73b12a72c5626a4d4dc9b2a3\jetified-flipper-network-plugin-0.75.1\AndroidManifest.xml:11:5-13:41
+MERGED from [com.facebook.flipper:flipper-fresco-plugin:0.75.1] C:\Users\hllee\.gradle\caches\transforms-2\files-2.1\044860cb5d1f620c755802fa0bba28e2\jetified-flipper-fresco-plugin-0.75.1\AndroidManifest.xml:11:5-13:41
+MERGED from [com.facebook.flipper:flipper-fresco-plugin:0.75.1] C:\Users\hllee\.gradle\caches\transforms-2\files-2.1\044860cb5d1f620c755802fa0bba28e2\jetified-flipper-fresco-plugin-0.75.1\AndroidManifest.xml:11:5-13:41
+MERGED from [:react-native-audio-recorder-player] C:\Users\hllee\Desktop\Hwaxby\Hwaxby_front\node_modules\react-native-audio-recorder-player\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-9:41
+MERGED from [:react-native-audio-recorder-player] C:\Users\hllee\Desktop\Hwaxby\Hwaxby_front\node_modules\react-native-audio-recorder-player\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-9:41
+MERGED from [:rn-fetch-blob] C:\Users\hllee\Desktop\Hwaxby\Hwaxby_front\node_modules\rn-fetch-blob\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-9:41
+MERGED from [:rn-fetch-blob] C:\Users\hllee\Desktop\Hwaxby\Hwaxby_front\node_modules\rn-fetch-blob\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:7:5-9:41
+MERGED from [com.facebook.react:react-native:0.64.2] C:\Users\hllee\.gradle\caches\transforms-2\files-2.1\e59ad37ff06ccf3332126abe13609866\jetified-react-native-0.64.2\AndroidManifest.xml:7:5-9:41
+MERGED from [com.facebook.react:react-native:0.64.2] C:\Users\hllee\.gradle\caches\transforms-2\files-2.1\e59ad37ff06ccf3332126abe13609866\jetified-react-native-0.64.2\AndroidManifest.xml:7:5-9:41
+MERGED from [androidx.swiperefreshlayout:swiperefreshlayout:1.0.0] C:\Users\hllee\.gradle\caches\transforms-2\files-2.1\6bc2f576503f74b401679a93422befca\swiperefreshlayout-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.swiperefreshlayout:swiperefreshlayout:1.0.0] C:\Users\hllee\.gradle\caches\transforms-2\files-2.1\6bc2f576503f74b401679a93422befca\swiperefreshlayout-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [org.webkit:android-jsc:r245459] C:\Users\hllee\.gradle\caches\transforms-2\files-2.1\32e375833a2da8948e2eabfc0e4cba87\jetified-android-jsc-r245459\AndroidManifest.xml:7:5-9:41
+MERGED from [org.webkit:android-jsc:r245459] C:\Users\hllee\.gradle\caches\transforms-2\files-2.1\32e375833a2da8948e2eabfc0e4cba87\jetified-android-jsc-r245459\AndroidManifest.xml:7:5-9:41
+MERGED from [com.facebook.fresco:flipper:2.2.0] C:\Users\hllee\.gradle\caches\transforms-2\files-2.1\b01ce9869ac8c5111d9e43f5eeea8649\jetified-flipper-2.2.0\AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:flipper:2.2.0] C:\Users\hllee\.gradle\caches\transforms-2\files-2.1\b01ce9869ac8c5111d9e43f5eeea8649\jetified-flipper-2.2.0\AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:stetho:2.2.0] C:\Users\hllee\.gradle\caches\transforms-2\files-2.1\497d2fe372a0d0d93db34b8144c0cc74\jetified-stetho-2.2.0\AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:stetho:2.2.0] C:\Users\hllee\.gradle\caches\transforms-2\files-2.1\497d2fe372a0d0d93db34b8144c0cc74\jetified-stetho-2.2.0\AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:fresco:2.2.0] C:\Users\hllee\.gradle\caches\transforms-2\files-2.1\522e7ca86c2788663a1e22cecdda9735\jetified-fresco-2.2.0\AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:fresco:2.2.0] C:\Users\hllee\.gradle\caches\transforms-2\files-2.1\522e7ca86c2788663a1e22cecdda9735\jetified-fresco-2.2.0\AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:drawee:2.2.0] C:\Users\hllee\.gradle\caches\transforms-2\files-2.1\6e0e385176a0b3dd657a139519c50252\jetified-drawee-2.2.0\AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:drawee:2.2.0] C:\Users\hllee\.gradle\caches\transforms-2\files-2.1\6e0e385176a0b3dd657a139519c50252\jetified-drawee-2.2.0\AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:nativeimagefilters:2.2.0] C:\Users\hllee\.gradle\caches\transforms-2\files-2.1\5f24b395f5276990c743ae532248d957\jetified-nativeimagefilters-2.2.0\AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:nativeimagefilters:2.2.0] C:\Users\hllee\.gradle\caches\transforms-2\files-2.1\5f24b395f5276990c743ae532248d957\jetified-nativeimagefilters-2.2.0\AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:memory-type-native:2.2.0] C:\Users\hllee\.gradle\caches\transforms-2\files-2.1\8b98d1d5c0123c3d5d5211572d24efbf\jetified-memory-type-native-2.2.0\AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:memory-type-native:2.2.0] C:\Users\hllee\.gradle\caches\transforms-2\files-2.1\8b98d1d5c0123c3d5d5211572d24efbf\jetified-memory-type-native-2.2.0\AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:memory-type-java:2.2.0] C:\Users\hllee\.gradle\caches\transforms-2\files-2.1\2df3e451edbd5c35509133592e49f9e8\jetified-memory-type-java-2.2.0\AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:memory-type-java:2.2.0] C:\Users\hllee\.gradle\caches\transforms-2\files-2.1\2df3e451edbd5c35509133592e49f9e8\jetified-memory-type-java-2.2.0\AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:imagepipeline-native:2.2.0] C:\Users\hllee\.gradle\caches\transforms-2\files-2.1\7dad27901f5778835631587375af7ff1\jetified-imagepipeline-native-2.2.0\AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:imagepipeline-native:2.2.0] C:\Users\hllee\.gradle\caches\transforms-2\files-2.1\7dad27901f5778835631587375af7ff1\jetified-imagepipeline-native-2.2.0\AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:soloader:2.2.0] C:\Users\hllee\.gradle\caches\transforms-2\files-2.1\9289d8e2701c81e2825a868220aad7d3\jetified-soloader-2.2.0\AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:soloader:2.2.0] C:\Users\hllee\.gradle\caches\transforms-2\files-2.1\9289d8e2701c81e2825a868220aad7d3\jetified-soloader-2.2.0\AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.soloader:soloader:0.10.1] C:\Users\hllee\.gradle\caches\transforms-2\files-2.1\7b4e5d942e7fdcaf4a39b27e4d6eda9f\jetified-soloader-0.10.1\AndroidManifest.xml:7:5-9:41
+MERGED from [com.facebook.soloader:soloader:0.10.1] C:\Users\hllee\.gradle\caches\transforms-2\files-2.1\7b4e5d942e7fdcaf4a39b27e4d6eda9f\jetified-soloader-0.10.1\AndroidManifest.xml:7:5-9:41
+MERGED from [androidx.appcompat:appcompat:1.1.0] C:\Users\hllee\.gradle\caches\transforms-2\files-2.1\f401eeb7de97e4ea1d225e44f8414969\appcompat-1.1.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.appcompat:appcompat:1.1.0] C:\Users\hllee\.gradle\caches\transforms-2\files-2.1\f401eeb7de97e4ea1d225e44f8414969\appcompat-1.1.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.sqlite:sqlite-framework:2.1.0] C:\Users\hllee\.gradle\caches\transforms-2\files-2.1\e22749de6a917cdcc31d0b0d0df11b1c\sqlite-framework-2.1.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.sqlite:sqlite-framework:2.1.0] C:\Users\hllee\.gradle\caches\transforms-2\files-2.1\e22749de6a917cdcc31d0b0d0df11b1c\sqlite-framework-2.1.0\AndroidManifest.xml:20:5-22:41
+MERGED from [com.facebook.fresco:imagepipeline-okhttp3:2.0.0] C:\Users\hllee\.gradle\caches\transforms-2\files-2.1\a2777c6176646411f8e4864e4502bb58\jetified-imagepipeline-okhttp3-2.0.0\AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:imagepipeline-okhttp3:2.0.0] C:\Users\hllee\.gradle\caches\transforms-2\files-2.1\a2777c6176646411f8e4864e4502bb58\jetified-imagepipeline-okhttp3-2.0.0\AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:memory-type-ashmem:2.2.0] C:\Users\hllee\.gradle\caches\transforms-2\files-2.1\2fb82d4169b24c226f0d73a4d239feeb\jetified-memory-type-ashmem-2.2.0\AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:memory-type-ashmem:2.2.0] C:\Users\hllee\.gradle\caches\transforms-2\files-2.1\2fb82d4169b24c226f0d73a4d239feeb\jetified-memory-type-ashmem-2.2.0\AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:imagepipeline:2.2.0] C:\Users\hllee\.gradle\caches\transforms-2\files-2.1\a0a3f0a80dd04ce4d0ebc8facff1a585\jetified-imagepipeline-2.2.0\AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:imagepipeline:2.2.0] C:\Users\hllee\.gradle\caches\transforms-2\files-2.1\a0a3f0a80dd04ce4d0ebc8facff1a585\jetified-imagepipeline-2.2.0\AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:nativeimagetranscoder:2.2.0] C:\Users\hllee\.gradle\caches\transforms-2\files-2.1\b4ed2052253c9ac9d9e5ec678f58bd41\jetified-nativeimagetranscoder-2.2.0\AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:nativeimagetranscoder:2.2.0] C:\Users\hllee\.gradle\caches\transforms-2\files-2.1\b4ed2052253c9ac9d9e5ec678f58bd41\jetified-nativeimagetranscoder-2.2.0\AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:imagepipeline-base:2.2.0] C:\Users\hllee\.gradle\caches\transforms-2\files-2.1\7b4346173eae1e5d0f0ed52205e161cf\jetified-imagepipeline-base-2.2.0\AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:imagepipeline-base:2.2.0] C:\Users\hllee\.gradle\caches\transforms-2\files-2.1\7b4346173eae1e5d0f0ed52205e161cf\jetified-imagepipeline-base-2.2.0\AndroidManifest.xml:5:5-7:41
+MERGED from [androidx.browser:browser:1.3.0] C:\Users\hllee\.gradle\caches\transforms-2\files-2.1\b9b8f052bc5826289bbfec44a273bb35\browser-1.3.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.browser:browser:1.3.0] C:\Users\hllee\.gradle\caches\transforms-2\files-2.1\b9b8f052bc5826289bbfec44a273bb35\browser-1.3.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.appcompat:appcompat-resources:1.1.0] C:\Users\hllee\.gradle\caches\transforms-2\files-2.1\d02c7117c7c5028e9b749603e0ff90d4\jetified-appcompat-resources-1.1.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.appcompat:appcompat-resources:1.1.0] C:\Users\hllee\.gradle\caches\transforms-2\files-2.1\d02c7117c7c5028e9b749603e0ff90d4\jetified-appcompat-resources-1.1.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0] C:\Users\hllee\.gradle\caches\transforms-2\files-2.1\5deccd5fc87a40d99612758fa0156e05\vectordrawable-animated-1.1.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.vectordrawable:vectordrawable-animated:1.1.0] C:\Users\hllee\.gradle\caches\transforms-2\files-2.1\5deccd5fc87a40d99612758fa0156e05\vectordrawable-animated-1.1.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.interpolator:interpolator:1.0.0] C:\Users\hllee\.gradle\caches\transforms-2\files-2.1\302682d93129c63da9a172e62f7109fe\interpolator-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.interpolator:interpolator:1.0.0] C:\Users\hllee\.gradle\caches\transforms-2\files-2.1\302682d93129c63da9a172e62f7109fe\interpolator-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.fragment:fragment:1.1.0] C:\Users\hllee\.gradle\caches\transforms-2\files-2.1\014b4fd3a86321a4a383a47577aeeaf2\fragment-1.1.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.fragment:fragment:1.1.0] C:\Users\hllee\.gradle\caches\transforms-2\files-2.1\014b4fd3a86321a4a383a47577aeeaf2\fragment-1.1.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.drawerlayout:drawerlayout:1.0.0] C:\Users\hllee\.gradle\caches\transforms-2\files-2.1\da6620b9bc48bf5ee4250ed2d4243100\drawerlayout-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.drawerlayout:drawerlayout:1.0.0] C:\Users\hllee\.gradle\caches\transforms-2\files-2.1\da6620b9bc48bf5ee4250ed2d4243100\drawerlayout-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.viewpager:viewpager:1.0.0] C:\Users\hllee\.gradle\caches\transforms-2\files-2.1\31e636660de7a70a8c70169a01b3097c\viewpager-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.viewpager:viewpager:1.0.0] C:\Users\hllee\.gradle\caches\transforms-2\files-2.1\31e636660de7a70a8c70169a01b3097c\viewpager-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.loader:loader:1.0.0] C:\Users\hllee\.gradle\caches\transforms-2\files-2.1\6f08dd0d2840d2a87019f03205248ed7\loader-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.loader:loader:1.0.0] C:\Users\hllee\.gradle\caches\transforms-2\files-2.1\6f08dd0d2840d2a87019f03205248ed7\loader-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.activity:activity:1.0.0] C:\Users\hllee\.gradle\caches\transforms-2\files-2.1\c9681820cefbffba475ee1f1635b097b\jetified-activity-1.0.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.activity:activity:1.0.0] C:\Users\hllee\.gradle\caches\transforms-2\files-2.1\c9681820cefbffba475ee1f1635b097b\jetified-activity-1.0.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.vectordrawable:vectordrawable:1.1.0] C:\Users\hllee\.gradle\caches\transforms-2\files-2.1\8e5375a27263550e78dde8efb2387044\vectordrawable-1.1.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.vectordrawable:vectordrawable:1.1.0] C:\Users\hllee\.gradle\caches\transforms-2\files-2.1\8e5375a27263550e78dde8efb2387044\vectordrawable-1.1.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.customview:customview:1.0.0] C:\Users\hllee\.gradle\caches\transforms-2\files-2.1\cf33851c0b68ab053faa8b9471deed8b\customview-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.customview:customview:1.0.0] C:\Users\hllee\.gradle\caches\transforms-2\files-2.1\cf33851c0b68ab053faa8b9471deed8b\customview-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.core:core:1.1.0] C:\Users\hllee\.gradle\caches\transforms-2\files-2.1\cce7fc7978e83e59072fb33c8a3b27e7\core-1.1.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.core:core:1.1.0] C:\Users\hllee\.gradle\caches\transforms-2\files-2.1\cce7fc7978e83e59072fb33c8a3b27e7\core-1.1.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] C:\Users\hllee\.gradle\caches\transforms-2\files-2.1\52196ac41bf2fb7cc27efac53557f75a\cursoradapter-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] C:\Users\hllee\.gradle\caches\transforms-2\files-2.1\52196ac41bf2fb7cc27efac53557f75a\cursoradapter-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.sqlite:sqlite:2.1.0] C:\Users\hllee\.gradle\caches\transforms-2\files-2.1\0db415345da1939dca931e24784a5597\sqlite-2.1.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.sqlite:sqlite:2.1.0] C:\Users\hllee\.gradle\caches\transforms-2\files-2.1\0db415345da1939dca931e24784a5597\sqlite-2.1.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] C:\Users\hllee\.gradle\caches\transforms-2\files-2.1\cc5af0cc49ff014b9b5fb670cb8197e9\versionedparcelable-1.1.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] C:\Users\hllee\.gradle\caches\transforms-2\files-2.1\cc5af0cc49ff014b9b5fb670cb8197e9\versionedparcelable-1.1.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.1.0] C:\Users\hllee\.gradle\caches\transforms-2\files-2.1\6fee099f88f516c3cb29e8c9c09f2aa8\lifecycle-runtime-2.1.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.1.0] C:\Users\hllee\.gradle\caches\transforms-2\files-2.1\6fee099f88f516c3cb29e8c9c09f2aa8\lifecycle-runtime-2.1.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.1.0] C:\Users\hllee\.gradle\caches\transforms-2\files-2.1\9905c36032b6ac61a5aea5685ff9a410\lifecycle-viewmodel-2.1.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.1.0] C:\Users\hllee\.gradle\caches\transforms-2\files-2.1\9905c36032b6ac61a5aea5685ff9a410\lifecycle-viewmodel-2.1.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.savedstate:savedstate:1.0.0] C:\Users\hllee\.gradle\caches\transforms-2\files-2.1\828cec7cd81cd3aed3d3156583763c38\jetified-savedstate-1.0.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.savedstate:savedstate:1.0.0] C:\Users\hllee\.gradle\caches\transforms-2\files-2.1\828cec7cd81cd3aed3d3156583763c38\jetified-savedstate-1.0.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.0.0] C:\Users\hllee\.gradle\caches\transforms-2\files-2.1\ee62cc2054f782a126419a788ca31b2c\lifecycle-livedata-2.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata:2.0.0] C:\Users\hllee\.gradle\caches\transforms-2\files-2.1\ee62cc2054f782a126419a788ca31b2c\lifecycle-livedata-2.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.0.0] C:\Users\hllee\.gradle\caches\transforms-2\files-2.1\5bd4b2f330ee10ee3d5f3bda8e665ab4\lifecycle-livedata-core-2.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.0.0] C:\Users\hllee\.gradle\caches\transforms-2\files-2.1\5bd4b2f330ee10ee3d5f3bda8e665ab4\lifecycle-livedata-core-2.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.arch.core:core-runtime:2.0.0] C:\Users\hllee\.gradle\caches\transforms-2\files-2.1\38e7ea33dc85c71bb384c2378f5b1a46\core-runtime-2.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.arch.core:core-runtime:2.0.0] C:\Users\hllee\.gradle\caches\transforms-2\files-2.1\38e7ea33dc85c71bb384c2378f5b1a46\core-runtime-2.0.0\AndroidManifest.xml:20:5-44
+MERGED from [com.facebook.fresco:fbcore:2.2.0] C:\Users\hllee\.gradle\caches\transforms-2\files-2.1\4bd9029969a86bd7182ef3fd90dacab5\jetified-fbcore-2.2.0\AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:fbcore:2.2.0] C:\Users\hllee\.gradle\caches\transforms-2\files-2.1\4bd9029969a86bd7182ef3fd90dacab5\jetified-fbcore-2.2.0\AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:ui-common:2.2.0] C:\Users\hllee\.gradle\caches\transforms-2\files-2.1\80004153104dbdefebe721a565d18dfd\jetified-ui-common-2.2.0\AndroidManifest.xml:5:5-7:41
+MERGED from [com.facebook.fresco:ui-common:2.2.0] C:\Users\hllee\.gradle\caches\transforms-2\files-2.1\80004153104dbdefebe721a565d18dfd\jetified-ui-common-2.2.0\AndroidManifest.xml:5:5-7:41
+INJECTED from C:\Users\hllee\Desktop\Hwaxby\Hwaxby_front\android\app\src\debug\AndroidManifest.xml
+INJECTED from C:\Users\hllee\Desktop\Hwaxby\Hwaxby_front\android\app\src\debug\AndroidManifest.xml
+	android:targetSdkVersion
+		INJECTED from C:\Users\hllee\Desktop\Hwaxby\Hwaxby_front\android\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\hllee\Desktop\Hwaxby\Hwaxby_front\android\app\src\debug\AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from C:\Users\hllee\Desktop\Hwaxby\Hwaxby_front\android\app\src\main\AndroidManifest.xml
+		INJECTED from C:\Users\hllee\Desktop\Hwaxby\Hwaxby_front\android\app\src\debug\AndroidManifest.xml
+uses-permission#android.permission.SYSTEM_ALERT_WINDOW
+ADDED from C:\Users\hllee\Desktop\Hwaxby\Hwaxby_front\android\app\src\debug\AndroidManifest.xml:5:5-77
+	android:name
+		ADDED from C:\Users\hllee\Desktop\Hwaxby\Hwaxby_front\android\app\src\debug\AndroidManifest.xml:5:22-75
+activity#com.facebook.react.devsupport.DevSettingsActivity
+ADDED from C:\Users\hllee\Desktop\Hwaxby\Hwaxby_front\android\app\src\debug\AndroidManifest.xml:11:9-86
+	android:name
+		ADDED from C:\Users\hllee\Desktop\Hwaxby\Hwaxby_front\android\app\src\debug\AndroidManifest.xml:11:19-83
+uses-permission#android.permission.ACCESS_WIFI_STATE
+ADDED from [com.facebook.flipper:flipper:0.75.1] C:\Users\hllee\.gradle\caches\transforms-2\files-2.1\34486defb8932e228f51477bb3ebbc00\jetified-flipper-0.75.1\AndroidManifest.xml:16:5-76
+MERGED from [:rn-fetch-blob] C:\Users\hllee\Desktop\Hwaxby\Hwaxby_front\node_modules\rn-fetch-blob\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:30:5-76
+MERGED from [:rn-fetch-blob] C:\Users\hllee\Desktop\Hwaxby\Hwaxby_front\node_modules\rn-fetch-blob\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:30:5-76
+	android:name
+		ADDED from [com.facebook.flipper:flipper:0.75.1] C:\Users\hllee\.gradle\caches\transforms-2\files-2.1\34486defb8932e228f51477bb3ebbc00\jetified-flipper-0.75.1\AndroidManifest.xml:16:22-73
+uses-permission#com.android.vending.CHECK_LICENSE
+ADDED from [:rn-fetch-blob] C:\Users\hllee\Desktop\Hwaxby\Hwaxby_front\node_modules\rn-fetch-blob\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:12:5-73
+	android:name
+		ADDED from [:rn-fetch-blob] C:\Users\hllee\Desktop\Hwaxby\Hwaxby_front\node_modules\rn-fetch-blob\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:12:22-70
+uses-permission#android.permission.WAKE_LOCK
+ADDED from [:rn-fetch-blob] C:\Users\hllee\Desktop\Hwaxby\Hwaxby_front\node_modules\rn-fetch-blob\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:21:5-68
+	android:name
+		ADDED from [:rn-fetch-blob] C:\Users\hllee\Desktop\Hwaxby\Hwaxby_front\node_modules\rn-fetch-blob\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:21:22-65
+uses-permission#android.permission.ACCESS_NETWORK_STATE
+ADDED from [:rn-fetch-blob] C:\Users\hllee\Desktop\Hwaxby\Hwaxby_front\node_modules\rn-fetch-blob\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:27:5-79
+	android:name
+		ADDED from [:rn-fetch-blob] C:\Users\hllee\Desktop\Hwaxby\Hwaxby_front\node_modules\rn-fetch-blob\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:27:22-76
+provider#com.RNFetchBlob.Utils.FileProvider
+ADDED from [:rn-fetch-blob] C:\Users\hllee\Desktop\Hwaxby\Hwaxby_front\node_modules\rn-fetch-blob\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:36:9-44:20
+	android:grantUriPermissions
+		ADDED from [:rn-fetch-blob] C:\Users\hllee\Desktop\Hwaxby\Hwaxby_front\node_modules\rn-fetch-blob\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:40:13-47
+	android:authorities
+		ADDED from [:rn-fetch-blob] C:\Users\hllee\Desktop\Hwaxby\Hwaxby_front\node_modules\rn-fetch-blob\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:38:13-60
+	android:exported
+		ADDED from [:rn-fetch-blob] C:\Users\hllee\Desktop\Hwaxby\Hwaxby_front\node_modules\rn-fetch-blob\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:39:13-37
+	android:name
+		ADDED from [:rn-fetch-blob] C:\Users\hllee\Desktop\Hwaxby\Hwaxby_front\node_modules\rn-fetch-blob\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:37:13-62
+meta-data#android.support.FILE_PROVIDER_PATHS
+ADDED from [:rn-fetch-blob] C:\Users\hllee\Desktop\Hwaxby\Hwaxby_front\node_modules\rn-fetch-blob\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:41:13-43:58
+	android:resource
+		ADDED from [:rn-fetch-blob] C:\Users\hllee\Desktop\Hwaxby\Hwaxby_front\node_modules\rn-fetch-blob\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:43:17-55
+	android:name
+		ADDED from [:rn-fetch-blob] C:\Users\hllee\Desktop\Hwaxby\Hwaxby_front\node_modules\rn-fetch-blob\android\build\intermediates\library_manifest\debug\AndroidManifest.xml:42:17-67

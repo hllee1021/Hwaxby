@@ -13,16 +13,16 @@ const styles = StyleSheet.create({
     justifyContent: 'space-around',
   },
   center: {
-    height: '70%',
+    height: '30%',
     alignItems: 'center',
     justifyContent: 'space-around',
   },
   bottom: {
-    height: '20%',
+    height: '30%',
     alignItems: 'center',
   },
   title: {
-    fontSize: 30,
+    fontSize: 10,
     fontWeight: 'bold',
   },
   image: {
@@ -31,7 +31,7 @@ const styles = StyleSheet.create({
   },
   button: {
     width: 200,
-    height: 75,
+    height: 50,
     backgroundColor: 'steelblue',
     alignItems: 'center',
     justifyContent: 'space-around',
