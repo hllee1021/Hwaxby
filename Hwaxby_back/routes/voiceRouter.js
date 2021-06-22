@@ -3,7 +3,8 @@ const app = express();
 const router = require('express').Router();
 const fs = require('fs');
 const config = require('../config.json');
-const rates= require('sample-rate');
+const audiorecorder= require('node-audiorecorder');
+const path = require('path');
 let request = require('request');
 
 let accessKey = config.aihub_key;
@@ -17,6 +18,36 @@ router.get('/', function(req,res){
   console.log(rates);
   res.send("hi")
 });
+
+router.get('/soundRecord', async function(req,res){
+  const DIRECTORY = 'examples-recordings';
+  const recorder = new audiorecorder({
+    program: 'sox',
+    encoding: 'LINEAR16',
+    bits: 16,
+    rate: 16000,
+    silence: 2
+  }, console);
+  if (!fs.existsSync(DIRECTORY)) {
+    fs.mkdirSync(DIRECTORY);
+  }
+  const fileName = path.join(DIRECTORY, Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, 4).concat('.wav'));
+  console.log('Writing new recording file at: ', fileName);
+  const fileStream = fs.createWriteStream(fileName, { encoding: 'binary' });
+  recorder.start();
+  setTimeout(() => recorder.stop(), 10000);
+  // audioRecorder.stream().on('close', function (code) {
+  //   console.warn('Recording closed. Exit code: ', code);
+  // });
+  // audioRecorder.stream().on('end', function () {
+  //   console.warn('Recording ended.');
+  // });
+  // audioRecorder.stream().on('error', function () {
+  //   console.warn('Recording error.');
+  // });
+  // process.stdin.resume();
+  // console.warn('Press ctrl+c to exit.');
+})
 
 router.get('/soundText',async function(req,res){
   let requestJson = {

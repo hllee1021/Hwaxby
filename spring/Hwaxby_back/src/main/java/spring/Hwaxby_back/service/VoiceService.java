@@ -19,17 +19,21 @@ import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Service;
+import spring.Hwaxby_back.domain.Voice;
 import spring.Hwaxby_back.util.PropertyFileReader;
 
 @Service
 public class VoiceService {
 
-    static public void main ( String[] args ) throws Exception {
+    public Voice voiceToText( String voiceFilePath ) throws Exception {
+        System.out.println("start");
+        Voice voice = new Voice();
+
         Properties prop = PropertyFileReader.readPropertyFile("api-key.properties");
         String openApiURL = prop.getProperty("voice.open.api.url");
         String accessKey = prop.getProperty("voice.open.api.accesskey");    // 발급받은 API Key
         String languageCode = "korean";     // 언어 코드
-        String audioFilePath = new ClassPathResource(prop.getProperty("voice.file.path")).getFile().getAbsolutePath(); // 녹음된 음성 파일 경로
+        String audioFilePath = new ClassPathResource(voiceFilePath).getFile().getAbsolutePath(); // 녹음된 음성 파일 경로
         String audioContents = null;
 
         Gson gson = new Gson();
@@ -71,6 +75,9 @@ public class VoiceService {
             int byteRead = is.read(buffer);
             responBody = new String(buffer);
 
+
+            voice.setFilePath(responBody);
+
             System.out.println("[responseCode] " + responseCode);
             System.out.println("[responBody]");
             System.out.println(responBody);
@@ -80,5 +87,6 @@ public class VoiceService {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        return voice;
     }
 }
