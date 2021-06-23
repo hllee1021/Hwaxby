@@ -210,17 +210,6 @@ public class VoiceService {
                 }
             }
 
-            if ( 0 < nameEntitiesMap.size() ) {
-                nameEntities = new ArrayList<NameEntity>(nameEntitiesMap.values());
-                System.out.println("here");
-                nameEntities.stream().forEach(nameEntity -> {
-                    System.out.println(nameEntity.text + " " + nameEntity.type);
-                });
-//                nameEntities.sort( (nameEntity1, nameEntity2) -> {
-//                    return nameEntity2.count - nameEntity1.count;
-//                });
-            }
-
             String textParsedJson = null;
             ArrayList<String> arrayList = new ArrayList<String>();
 
@@ -251,22 +240,19 @@ public class VoiceService {
             System.out.println("textParsedJson is ");
             System.out.println(textParsedJson);
             TextParsed textParsed = new TextParsed();
-//            textParsed.get
-//            voice.setTextParsed();
+            textParsed.setInfo(textParsedJson);
 
 
-            // 형태소들 중 명사들에 대해서 많이 노출된 순으로 출력 ( 최대 5개 )
-//            morphemes
-//                    .stream()
-//                    .filter(morpheme -> {
-//                        return morpheme.type.equals("NNG") ||
-//                                morpheme.type.equals("NNP") ||
-//                                morpheme.type.equals("NNB");
-//                    })
-//                    .limit(5)
-//                    .forEach(morpheme -> {
-//                        System.out.println("[명사] " + morpheme.text + " ("+morpheme.count+")" );
-//                    });
+            if ( 0 < nameEntitiesMap.size() ) {
+                nameEntities = new ArrayList<NameEntity>(nameEntitiesMap.values());
+                System.out.println("here");
+                nameEntities.stream().forEach(nameEntity -> {
+                    System.out.println(nameEntity.text + " " + nameEntity.type);
+                });
+//                nameEntities.sort( (nameEntity1, nameEntity2) -> {
+//                    return nameEntity2.count - nameEntity1.count;
+//                });
+            }
 
             // 형태소들 중 동사들에 대해서 많이 노출된 순으로 출력 ( 최대 5개 )
             System.out.println("");
@@ -288,6 +274,8 @@ public class VoiceService {
 //                    .forEach(nameEntity -> {
 //                        System.out.println("[개체명] " + nameEntity.text + " ("+nameEntity.count+")" );
 //                    });
+
+            voice.setTextParsed(textParsed);
         } catch (MalformedURLException e) {
             e.printStackTrace();
         } catch (IOException e) {
