@@ -12,13 +12,10 @@ target 'Client' do
     :hermes_enabled => false
   )
 
-<<<<<<< HEAD
   pod 'RNAudioRecorderPlayer', :path => '../node_modules/react-native-audio-recorder-player'
 
   pod 'react-native-geolocation', :path => '../node_modules/@react-native-community/geolocation'
 
-=======
->>>>>>> 605f0e62 ([feat] ask service)
   target 'ClientTests' do
     inherit! :complete
     # Pods for testing
