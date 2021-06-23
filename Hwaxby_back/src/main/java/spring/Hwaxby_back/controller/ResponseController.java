@@ -59,4 +59,11 @@ public class ResponseController {
         /** 7. return */
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
+
+    @GetMapping("test")
+    public String test() throws Exception {
+        System.out.println("testing");
+        weatherService.geocoder("영덕");
+        return null;
+    }
 }
