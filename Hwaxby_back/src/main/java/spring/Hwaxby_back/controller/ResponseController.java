@@ -10,7 +10,7 @@ import spring.Hwaxby_back.domain.Display;
 import spring.Hwaxby_back.service.WeatherService;
 
 @Controller
-public class WeatherController {
+public class ResponseController {
 
     @Autowired
     private WeatherService weatherService;
