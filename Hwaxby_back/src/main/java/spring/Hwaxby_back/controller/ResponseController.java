@@ -10,31 +10,51 @@ import spring.Hwaxby_back.domain.*;
 import spring.Hwaxby_back.domain.OpenWeather.CurrentWeather;
 import spring.Hwaxby_back.domain.OpenWeather.ForecastWeather;
 import spring.Hwaxby_back.domain.OpenWeather.OpenWeather;
+import spring.Hwaxby_back.service.CoordService;
+import spring.Hwaxby_back.service.VoiceService;
 import spring.Hwaxby_back.service.WeatherService;
+
+import java.util.Optional;
 
 @Controller
 public class ResponseController {
 
+    private final VoiceService voiceService;
+    private final WeatherService weatherService;
+
     @Autowired
-    private WeatherService weatherService;
+    public ResponseController(VoiceService voiceService, WeatherService weatherService) {
+        this.voiceService = voiceService;
+        this.weatherService = weatherService;
+    }
 
     @GetMapping("response")
     public ResponseEntity<?> getResponse(@RequestBody Ask askData) throws Exception {
         // [TEMP] tester
         System.out.println("here");
-        Coordinates test_cor = new Coordinates();
-        test_cor.setLat(36.504658); test_cor.setLon(129.44539);
-        askData.setCoordinates(test_cor);
+//        Coordinates test_cor = new Coordinates();
+//        test_cor.setLat(36.504658); test_cor.setLon(129.44539);
+//        askData.setCoordinates(test_cor);
         OpenWeatherType type;
-        type = OpenWeatherType.CURRENT;
+//        type = OpenWeatherType.CURRENT;
 
         /** 0. Response 객체 생성 */
         Response response = new Response();
 
         /** 1. Ask-Voice-Text Tokenizing */
+        Optional<Voice> opvoice = voiceService.findOne(askData.getVoice().getId());
+        Voice voice = null;
+
+        if (opvoice.isPresent()) {
+            voice = opvoice.get();
+            voice = voiceService.voiceParsing(voice);
+        } else {
+            System.out.println("There's no voice entity match to id: "+ askData.getVoice().getId());
+        }
+
 
         /** 2. 1번 결과로부터 Keyword 추출 */
-
+        type = voice.getTextParsed().getOpenWeatherType();
         response.setType(type);
 
 

@@ -5,11 +5,14 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.*;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonParser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import spring.Hwaxby_back.domain.Coordinates;
+import spring.Hwaxby_back.domain.OpenWeatherType;
 import spring.Hwaxby_back.domain.Voice;
 import spring.Hwaxby_back.domain.VoiceItem.TextParsed;
 import spring.Hwaxby_back.domain.VoiceItem.VoiceType;
@@ -25,6 +28,15 @@ public class VoiceService {
     @Autowired
     public VoiceService(VoiceRepository voiceRepository) throws Exception {
         this.voiceRepository = voiceRepository;
+    }
+
+    public Long save(Voice voice) {
+        voiceRepository.save(voice);
+        return voice.getId();
+    }
+
+    public Optional<Voice> findOne(Long voiceId) {
+        return voiceRepository.findById(voiceId);
     }
 
     public Voice voiceToText( Voice voice ) throws Exception {
@@ -211,7 +223,8 @@ public class VoiceService {
             }
 
             String textParsedJson = null;
-            ArrayList<String> arrayList = new ArrayList<String>();
+            ArrayList<String> infoList = new ArrayList<String>();
+            TextParsed textParsed = new TextParsed();
 
             if ( 0 < morphemesMap.size() ) {
                 morphemes = new ArrayList<Morpheme>(morphemesMap.values());
@@ -229,53 +242,81 @@ public class VoiceService {
                                     morpheme.text.equals("눈");
                         })
                         .forEach(morpheme -> {
-                            arrayList.add(morpheme.text);
-                        });
-//                morphemes.sort( (morpheme1, morpheme2) -> {
-//                    return morpheme2.count - morpheme1.count;
-//                });
-            }
+                            infoList.add(morpheme.text);
 
-            textParsedJson = gson.toJson(arrayList);
+                        });
+            }
+            textParsedJson = gson.toJson(infoList);
             System.out.println("textParsedJson is ");
             System.out.println(textParsedJson);
-            TextParsed textParsed = new TextParsed();
             textParsed.setInfo(textParsedJson);
-
+            textParsed.setDay(-1);
+            textParsed.setOpenWeatherType(OpenWeatherType.CURRENT);
 
             if ( 0 < nameEntitiesMap.size() ) {
                 nameEntities = new ArrayList<NameEntity>(nameEntitiesMap.values());
                 System.out.println("here");
-                nameEntities.stream().forEach(nameEntity -> {
-                    System.out.println(nameEntity.text + " " + nameEntity.type);
-                });
-//                nameEntities.sort( (nameEntity1, nameEntity2) -> {
-//                    return nameEntity2.count - nameEntity1.count;
-//                });
+                nameEntities
+                        .stream()
+                        .filter(nameEntity -> {
+                            return nameEntity.type.equals("LC_OTHERS") ||
+                                    nameEntity.type.equals("LCP_COUNTRY") ||
+                                    nameEntity.type.equals("LCP_PROVINCE") ||
+                                    nameEntity.type.equals("LCP_COUNTY") ||
+                                    nameEntity.type.equals("LCP_CITY") ||
+                                    nameEntity.type.equals("LCP_CAPITALCITY") ||
+                                    nameEntity.type.equals("LCG_RIVER") ||
+                                    nameEntity.type.equals("LCG_OCEAN") ||
+                                    nameEntity.type.equals("LCG_BAY") ||
+                                    nameEntity.type.equals("LCG_MOUNTAIN") ||
+                                    nameEntity.type.equals("LCG_ISLAND") ||
+                                    nameEntity.type.equals("LCG_CONTINENT") ||
+                                    nameEntity.type.equals("LC_TOUR");
+                        })
+                        .forEach(nameEntity -> {
+                            textParsed.setCity(nameEntity.text);
+                        });
             }
 
-            // 형태소들 중 동사들에 대해서 많이 노출된 순으로 출력 ( 최대 5개 )
-            System.out.println("");
-//            morphemes
-//                    .stream()
-//                    .filter(morpheme -> {
-//                        return morpheme.type.equals("VV");
-//                    })
-//                    .limit(5)
-//                    .forEach(morpheme -> {
-//                        System.out.println("[동사] " + morpheme.text + " ("+morpheme.count+")" );
-//                    });
-
             // 인식된 개채명들 많이 노출된 순으로 출력 ( 최대 5개 )
-            System.out.println("");
+//            System.out.println("");
 //            nameEntities
 //                    .stream()
-//                    .limit(5)
 //                    .forEach(nameEntity -> {
-//                        System.out.println("[개체명] " + nameEntity.text + " ("+nameEntity.count+")" );
+//                        System.out.println("[개체명] " + nameEntity.text );
 //                    });
 
+            if ( 0 < nameEntitiesMap.size() ) {
+                nameEntities = new ArrayList<NameEntity>(nameEntitiesMap.values());
+                System.out.println("here");
+                nameEntities
+                        .stream()
+                        .filter(nameEntity -> {
+                            return nameEntity.type.equals("DT_OTHERS") ||
+                                    nameEntity.type.equals("DT_DAY");
+                        })
+                        .forEach(nameEntity -> {
+                            if (nameEntity.type.equals("DT_OTHERS") && !nameEntity.text.contains("전")) {
+                                if (nameEntity.text.contains("하루") || nameEntity.text.contains("1일")) { textParsed.setDay(1);}
+                                else if (nameEntity.text.contains("이틀") || nameEntity.text.contains("2일")) { textParsed.setDay(2); }
+                                else if (nameEntity.text.contains("사흘") || nameEntity.text.contains("3일")) { textParsed.setDay(3); }
+                                else if (nameEntity.text.contains("나흘") || nameEntity.text.contains("4일")) { textParsed.setDay(4); }
+                                else if (nameEntity.text.contains("닷새") || nameEntity.text.contains("5일")) { textParsed.setDay(5); }
+                                else if (nameEntity.text.contains("엿새") || nameEntity.text.contains("6일")) { textParsed.setDay(6); }
+                                else if (nameEntity.text.contains("이레") || nameEntity.text.contains("7일")) { textParsed.setDay(7); }
+                            } else  {
+                                if (nameEntity.text.contains("오늘")) { textParsed.setDay(0); }
+                                else if (nameEntity.text.contains("내일")) { textParsed.setDay(1);}
+                                else if (nameEntity.text.contains("모레")) { textParsed.setDay(2);}
+                                else if (nameEntity.text.contains("글피")) { textParsed.setDay(3);}
+                                else if (nameEntity.text.contains("그글피")) { textParsed.setDay(4);}
+                            }
+                            textParsed.setOpenWeatherType(OpenWeatherType.FORECAST);
+                        });
+            }
+
             voice.setTextParsed(textParsed);
+
         } catch (MalformedURLException e) {
             e.printStackTrace();
         } catch (IOException e) {
