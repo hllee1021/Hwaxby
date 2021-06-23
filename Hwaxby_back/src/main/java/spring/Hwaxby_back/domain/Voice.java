@@ -4,22 +4,19 @@ import com.google.gson.JsonObject;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.Base64;
+
 @Getter @Setter
 public class Voice {
 
     private Long id;
-    //
 
-    private byte[] data;
+    private String data;
 
-    private JsonObject text;
+    private String text;
 
     private JsonObject textParsed;
 
     private VoiceType type;
-
-    private Long weatherId;
-
-    private String filePath;
 
 }

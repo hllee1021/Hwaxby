@@ -12,13 +12,11 @@ import java.nio.file.Paths;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Service;
 import spring.Hwaxby_back.domain.Voice;
-import spring.Hwaxby_back.repository.MemberRepository;
+import spring.Hwaxby_back.domain.VoiceType;
 import spring.Hwaxby_back.repository.VoiceRepository;
 import spring.Hwaxby_back.util.PropertyFileReader;
 
@@ -33,14 +31,13 @@ public class VoiceService {
         this.voiceRepository = voiceRepository;
     }
 
-    public Voice voiceToText( String voiceFilePath ) throws Exception {
-        Voice voice = new Voice();
-        voice.setFilePath(voiceFilePath);
+    public Voice voiceToText( Voice voice ) throws Exception {
+
+        voice.setType(VoiceType.ASK);
 
         String openApiURL = prop.getProperty("voice.open.api.asr.url");
         String accessKey = prop.getProperty("voice.open.api.accesskey");    // 발급받은 API Key
         String languageCode = "korean";     // 언어 코드
-        String audioFilePath = new ClassPathResource(voiceFilePath).getFile().getAbsolutePath(); // 녹음된 음성 파일 경로
         String audioContents = null;
 
         Gson gson = new Gson();
@@ -48,13 +45,8 @@ public class VoiceService {
         Map<String, Object> request = new HashMap<>();
         Map<String, String> argument = new HashMap<>();
 
-        try {
-            Path path = Paths.get(audioFilePath);
-            byte[] audioBytes = Files.readAllBytes(path);
-            audioContents = Base64.getEncoder().encodeToString(audioBytes);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        byte[] audioBytes = voice.getData().getBytes();
+        audioContents = Base64.getEncoder().encodeToString(audioBytes);
 
         argument.put("language_code", languageCode);
         argument.put("audio", audioContents);
@@ -65,6 +57,7 @@ public class VoiceService {
         URL url;
         Integer responseCode = null;
         JsonObject responBody = null;
+
         try {
             url = new URL(openApiURL);
             HttpURLConnection con = (HttpURLConnection) url.openConnection();
@@ -79,14 +72,15 @@ public class VoiceService {
             responseCode = con.getResponseCode();
             InputStream is = con.getInputStream();
             byte[] buffer = new byte[is.available()];
-            int byteRead = is.read(buffer);
             responBody = new JsonParser().parse(new String(buffer)).getAsJsonObject();
 
-            voice.setText(responBody);
+            voice.setText(responBody.get("return_object").getAsString());
+
             voiceRepository.save(voice);
+
             System.out.println("[responseCode] " + responseCode);
             System.out.println("[responBody]");
-            System.out.println(responBody);
+            System.out.println(responBody.get("return_object").getAsString());
 
         } catch (MalformedURLException e) {
             e.printStackTrace();
@@ -94,17 +88,6 @@ public class VoiceService {
             e.printStackTrace();
         }
         return voice;
-    }
-
-    static public class Morpheme {
-        final String text;
-        final String type;
-        Integer count;
-        public Morpheme (String text, String type, Integer count) {
-            this.text = text;
-            this.type = type;
-            this.count = count;
-        }
     }
 
     static public class NameEntity {
