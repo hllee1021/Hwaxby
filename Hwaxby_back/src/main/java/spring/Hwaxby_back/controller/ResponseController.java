@@ -81,10 +81,15 @@ public class ResponseController {
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
+<<<<<<< HEAD
     @PostMapping("test")
     public String test() throws Exception {
+=======
+    @GetMapping("test")
+    public ResponseEntity<?> tester(@RequestBody Ask askData) throws Exception {
+>>>>>>> 6d9325df... [update] geocoder func. tester
         System.out.println("testing");
-        weatherService.geocoder("영덕");
-        return null;
+        Coordinates response = weatherService.geocoder("영덕");
+        return new ResponseEntity<>(response, HttpStatus.OK);
     }
 }
