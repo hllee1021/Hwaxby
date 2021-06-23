@@ -1,8 +1,13 @@
 package spring.Hwaxby_back.service;
 
 import com.fasterxml.jackson.databind.util.JSONPObject;
+import com.google.gson.Gson;
 import com.google.gson.JsonArray;
-import org.apache.tomcat.util.json.JSONParser;
+
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import spring.Hwaxby_back.domain.Coordinates;
@@ -76,7 +81,8 @@ public class WeatherService {
     }
 
     public Coordinates geocoder(String city) throws Exception {
-//        StringBuffer sb = new StringBuffer();
+
+        Coordinates coordinates = new Coordinates();
 
         Properties prop = PropertyFileReader.readPropertyFile("api-key.properties");
         String clientId = prop.getProperty("naver.api.accessID");
@@ -108,30 +114,25 @@ public class WeatherService {
 
             br.close();
 
-            System.out.println(response);
+//            System.out.println(response);
 
-//            System.out.println("code:"+responseCode + ":" + response.toString());
-//            InputStreamReader in = new InputStreamReader(http.getInputStream(), "utf-8");
-//            String line;
-//
-//            while ((line = br.readLine()) != null){
-//                sb.append(line).append("\n");
-//            }
+            JSONParser jsonParser = new JSONParser();
+            JSONObject jsonObject_raw = (JSONObject) jsonParser.parse(response.toString());
 
-//            JSONParser parser = new JSONParser();
-//            JSONPObject jsonObject1;
-//            JSONPObject jsonObject2;
-//            JsonArray jsonArray;
-//            String x = "";
-//            String y = "";
-//
-//            jsonObject1 = (JSONPObject) parser.parse(sb.toString());
-//            jsonArray = (JsonArray) jsonObject1.get("addresses");
-//            for (int i = 0 ; j < jsonArray.size() ; )
+            JSONArray jsonObject_addr = (JSONArray)jsonObject_raw.get("addresses");
+            JSONObject jsonObject_addr_first = (JSONObject) jsonObject_addr.get(0);
+
+            double lon = Double.parseDouble((String) jsonObject_addr_first.get("x"));
+            double lat = Double.parseDouble((String) jsonObject_addr_first.get("y"));
+
+            coordinates.setLat(lat); coordinates.setLon(lon);
+//            System.out.println(lat); System.out.println(lon);
+
         } catch (IOException e){
             System.out.println(e);
         }
-        return null;
+
+        return coordinates;
     }
 
 }
