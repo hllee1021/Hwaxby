@@ -1,4 +1,5 @@
 rootProject.name = 'Client'
+<<<<<<< HEAD
 include ':@react-native-community_geolocation'
 project(':@react-native-community_geolocation').projectDir = new File(rootProject.projectDir, '../node_modules/@react-native-community/geolocation/android')
 include ':react-native-audio-recorder-player'
@@ -9,3 +10,7 @@ include ':react-native-audio-recorder-player'
 project(':react-native-audio-recorder-player').projectDir = new File(rootProject.projectDir, 	'../node_modules/react-native-audio-recorder-player/android')
 include ':react-native-fs'
 project(':react-native-fs').projectDir = new File(settingsDir, '../node_modules/react-native-fs/android')
+=======
+apply from: file("../node_modules/@react-native-community/cli-platform-android/native_modules.gradle"); applyNativeModulesSettingsGradle(settings)
+include ':app'
+>>>>>>> 605f0e62 ([feat] ask service)
