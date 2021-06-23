@@ -48,37 +48,9 @@ public class AskController {
         return new ResponseEntity<> (result, HttpStatus.OK);
     }
 
-<<<<<<< HEAD
     @PostMapping("parse")
     public ResponseEntity<?> parse(@RequestBody Voice voice) {
         Voice result = voiceService.voiceParsing(voice);
         return new ResponseEntity<> (result, HttpStatus.OK);
     }
-=======
-    @GetMapping("parse")
-    public ResponseEntity<?> parse(@RequestBody Ask askData) throws Exception {
-        System.out.println("a");
-        System.out.println(askData.getVoice().getData());
-        Voice voice = new Voice();
-        voice.setData(askData.getVoice().getData());
-
-        Coordinates coordinates = new Coordinates();
-        coordinates.setLat(askData.getCoordinates().getLat());
-        coordinates.setLon(askData.getCoordinates().getLon());
-        Long coordId = coordService.save(coordinates);
-
-        Ask result = new Ask();
-        result.setVoice(voiceService.voiceToText(voice));
-        result.setCoordinates(coordService.findOne(coordId).orElse(coordinates));
-
-        return new ResponseEntity<> (result, HttpStatus.OK);
-    }
-
-//    @GetMapping("parse")
-//    public ResponseEntity<?> parse(@RequestBody Voice voice) {
-//        Voice result = voiceService.voiceParsing(voice);
-//        return new ResponseEntity<> (result, HttpStatus.OK);
-//    }
->>>>>>> 9463eda5... [revise] HTTP Method from Get to Post
-
 }
