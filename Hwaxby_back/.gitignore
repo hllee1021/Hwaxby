@@ -38,3 +38,6 @@ out/
 
 ### add ###
 api-key.properties
+
+## local properties
+local.properties
