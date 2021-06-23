@@ -11,11 +11,6 @@ public class Display {
 
     private Long id;
 
-    private OpenWeather apiData;
-
     private String displayData;
-
-    private Float lat;
-    private Float lon;
 
 }
