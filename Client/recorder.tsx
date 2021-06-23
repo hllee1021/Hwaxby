@@ -17,89 +17,14 @@ import {
   Text,
   TouchableOpacity,
   View,
+  TouchableHighlight,
 } from 'react-native';
-import React, {Component} from 'react';
-
-import Button from './components/uis/Button';
+import React, {Component, useState} from 'react';
+import styles from './styles';
 import RNFetchBlob from 'rn-fetch-blob';
-
-const styles: any = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#455A64',
-    flexDirection: 'column',
-    alignItems: 'center',
-  },
-  titleTxt: {
-    marginTop: 100,
-    color: 'white',
-    fontSize: 28,
-  },
-  viewRecorder: {
-    marginTop: 40,
-    width: '100%',
-    alignItems: 'center',
-  },
-  recordBtnWrapper: {
-    flexDirection: 'row',
-  },
-  viewPlayer: {
-    marginTop: 60,
-    alignSelf: 'stretch',
-    alignItems: 'center',
-  },
-  viewBarWrapper: {
-    marginTop: 28,
-    marginHorizontal: 28,
-    alignSelf: 'stretch',
-  },
-  viewBar: {
-    backgroundColor: '#ccc',
-    height: 4,
-    alignSelf: 'stretch',
-  },
-  viewBarPlay: {
-    backgroundColor: 'white',
-    height: 4,
-    width: 0,
-  },
-  playStatusTxt: {
-    marginTop: 8,
-    color: '#ccc',
-  },
-  playBtnWrapper: {
-    flexDirection: 'row',
-    marginTop: 40,
-  },
-  btn: {
-    borderColor: 'white',
-    borderWidth: 1,
-  },
-  txt: {
-    color: 'white',
-    fontSize: 14,
-    marginHorizontal: 8,
-    marginVertical: 4,
-  },
-  txtRecordCounter: {
-    marginTop: 32,
-    color: 'white',
-    fontSize: 20,
-    textAlignVertical: 'center',
-    fontWeight: '200',
-    fontFamily: 'Helvetica Neue',
-    letterSpacing: 3,
-  },
-  txtCounter: {
-    marginTop: 12,
-    color: 'white',
-    fontSize: 20,
-    textAlignVertical: 'center',
-    fontWeight: '200',
-    fontFamily: 'Helvetica Neue',
-    letterSpacing: 3,
-  },
-});
+import axios from 'axios';
+import fs from 'react-native-fs';
+import Geolocation from '@react-native-community/geolocation';
 
 interface State {
   isLoggingIn: boolean;
@@ -146,103 +71,56 @@ class Recorder extends Component<any, State> {
     if (!playWidth) {
       playWidth = 0;
     }
+  
+  // api에 음성파일 제출
+  // const [askResponse, setAskResponse] = useState('not yet');
+  const ask = async() => {
+    console.log('ask start');
+    let voicePath : string = this.path!;
+    let myVoice = await fs.readFile(voicePath, 'base64');
+    let lat;
+    let lon;
+    let askResponse;
+    Geolocation.getCurrentPosition( async({ coords }) => {
+      lat = coords.latitude;
+      lon = coords.longitude;
+      console.log(lat);
+      console.log(lon);
+      // console.log(myVoice);
+      askResponse = await axios.get(
+      'http://14.45.41.233:8080/ask',
+      {params:
+        {Voice: {data : myVoice},
+        Coordinates: {lat: lat, lon: lon}},
+      });
+      console.log('done');
+    });
+    // let askResponse = await axios.get('http://10.0.2.2:8080/ask', {params: {data: myVoice, lat: lat, lon: lon }});
+  };
 
     return (
-      <SafeAreaView style={styles.container}>
-        <Text style={styles.titleTxt}>Audio Recorder Player</Text>
-        <Text style={styles.txtRecordCounter}>{this.state.recordTime}</Text>
-        <View style={styles.viewRecorder}>
-          <View style={styles.recordBtnWrapper}>
-            <Button
-              style={styles.btn}
-              onPress={this.onStartRecord}
-              textStyle={styles.txt}>
-              Record
-            </Button>
-            <Button
-              style={[
-                styles.btn,
-                {
-                  marginLeft: 12,
-                },
-              ]}
-              onPress={this.onPauseRecord}
-              textStyle={styles.txt}>
-              Pause
-            </Button>
-            <Button
-              style={[
-                styles.btn,
-                {
-                  marginLeft: 12,
-                },
-              ]}
-              onPress={this.onResumeRecord}
-              textStyle={styles.txt}>
-              Resume
-            </Button>
-            <Button
-              style={[styles.btn, {marginLeft: 12}]}
-              onPress={this.onStopRecord}
-              textStyle={styles.txt}>
-              Stop
-            </Button>
-          </View>
+      <View style = {styles.bottom}>
+        <TouchableHighlight
+          style={styles.button}
+          onPress={this.onStartRecord}>
+          <Text>Click to talk</Text>
+        </TouchableHighlight>
+          <TouchableHighlight
+            style={[styles.button]}
+            onPress={this.onStopRecord}>
+            <Text>Click to stop</Text>
+          </TouchableHighlight>
+          <TouchableHighlight
+            style={styles.button}
+            onPress={this.onStartPlay}>
+            <Text>Click to play</Text>
+          </TouchableHighlight>
+          <TouchableHighlight
+            style={styles.button}
+            onPress={() => ask()}>
+            <Text>Click to ask</Text>
+          </TouchableHighlight>
         </View>
-        <View style={styles.viewPlayer}>
-          <TouchableOpacity
-            style={styles.viewBarWrapper}
-            onPress={this.onStatusPress}>
-            <View style={styles.viewBar}>
-              <View style={[styles.viewBarPlay, {width: playWidth}]} />
-            </View>
-          </TouchableOpacity>
-          <Text style={styles.txtCounter}>
-            {this.state.playTime} / {this.state.duration}
-          </Text>
-          <View style={styles.playBtnWrapper}>
-            <Button
-              style={styles.btn}
-              onPress={this.onStartPlay}
-              textStyle={styles.txt}>
-              Play
-            </Button>
-            <Button
-              style={[
-                styles.btn,
-                {
-                  marginLeft: 12,
-                },
-              ]}
-              onPress={this.onPausePlay}
-              textStyle={styles.txt}>
-              Pause
-            </Button>
-            <Button
-              style={[
-                styles.btn,
-                {
-                  marginLeft: 12,
-                },
-              ]}
-              onPress={this.onResumePlay}
-              textStyle={styles.txt}>
-              Resume
-            </Button>
-            <Button
-              style={[
-                styles.btn,
-                {
-                  marginLeft: 12,
-                },
-              ]}
-              onPress={this.onStopPlay}
-              textStyle={styles.txt}>
-              Stop
-            </Button>
-          </View>
-        </View>
-      </SafeAreaView>
     );
   }
 
@@ -308,17 +186,17 @@ class Recorder extends Component<any, State> {
 
     console.log('audioSet', audioSet);
     // ? Custom path
-    // const uri = await this.audioRecorderPlayer.startRecorder(
-    //   this.path,
-    //   // '/data/user/0/com.client/cache/hello.mp3',
-    //   audioSet,
-    // );
-
-    //? Default path
     const uri = await this.audioRecorderPlayer.startRecorder(
-      undefined,
+      this.path,
+      // '/data/user/0/com.client/cache/hello.mp3',
       audioSet,
     );
+
+    //? Default path
+    // const uri = await this.audioRecorderPlayer.startRecorder(
+    //   undefined,
+    //   audioSet,
+    // );
 
     this.audioRecorderPlayer.addRecordBackListener((e: RecordBackType) => {
       console.log('record-back', e);
@@ -356,17 +234,19 @@ class Recorder extends Component<any, State> {
   private onStartPlay = async () => {
     console.log('onStartPlay');
     //? Custom path
-    // const msg = await this.audioRecorderPlayer.startPlayer(this.path);
+    const msg = await this.audioRecorderPlayer.startPlayer(this.path);
 
     //? Default path
-    const msg = await this.audioRecorderPlayer.startPlayer();
+    // const msg = await this.audioRecorderPlayer.startPlayer();
+
     const volume = await this.audioRecorderPlayer.setVolume(1.0);
     console.log(`file: ${msg}`, `volume: ${volume}`);
 
     this.audioRecorderPlayer.addPlayBackListener((e: PlayBackType) => {
       if (e.currentPosition === e.duration) {
         console.log('finished');
-        this.audioRecorderPlayer.stopPlayer();
+        this.audioRecorderPlayer.stopPlayer()
+        .catch(err => console.log(err.message));
       }
       this.setState({
         currentPositionSec: e.currentPosition,
