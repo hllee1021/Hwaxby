@@ -24,7 +24,7 @@ import spring.Hwaxby_back.util.PropertyFileReader;
 
 @Service
 public class VoiceService {
-    //
+
     private final VoiceRepository voiceRepository;
     Properties prop = PropertyFileReader.readPropertyFile("api-key.properties");
 
