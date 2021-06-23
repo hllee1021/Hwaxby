@@ -35,6 +35,28 @@ public class AskController {
         Voice voice = new Voice();
         voice.setData(askData.getVoice().getData());
 
+<<<<<<< HEAD
+=======
+        Coordinates coordinates = new Coordinates();
+        coordinates.setLat(askData.getCoordinates().getLat());
+        coordinates.setLon(askData.getCoordinates().getLon());
+        Long coordId = coordService.save(coordinates);
+
+        Ask result = new Ask();
+        result.setVoice(voiceService.voiceToText(voice));
+        result.setCoordinates(coordService.findOne(coordId).orElse(coordinates));
+
+        return new ResponseEntity<> (result, HttpStatus.OK);
+    }
+
+    @GetMapping("parse")
+    public ResponseEntity<?> parse(@RequestBody Ask askData) throws Exception {
+        System.out.println("a");
+        System.out.println(askData.getVoice().getData());
+        Voice voice = new Voice();
+        voice.setData(askData.getVoice().getData());
+
+>>>>>>> 605f0e62 ([feat] ask service)
         Coordinates coordinates = new Coordinates();
         coordinates.setLat(askData.getCoordinates().getLat());
         coordinates.setLon(askData.getCoordinates().getLon());
