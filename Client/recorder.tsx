@@ -34,6 +34,10 @@ interface State {
   currentDurationSec: number;
   playTime: string;
   duration: string;
+  //입력된 음성
+  recordVoice: string;
+  //대답 음성
+  answerVoice: string;
 }
 
 const screenWidth = Dimensions.get('screen').width;
@@ -57,6 +61,8 @@ class Recorder extends Component<any, State> {
       currentDurationSec: 0,
       playTime: '00:00:00',
       duration: '00:00:00',
+      recordVoice: 'not yet',
+      answerVoice: 'not yet',
     };
 
     this.audioRecorderPlayer = new AudioRecorderPlayer();
@@ -77,10 +83,12 @@ class Recorder extends Component<any, State> {
   const ask = async() => {
     console.log('ask start');
     let voicePath : string = this.path!;
+    console.log(voicePath);
     let myVoice = await fs.readFile(voicePath, 'base64');
     let lat;
     let lon;
     let askResponse;
+    let resResponse;
     Geolocation.getCurrentPosition( async({ coords }) => {
       lat = coords.latitude;
       lon = coords.longitude;
@@ -88,10 +96,16 @@ class Recorder extends Component<any, State> {
       console.log(lon);
       // console.log(myVoice);
       askResponse = await axios.get(
-      'http://14.45.41.233:8080/ask',
-      {params:
-        {Voice: {data : myVoice},
-        Coordinates: {lat: lat, lon: lon}},
+        'http://14.45.41.233:8080/ask',
+        {params:
+          {voice: {data : myVoice},
+          coordinates: {lat: lat, lon: lon}},
+      });
+      resResponse = await axios.get(
+        'http://14.45.41.233:8080/response',
+        {params:
+          {voice: {id : askResponse.data.voice.id},
+          coordinates : {id : askResponse.data.coordinates.id}},
       });
       console.log('done');
     });
@@ -100,26 +114,28 @@ class Recorder extends Component<any, State> {
 
     return (
       <View style = {styles.bottom}>
+        <Text>{this.state.recordVoice}</Text>
         <TouchableHighlight
           style={styles.button}
           onPress={this.onStartRecord}>
           <Text>Click to talk</Text>
         </TouchableHighlight>
-          <TouchableHighlight
-            style={[styles.button]}
-            onPress={this.onStopRecord}>
-            <Text>Click to stop</Text>
-          </TouchableHighlight>
-          <TouchableHighlight
-            style={styles.button}
-            onPress={this.onStartPlay}>
-            <Text>Click to play</Text>
-          </TouchableHighlight>
-          <TouchableHighlight
-            style={styles.button}
-            onPress={() => ask()}>
-            <Text>Click to ask</Text>
-          </TouchableHighlight>
+        <TouchableHighlight
+          style={[styles.button]}
+          onPress={this.onStopRecord}>
+          <Text>Click to stop</Text>
+        </TouchableHighlight>
+        <Text>{this.state.answerVoice}</Text>
+        <TouchableHighlight
+          style={styles.button}
+          onPress={this.onStartPlay}>
+          <Text>Click to play</Text>
+        </TouchableHighlight>
+        <TouchableHighlight
+          style={styles.button}
+          onPress={() => ask()}>
+          <Text>Click to ask</Text>
+        </TouchableHighlight>
         </View>
     );
   }
