@@ -252,6 +252,7 @@ public class VoiceService {
             textParsed.setInfo(textParsedJson);
             textParsed.setDay(-1);
             textParsed.setOpenWeatherType(OpenWeatherType.CURRENT);
+            textParsed.setCity("HERE");
 
             if ( 0 < nameEntitiesMap.size() ) {
                 nameEntities = new ArrayList<NameEntity>(nameEntitiesMap.values());
