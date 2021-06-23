@@ -1,10 +1,9 @@
 package spring.Hwaxby_back.domain;
 
-import com.google.gson.JsonObject;
 import lombok.Getter;
 import lombok.Setter;
-
-import java.util.Base64;
+import spring.Hwaxby_back.domain.VoiceItem.TextParsed;
+import spring.Hwaxby_back.domain.VoiceItem.VoiceType;
 
 @Getter @Setter
 public class Voice {
@@ -15,7 +14,7 @@ public class Voice {
 
     private String text;
 
-    private JsonObject textParsed;
+    private TextParsed textParsed;
 
     private VoiceType type;
 

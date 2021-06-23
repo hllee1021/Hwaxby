@@ -46,4 +46,11 @@ public class AskController {
 
         return new ResponseEntity<> (result, HttpStatus.OK);
     }
+
+    @GetMapping("parse")
+    public ResponseEntity<?> parse(@RequestBody Voice voice) {
+        Voice result = voiceService.voiceParsing(voice);
+        return new ResponseEntity<> (result, HttpStatus.OK);
+    }
+
 }
