@@ -33,22 +33,17 @@ public class AskController {
         System.out.println("a");
         System.out.println(askData.getVoice().getData());
         Voice voice = new Voice();
-//        voice.setData("asdf");
         voice.setData(askData.getVoice().getData());
-//
+
         Coordinates coordinates = new Coordinates();
-//        coordinates.setLon((float) 123.4);
         coordinates.setLat(askData.getCoordinates().getLat());
         coordinates.setLon(askData.getCoordinates().getLon());
         Long coordId = coordService.save(coordinates);
 
         Ask result = new Ask();
-//        result.setVoice(voice);
-//        result.setCoordinates(coordinates);
         result.setVoice(voiceService.voiceToText(voice));
         result.setCoordinates(coordService.findOne(coordId).orElse(coordinates));
 
-        voiceService.voiceParsing(voice);
         return new ResponseEntity<> (result, HttpStatus.OK);
     }
 }

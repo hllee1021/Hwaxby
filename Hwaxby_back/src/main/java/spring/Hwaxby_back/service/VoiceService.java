@@ -45,17 +45,7 @@ public class VoiceService {
         Map<String, Object> request = new HashMap<>();
         Map<String, String> argument = new HashMap<>();
 
-//        byte[] audioBytes = voice.getData().getBytes();
-
-        byte[] audioBytes = Files.readAllBytes(Paths.get("C:/Users/USER/git/Hwaxby/Hwaxby_back/src/main/resources/data/new_03.wav"));
-        System.out.println("bytes: "+ audioBytes);
-        audioContents = Base64.getEncoder().encodeToString(audioBytes);
-//        audioContents = Base64.getEncoder().encodeToString(audioBytes);
-//        audioContents = voice.getData();
-//        audioContents = "SGVsbG8sIFdvcmxkIQ%3D%3D";
-        System.out.println("a");
-        System.out.println(audioContents);
-        System.out.println("b");
+        audioContents = voice.getData();
 
         argument.put("language_code", languageCode);
         argument.put("audio", audioContents);
@@ -66,7 +56,7 @@ public class VoiceService {
         URL url;
         Integer responseCode = null;
         String responBody = null;
-        JsonObject responseBody = null;
+        String responseBody = null;
 
         try {
             url = new URL(openApiURL);
@@ -84,19 +74,15 @@ public class VoiceService {
             byte[] buffer = new byte[is.available()];
             int byteRead = is.read(buffer);
             responBody = new String(buffer);
-            System.out.println("결과");
-            System.out.println(responBody);
 
-//            responseBody = new JsonParser().parse(responBody).getAsJsonObject();
-            System.out.println("----------------");
-            responseBody = gson.toJson(responBody);
-            voice.setText(responseBody.get("return_object").getAsString());
+            responseBody = new JsonParser().parse(responBody).getAsJsonObject().get("return_object").getAsJsonObject().get("recognized").getAsString();
+            voice.setText(responseBody);
 
             voiceRepository.save(voice);
 
             System.out.println("[responseCode] " + responseCode);
             System.out.println("[responBody]");
-            System.out.println(responseBody.get("return_object").getAsString());
+            System.out.println(responseBody);
 
         } catch (MalformedURLException e) {
             e.printStackTrace();

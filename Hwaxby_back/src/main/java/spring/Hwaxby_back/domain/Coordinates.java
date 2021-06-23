@@ -7,7 +7,7 @@ import lombok.Setter;
 public class Coordinates {
     private Long id;
 
-    private Float lat;
-    private Float lon;
+    private Double lat;
+    private Double lon;
 
 }
