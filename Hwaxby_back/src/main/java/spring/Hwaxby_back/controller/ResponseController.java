@@ -5,6 +5,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import spring.Hwaxby_back.domain.*;
 import spring.Hwaxby_back.domain.OpenWeather.CurrentWeather;
@@ -28,7 +29,7 @@ public class ResponseController {
         this.weatherService = weatherService;
     }
 
-    @GetMapping("response")
+    @PostMapping("response")
     public ResponseEntity<?> getResponse(@RequestBody Ask askData) throws Exception {
         // [TEMP] tester
         System.out.println("here");
@@ -80,7 +81,7 @@ public class ResponseController {
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
-    @GetMapping("test")
+    @PostMapping("test")
     public String test() throws Exception {
         System.out.println("testing");
         weatherService.geocoder("영덕");

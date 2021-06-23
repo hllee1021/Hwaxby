@@ -6,6 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import spring.Hwaxby_back.domain.Ask;
 import spring.Hwaxby_back.domain.Coordinates;
@@ -28,7 +29,7 @@ public class AskController {
         this.coordService = coordService;
     }
 
-    @GetMapping("ask")
+    @PostMapping("ask")
     public ResponseEntity<?> voiceToText(@RequestBody Ask askData) throws Exception {
         System.out.println("a");
         System.out.println(askData.getVoice().getData());
@@ -47,7 +48,7 @@ public class AskController {
         return new ResponseEntity<> (result, HttpStatus.OK);
     }
 
-    @GetMapping("parse")
+    @PostMapping("parse")
     public ResponseEntity<?> parse(@RequestBody Voice voice) {
         Voice result = voiceService.voiceParsing(voice);
         return new ResponseEntity<> (result, HttpStatus.OK);
