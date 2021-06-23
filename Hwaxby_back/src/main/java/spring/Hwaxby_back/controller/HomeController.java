@@ -18,4 +18,5 @@ public class HomeController {
         System.out.println("out");
         return new ResponseEntity<> (member, HttpStatus.OK);
     }
+
 }
