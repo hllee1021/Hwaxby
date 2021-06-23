@@ -95,17 +95,20 @@ class Recorder extends Component<any, State> {
       console.log(lat);
       console.log(lon);
       // console.log(myVoice);
-      askResponse = await axios.get(
-        'http://14.45.41.233:8080/ask',
-        {params:
+      askResponse = await axios.post(
+        'http://192.168.0.17:8080/ask',
           {voice: {data : myVoice},
-          coordinates: {lat: lat, lon: lon}},
+          coordinates: {lat: lat, lon: lon}},);
+      this.setState({
+        recordVoice: askResponse.data.text,
       });
-      resResponse = await axios.get(
-        'http://14.45.41.233:8080/response',
-        {params:
+      resResponse = await axios.post(
+        'http://192.168.0.17:8080/response',
           {voice: {id : askResponse.data.voice.id},
           coordinates : {id : askResponse.data.coordinates.id}},
+      );
+      this.setState({
+        answerVoice: resResponse.data.text,
       });
       console.log('done');
     });
