@@ -6,6 +6,7 @@ import spring.Hwaxby_back.domain.Voice;
 import java.util.Optional;
 
 public interface VoiceRepository {
+    //
     Voice save(Voice voice);
     Optional<Voice> findById(Long id);
 }
