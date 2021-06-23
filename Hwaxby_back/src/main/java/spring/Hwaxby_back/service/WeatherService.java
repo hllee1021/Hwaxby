@@ -2,7 +2,10 @@ package spring.Hwaxby_back.service;
 
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
+import spring.Hwaxby_back.domain.OpenWeather.CurrentWeather;
+import spring.Hwaxby_back.domain.OpenWeather.ForecastWeather;
 import spring.Hwaxby_back.domain.OpenWeather.OpenWeather;
+import spring.Hwaxby_back.domain.OpenWeatherType;
 import spring.Hwaxby_back.util.PropertyFileReader;
 
 import java.net.URLEncoder;
@@ -19,7 +22,7 @@ public class WeatherService {
      * @return OpenWeather Entity
      * @throws Exception
      */
-    public OpenWeather getCurrentByCoor(float lat, float lon) throws Exception {
+    public OpenWeather getCurrentByCoor(OpenWeather response, OpenWeatherType type, double lat, double lon) throws Exception {
 
         String BASE_URL = "https://api.openweathermap.org/data/2.5/onecall";
 
@@ -27,20 +30,34 @@ public class WeatherService {
         String apiKey = prop.getProperty("weather.api.accesskey");
 
         StringBuilder urlBuilder = new StringBuilder(BASE_URL);
-        OpenWeather response = new OpenWeather();
 
         try {
-            urlBuilder.append("?" + URLEncoder.encode("lat", "UTF-8") + "=" + lat);
-            urlBuilder.append("&" + URLEncoder.encode("lon", "UTF-8") + "=" + lon);
-            urlBuilder.append("&" + URLEncoder.encode("appid", "UTF-8") + "=" + apiKey);
-            urlBuilder.append("&" + URLEncoder.encode("lang", "UTF-8") + "=kr");
-            urlBuilder.append("&" + URLEncoder.encode("units", "UTF-8") + "=metric");
+            if (type.equals(OpenWeatherType.CURRENT)){
+                urlBuilder.append("?" + URLEncoder.encode("lat", "UTF-8") + "=" + lat);
+                urlBuilder.append("&" + URLEncoder.encode("lon", "UTF-8") + "=" + lon);
+                urlBuilder.append("&" + URLEncoder.encode("appid", "UTF-8") + "=" + apiKey);
+                urlBuilder.append("&" + URLEncoder.encode("lang", "UTF-8") + "=kr");
+                urlBuilder.append("&" + URLEncoder.encode("units", "UTF-8") + "=metric");
+                urlBuilder.append("&" + URLEncoder.encode("exclude", "UTF-8") + "=minutely,hourly,alerts,daily");
 
-            System.out.println(urlBuilder);
-            RestTemplate restTemplate = new RestTemplate();
-            response = restTemplate.getForObject(urlBuilder.toString(), OpenWeather.class);
+                System.out.println(urlBuilder);
+                RestTemplate restTemplate = new RestTemplate();
+                response = restTemplate.getForObject(urlBuilder.toString(), CurrentWeather.class);
+            } else if (type.equals(OpenWeatherType.FORECAST)){
+                urlBuilder.append("?" + URLEncoder.encode("lat", "UTF-8") + "=" + lat);
+                urlBuilder.append("&" + URLEncoder.encode("lon", "UTF-8") + "=" + lon);
+                urlBuilder.append("&" + URLEncoder.encode("appid", "UTF-8") + "=" + apiKey);
+                urlBuilder.append("&" + URLEncoder.encode("lang", "UTF-8") + "=kr");
+                urlBuilder.append("&" + URLEncoder.encode("units", "UTF-8") + "=metric");
+                urlBuilder.append("&" + URLEncoder.encode("exclude", "UTF-8") + "=minutely,hourly,alerts,current");
 
-            System.out.println("trial");
+                System.out.println(urlBuilder);
+                RestTemplate restTemplate = new RestTemplate();
+                response = restTemplate.getForObject(urlBuilder.toString(), ForecastWeather.class);
+            }
+
+
+//            System.out.println("trial");
             System.out.println(response);
         } catch (Exception e) {
             e.printStackTrace();
