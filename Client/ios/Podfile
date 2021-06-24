@@ -16,6 +16,8 @@ target 'Client' do
 
   pod 'react-native-geolocation', :path => '../node_modules/@react-native-community/geolocation'
 
+  pod 'RNAudioRecord', :path => '../node_modules/react-native-audio-record'
+
   target 'ClientTests' do
     inherit! :complete
     # Pods for testing
