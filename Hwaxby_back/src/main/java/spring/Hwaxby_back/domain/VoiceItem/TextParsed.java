@@ -5,6 +5,8 @@ import lombok.Getter;
 import lombok.Setter;
 import spring.Hwaxby_back.domain.OpenWeatherType;
 
+import java.util.ArrayList;
+
 @Getter @Setter
 public class TextParsed {
     private String city;
@@ -13,5 +15,5 @@ public class TextParsed {
 
     private int day;
 
-    private String Info; //json
+    private ArrayList<String> Info; //json
 }

@@ -249,7 +249,7 @@ public class VoiceService {
             textParsedJson = gson.toJson(infoList);
             System.out.println("textParsedJson is ");
             System.out.println(textParsedJson);
-            textParsed.setInfo(textParsedJson);
+            textParsed.setInfo(infoList);
             textParsed.setDay(-1);
             textParsed.setOpenWeatherType(OpenWeatherType.CURRENT);
             textParsed.setCity("HERE");
