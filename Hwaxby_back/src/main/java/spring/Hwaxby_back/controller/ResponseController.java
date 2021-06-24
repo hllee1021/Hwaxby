@@ -43,7 +43,7 @@ public class ResponseController {
 //        type = OpenWeatherType.CURRENT;
 
         OpenWeatherType type;
-        Optional<Coordinates> opcoor = coordService.findOne(askData.getCoordinates().getId());
+        Optional<Coordinates> opcoor = coordService.findOne(askData.getCoordinates().getId()); // get Coordinates
         Coordinates coordinates = null;
 
         if (opcoor.isPresent()) {
@@ -56,7 +56,7 @@ public class ResponseController {
         Response response = new Response();
 
         /** 1. Ask-Voice-Text Tokenizing */
-        Optional<Voice> opvoice = voiceService.findOne(askData.getVoice().getId());
+        Optional<Voice> opvoice = voiceService.findOne(askData.getVoice().getId()); // get Voice
         Voice voice = null;
 
         if (opvoice.isPresent()) {
