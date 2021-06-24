@@ -92,11 +92,14 @@ public class ResponseController {
         response.setApiData(weatherService.getCurrentByCoor(api_result, type, coordinates.getLat(), coordinates.getLon()));
 
         /** 4. Model Input 문장 생성 및 Model 요청 -> Voice(Type:Response) 객체 생성*/
+        Voice resvoice = new Voice();
+        response.setVoice(resvoice);
 
         /** 5. Display 객체 생성 */
         Display display1 = new Display();
 
         /** 6. 최종적인 Response 객체 setting  */
+        response.setDisplayData(display1);
 
         /** 7. return */
         return new ResponseEntity<>(response, HttpStatus.OK);
