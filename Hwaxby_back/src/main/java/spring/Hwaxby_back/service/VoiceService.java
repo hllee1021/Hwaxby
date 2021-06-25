@@ -220,6 +220,18 @@ public class VoiceService {
                         nameEntitiesMap.put(name, nameEntity);
                     }
                 }
+
+                // 자외선 단어 추출
+                List<Map<String, Object>>  rayRecognitionResult = (List<Map<String, Object>>) sentence.get("word");
+                for( Map<String, Object> rayInfo : rayRecognitionResult ) {
+                    String name = (String) rayInfo.get("text");
+                    Morpheme rayEntity = morphemesMap.get(name);
+                    if (rayEntity == null && name.equals("자외선") ) {
+                        System.out.println("[ray]"+ name);
+                        rayEntity = new Morpheme(name, "ray");
+                        morphemesMap.put(name, rayEntity);
+                    }
+                }
             }
 
             String textParsedJson = null;
