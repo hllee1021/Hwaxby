@@ -16,7 +16,7 @@ import spring.Hwaxby_back.domain.OpenWeather.ForecastWeather;
 import spring.Hwaxby_back.domain.OpenWeather.OpenWeather;
 import spring.Hwaxby_back.domain.VoiceItem.TextParsed;
 import spring.Hwaxby_back.repository.ResponseRepository;
-import spring.Hwaxby_back.service.*;
+import spring.Hwaxby_back.domain.VoiceItem.VoiceType;
 
 import java.util.ArrayList;
 import java.util.Optional;
@@ -108,10 +108,14 @@ public class ResponseController {
 
         /** 4. Model Input 문장 생성 및 Model 요청 -> Voice(Type:Response) 객체 생성*/
         Voice resvoice = new Voice();
-        resvoice.setId(voice.getId());
-        resvoice.setText(voice.getText());
-        System.out.println(voice.getText());
-        resvoice.setData(voice.getData().substring(0, 300));
+        String testString = "내일 날씨는 흐립니다.";
+        resvoice.setType(VoiceType.RESPONSE);
+        resvoice.setText(testString);
+        resvoice.setData(voiceService.textToVoice(resvoice, "ipconfig"));
+        System.out.println("--------------------------------------");
+        System.out.println(resvoice.getText());
+        System.out.println(testString);
+        resvoice.setData(resvoice.getData().substring(0, 300));
         response.setVoice(resvoice);
 
 

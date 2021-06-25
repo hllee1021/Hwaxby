@@ -341,7 +341,7 @@ public class VoiceService {
         return voice;
     }
 
-    public Voice textToVoice( Voice voice, String cmd) {
+    public String textToVoice( Voice voice, String cmd) {
         StringBuffer buffer = new StringBuffer();
         Process process;
         BufferedReader bufferdReader;
@@ -367,7 +367,6 @@ public class VoiceService {
             e.printStackTrace();
             System.exit(1);
         }
-        voice.setData(result);
-        return voice;
+        return result;
     }
 }

@@ -15,6 +15,9 @@ public class CurrentWeather extends OpenWeather{
     /** 내부 매개 변수 */
     private Current current;
 
+    private Rain rain;
+    private Snow snow;
+
     @Data
     public static class Current {
 
@@ -104,7 +107,16 @@ public class CurrentWeather extends OpenWeather{
 
         /** 지난 1 시간 동안의 강우량, mm */
         @JsonProperty("1h")
+<<<<<<< HEAD
         private int rain1h;
+=======
+        private long rain1h;
+
+        public Rain() {
+            this.rain1h = 0;
+        }
+
+>>>>>>> a7481493 ([feat] response entity changed)
     }
 
     @Data
@@ -112,7 +124,16 @@ public class CurrentWeather extends OpenWeather{
 
         /** 지난 1 시간 동안의 눈량, mm */
         @JsonProperty("1h")
+<<<<<<< HEAD
         private int snow1h;
+=======
+        private long snow1h;
+
+        public Snow() {
+            this.snow1h = 0;
+        }
+
+>>>>>>> a7481493 ([feat] response entity changed)
     }
 
 }
