@@ -89,7 +89,7 @@ const MainNavi = () => {
     </Stack.Navigator>
   );
 };
-  
+
 export default () => {
   return (
     <NavigationContainer>

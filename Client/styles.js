@@ -11,7 +11,7 @@ const styles = StyleSheet.create({
   },
   talkArea: {
     maxWidth: '100%',
-    height: '20%',
+    height: '25%',
     // backgroundColor: 'steelblue',
     // alignItems: 'center',
     justifyContent: 'space-around',
@@ -20,6 +20,7 @@ const styles = StyleSheet.create({
     // backgroundColor: 'steelblue',
     alignItems: 'center',
     justifyContent: 'space-around',
+    marginBottom : 20,
   },
   topWeather: {
     // flex:1,
@@ -28,8 +29,8 @@ const styles = StyleSheet.create({
     // backgroundColor: 'red',
     // alignItems: 'center',
     justifyContent: 'space-around',
-    borderTopWidth: 1,
-    borderBottomWidth: 1,
+    // borderTopWidth: 1,
+    // borderBottomWidth: 1,
   },
   childTopWeather: {
     // backgroundColor: 'red',
@@ -37,6 +38,7 @@ const styles = StyleSheet.create({
     // justifyContent: 'space-around',
   },
   centerWeather: {
+    borderTopWidth: 1,
     borderBottomWidth: 1,
     height: '10%',
     alignItems: 'center',
@@ -52,7 +54,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-around',
   },
   bottomWeather: {
-    height: 500,
+    height: '60%',
     alignItems: 'center',
     // backgroundColor: 'yellow',
     justifyContent: 'space-around',
@@ -63,7 +65,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   image: {
-    width: 300,
+    width: 350,
     height: 300,
   },
   button: {
@@ -124,13 +126,13 @@ const styles = StyleSheet.create({
     flex: 1,
     resizeMode: 'cover',
     justifyContent: 'center',
-    height: 350,
   },
   main: {
+    borderTopWidth : 1,
     flex: 1,
     resizeMode: 'cover',
     justifyContent: 'center',
-    height: 800,
+    height: 1200,
   },
 });
 

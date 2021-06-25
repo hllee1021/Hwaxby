@@ -222,7 +222,7 @@ icon, dow, dts} = this.state;
         <View style={styles.container}>
         <SafeAreaView style={styles.mainContainer}>
           <View style={styles.talkArea}>
-            <View>
+            <View style={styles.inputTalkArea}>
               <Text style={styles.text}>{recordVoice}</Text>
             </View>
             <View>
