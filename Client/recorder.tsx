@@ -127,6 +127,7 @@ export default class Recorder extends Component {
         answerVoice: resResponse.data.voice.text,
         audioVoice: resResponse.data.voice.data,
       });
+      this.play();
       console.log('done');
     });
   };
