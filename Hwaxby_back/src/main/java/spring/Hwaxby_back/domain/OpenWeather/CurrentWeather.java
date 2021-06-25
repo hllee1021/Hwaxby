@@ -80,7 +80,7 @@ public class CurrentWeather extends OpenWeather{
 
         /** 지난 1 시간 동안의 강우량, mm */
         @JsonProperty("1h")
-        private float rain1h;
+        private long rain1h;
     }
 
     @Data
@@ -88,6 +88,6 @@ public class CurrentWeather extends OpenWeather{
 
         /** 지난 1 시간 동안의 눈량, mm */
         @JsonProperty("1h")
-        private float snow1h;
+        private long snow1h;
     }
 }
