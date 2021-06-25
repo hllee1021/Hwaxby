@@ -4,7 +4,10 @@ import {StyleSheet} from 'react-native';
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'space-between',
+    width: '100%',
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'white',
   },
   top: {
     height: '10%',
@@ -38,7 +41,28 @@ const styles = StyleSheet.create({
   },
   icon: {
     paddingLeft: 15,
-  }
+  },
+  mainContainer: {
+    flex: 1,
+    color: '#000',
+  },
+  speakContainer: {
+    minHeight: 100,
+    paddingBottom: 30,
+    color: '#000',
+  },
+  text: {
+    fontSize: 20,
+    fontWeight: 'bold',
+  },
+  imageItem: {
+    height: 90,
+    width: 80,
+  },
+  clickedImageItem: {
+    height: 120,
+    width: 110,
+  },
 });
 
 export default styles;

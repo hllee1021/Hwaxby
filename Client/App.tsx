@@ -8,8 +8,8 @@ import Navigator from './Screen/Navigator';
 const App = () => {
   return (
     <>
-      {/* <Navigator /> */}
-      <Recorder />
+      <Navigator />
+      {/* <Recorder /> */}
     </>
   );
 };
