@@ -82,6 +82,7 @@ export default class Recorder extends Component {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         'http://10.0.2.2:8080/ask',
 =======
         'http://172.20.10.3:8080/ask',
@@ -113,15 +114,19 @@ export default class Recorder extends Component {
 =======
         'http://172.24.122.154:8080/ask',
 >>>>>>> bb570623 (connects)
+=======
+        'http://10.0.2.2:8080/ask',
+>>>>>>> ca5d70f7 (api address changed)
           {voice: {data : myVoice},
           coordinates: {lat: lat, lon: lon}},);
       this.setState({
         recordVoice: askResponse.data.voice.text,
       });
       console.log("heee");
+      console.log(myVoice);
       console.log(askResponse.data.voice.text);
       resResponse = await axios.post(
-        'http://172.24.122.154:8080/response',
+        'http://10.0.2.2:8080/response',
           {voice: {id : askResponse.data.voice.id},
           coordinates : {id : askResponse.data.coordinates.id}},
       );
