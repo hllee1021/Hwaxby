@@ -18,7 +18,7 @@ public class ScriptService {
 
     public String current_begin(int weather_id, Script script) {
 
-        String str = "지금은 ";
+        String str = "지금 ";
 
         if (200 <= weather_id && weather_id < 300){
             str += ("하늘에 " + script.getWeather_map().get(Integer.toString(weather_id)) + "이 보여요.");
@@ -49,14 +49,14 @@ public class ScriptService {
     public String forecast_begin(int weather_id, Script script, int day){
 
         HashMap<Integer, String> script_day = new HashMap<Integer, String>(){{
-            put(0, "오늘은");
-            put(1, "내일은");
-            put(2, "모레는");
-            put(3, "3일 뒤에는");
-            put(4, "4일 뒤에는");
-            put(5, "5일 뒤에는");
-            put(6, "6일 뒤에는");
-            put(7, "7일 뒤에는");
+            put(0, "오늘 ");
+            put(1, "내일 ");
+            put(2, "모레 ");
+            put(3, "3일 뒤 ");
+            put(4, "4일 뒤 ");
+            put(5, "5일 뒤 ");
+            put(6, "6일 뒤 ");
+            put(7, "7일 뒤 ");
         }};
         String str = script_day.get(day);
 
