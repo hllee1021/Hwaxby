@@ -36,6 +36,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-around',
   },
+  icon: {
+    paddingLeft: 15,
+  }
 });
 
 export default styles;
