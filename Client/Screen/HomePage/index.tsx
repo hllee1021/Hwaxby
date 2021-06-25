@@ -45,14 +45,13 @@ export default class HomePage extends Component {
       // do something with audio chunk
     });
   };
-
+  
   isRecordingHandler = async () => {
     this.setState({ 
         isRecording: !(this.state.isRecording) 
     });
     console.log("isRecording", this.state.isRecording);
     if (!this.state.isRecording) {
-        console.log("heher");
         this.start();
     }
     else {
@@ -77,10 +76,10 @@ export default class HomePage extends Component {
 
   load = () => {
     return new Promise(async(resolve, reject) => {
-      // let myVoice = await fs.readFile('/data/user/0/com.ttest/files/test.wav', 'base64');
-      fs.writeFile('/data/user/0/com.ttest/files/response.wav',this.state.audioFile, 'base64');
+      // let myVoice = await fs.readFile('/data/user/0/com.client/files/test.wav', 'base64');
+      fs.writeFile('/data/user/0/com.client/files/response.wav',this.state.audioFile, 'base64');
       // console.log(myVoice);
-      this.sound = new Sound('/data/user/0/com.ttest/files/response.wav', '', error => {
+      this.sound = new Sound('/data/user/0/com.client/files/response.wav', '', error => {
         if (error) {
           console.log('failed to load the file', error);
           return reject(error);
@@ -96,7 +95,7 @@ export default class HomePage extends Component {
       try {
         await this.load();
       } catch (error) {
-        console.log(error);
+        console.log("err: ", error);
       }
     }
 
@@ -126,22 +125,22 @@ export default class HomePage extends Component {
       lon = coords.longitude;
       console.log(lat, lon);
       askResponse = await axios.post(
-        'http://10.0.2.2:8080/ask',
+        'http://172.20.10.3:8080/ask',
           {voice: {data : myVoice},
           coordinates: {lat: lat, lon: lon}},);
       this.setState({
         recordVoice: askResponse.data.voice.text,
       });
-      console.log(askResponse.data.voice.text);
+      console.log("askResponse data: " , askResponse.data.voice.text);
       resResponse = await axios.post(
-        'http://10.0.2.2:8080/response',
+        'http://172.20.10.3:8080/response',
           {voice: {id : askResponse.data.voice.id},
           coordinates : {id : askResponse.data.coordinates.id}},
       );
-      console.log(resResponse.data.voice.text)
+      console.log("resResponse voice text: ", resResponse.data.voice.text)
       this.setState({
         answerVoice: resResponse.data.voice.text,
-        audioVoice: resResponse.data.voice.data,
+        audioFile: resResponse.data.voice.data,
       });
       this.play();
       console.log('done');

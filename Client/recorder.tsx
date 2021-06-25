@@ -125,7 +125,7 @@ export default class Recorder extends Component {
       console.log(resResponse.data.voice.text)
       this.setState({
         answerVoice: resResponse.data.voice.text,
-        audioVoice: resResponse.data.voice.data,
+        audioFile: resResponse.data.voice.data,
       });
       this.play();
       console.log('done');
