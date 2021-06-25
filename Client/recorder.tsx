@@ -62,7 +62,6 @@ export default class Recorder extends Component {
 
   ask = async() => {
     console.log('ask start');
-    
     let myVoice = await fs.readFile('/data/user/0/com.client/files/test.wav', 'base64');
     let lat;
     let lon;
@@ -73,57 +72,13 @@ export default class Recorder extends Component {
       lon = coords.longitude;
       console.log(lat, lon);
       askResponse = await axios.post(
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
         'http://10.0.2.2:8080/ask',
-=======
-        'http://172.20.10.3:8080/ask',
->>>>>>> 86b9557c (음성 16000 완료)
-=======
-        'http://192.168.35.227:8080/ask',
->>>>>>> 730b1f8a (cache delete)
-=======
-        'http://172.24.122.154:8080/ask',
->>>>>>> 0eaf966e (connects)
-=======
-        'http://172.24.122.154:8080/ask',
-=======
-        'http://192.168.35.227:8080/ask',
->>>>>>> 766abe7c (cache delete)
->>>>>>> 0342dedb (cache delete)
-=======
-        'http://10.0.2.2:8080/ask',
->>>>>>> 1089065f (connects)
-=======
-        'http://192.168.35.227:8080/ask',
->>>>>>> 4d8ceb51 (cache delete)
-=======
-        'http://172.24.122.154:8080/ask',
->>>>>>> e1cc85ea (connects)
-=======
-        'http://192.168.35.227:8080/ask',
->>>>>>> 36f4a1c7 (cache delete)
-=======
-        'http://172.24.122.154:8080/ask',
->>>>>>> bb570623 (connects)
-=======
-        'http://10.0.2.2:8080/ask',
->>>>>>> ca5d70f7 (api address changed)
           {voice: {data : myVoice},
           coordinates: {lat: lat, lon: lon}},);
       this.setState({
         recordVoice: askResponse.data.voice.text,
       });
       console.log("heee");
-      console.log(myVoice);
       console.log(askResponse.data.voice.text);
       resResponse = await axios.post(
         'http://10.0.2.2:8080/response',
