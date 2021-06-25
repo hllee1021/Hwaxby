@@ -1,6 +1,6 @@
 /* eslint-disable prettier/prettier */
 import React, { Component, useState, useEffect, useDebugValue } from 'react';
-import {SafeAreaView, TouchableOpacity, StyleSheet, Text, View, Image, TouchableHighlight, Button} from 'react-native';
+import {SafeAreaView, TouchableOpacity, ScrollView, ImageBackground, StyleSheet, Text, View, Image, TouchableHighlight, Button} from 'react-native';
 import { Buffer } from 'buffer';
 import AudioRecord from 'react-native-audio-record';
 import Sound from 'react-native-sound';
@@ -19,14 +19,26 @@ export default class HomePage extends Component {
     recording: false,
     loaded: false,
     paused: true,
-    recordVoice: 'not yet',
-    answerVoice: 'not yet',
+    recordVoice: '오늘 날씨가 어때?',
+    answerVoice: '',
     isRecording: false,
     region: '',
     weather: '',
     temp: '',
     highTemp: '',
     lowTemp: '',
+    rain: '',
+    humidity: '',
+    wind: '',
+    feeling: '',
+    sunRise: '',
+    sunFall: '',
+    dts: '',
+    foreHumidity: [],
+    foreHighTemp: [],
+    foreLowTemp: [],
+    icon : [],
+    dow: [],
   };
 
   async componentDidMount() {
@@ -119,6 +131,13 @@ export default class HomePage extends Component {
     });
   };
 
+  getIcon = async(icon : string) => {
+    const uri = 'http://openweathermap.org/img/wn/' + icon + '@2x.png';
+    const pic = await axios.get(uri);
+    // console.log(pic);
+    return pic;
+  }
+
   ask = async() => {
     console.log('ask start');
     let myVoice = await fs.readFile('/data/user/0/com.client/files/test.wav', 'base64');
@@ -131,7 +150,7 @@ export default class HomePage extends Component {
       lon = coords.longitude;
       console.log(lat, lon);
       askResponse = await axios.post(
-        'http://10.0.2.2:8080/ask',
+        'http://192.168.43.52:8080/ask',
           {voice: {data : myVoice},
           coordinates: {lat: lat, lon: lon}},);
       this.setState({
@@ -139,7 +158,7 @@ export default class HomePage extends Component {
       });
       console.log("askResponse data: " , askResponse.data.voice.text);
       resResponse = await axios.post(
-        'http://10.0.2.2:8080/response',
+        'http://192.168.43.52:8080/response',
           {voice: {id : askResponse.data.voice.id},
           coordinates : {id : askResponse.data.coordinates.id}},
       );
@@ -154,6 +173,36 @@ export default class HomePage extends Component {
         highTemp: resResponse.data.forecastApiData.daily[0].temp.max,
         lowTemp: resResponse.data.forecastApiData.daily[0].temp.min,
         isFirst: false,
+        rain: resResponse.data.currentApiData.current.rain.rain1h,
+        humidity: resResponse.data.currentApiData.current.humidity,
+        wind: resResponse.data.currentApiData.current.wind_speed,
+        feeling: resResponse.data.currentApiData.current.feels_like,
+        sunRise: resResponse.data.forecastApiData.daily[0].sunrises,
+        sunFall: resResponse.data.forecastApiData.daily[0].sunsets,
+        dts: resResponse.data.currentApiData.current.dts,
+        foreHumidity: [resResponse.data.forecastApiData.daily[1].humidity,resResponse.data.forecastApiData.daily[2].humidity,
+        resResponse.data.forecastApiData.daily[3].humidity,resResponse.data.forecastApiData.daily[4].humidity,
+        resResponse.data.forecastApiData.daily[5].humidity,resResponse.data.forecastApiData.daily[6].humidity,
+        resResponse.data.forecastApiData.daily[7].humidity],
+        foreHighTemp: [resResponse.data.forecastApiData.daily[1].temp.max,resResponse.data.forecastApiData.daily[2].temp.max,
+        resResponse.data.forecastApiData.daily[3].temp.max,resResponse.data.forecastApiData.daily[4].temp.max,
+        resResponse.data.forecastApiData.daily[5].temp.max,resResponse.data.forecastApiData.daily[6].temp.max,
+        resResponse.data.forecastApiData.daily[7].temp.max],
+        foreLowTemp: [resResponse.data.forecastApiData.daily[1].temp.min,resResponse.data.forecastApiData.daily[2].temp.min,
+        resResponse.data.forecastApiData.daily[3].temp.min,resResponse.data.forecastApiData.daily[4].temp.min,
+        resResponse.data.forecastApiData.daily[5].temp.min,resResponse.data.forecastApiData.daily[6].temp.min,
+        resResponse.data.forecastApiData.daily[7].temp.min],
+        icon: ['https://openweathermap.org/img/wn/'+resResponse.data.forecastApiData.daily[1].weather[0].icon+'@2x.png',
+        'https://openweathermap.org/img/wn/'+resResponse.data.forecastApiData.daily[2].weather[0].icon+'@2x.png',
+        'https://openweathermap.org/img/wn/'+resResponse.data.forecastApiData.daily[3].weather[0].icon+'@2x.png',
+        'https://openweathermap.org/img/wn/'+resResponse.data.forecastApiData.daily[4].weather[0].icon+'@2x.png',
+        'https://openweathermap.org/img/wn/'+resResponse.data.forecastApiData.daily[5].weather[0].icon+'@2x.png',
+        'https://openweathermap.org/img/wn/'+resResponse.data.forecastApiData.daily[6].weather[0].icon+'@2x.png',
+        'https://openweathermap.org/img/wn/'+resResponse.data.forecastApiData.daily[7].weather[0].icon+'@2x.png',],
+        dow: [resResponse.data.forecastApiData.daily[1].dow,resResponse.data.forecastApiData.daily[2].dow,
+        resResponse.data.forecastApiData.daily[3].dow,resResponse.data.forecastApiData.daily[4].dow,
+        resResponse.data.forecastApiData.daily[5].dow,resResponse.data.forecastApiData.daily[6].dow,
+        resResponse.data.forecastApiData.daily[7].dow,],
       });
       this.play();
       console.log('done');
@@ -164,7 +213,11 @@ export default class HomePage extends Component {
     const { recording, paused, recordFile, 
       recordVoice, answerVoice, isRecording,
      region, weather, temp,
-    highTemp, lowTemp, isFirst} = this.state;
+    highTemp, lowTemp, isFirst,
+  rain, humidity, wind,
+feeling, sunRise, sunFall,
+foreHumidity, foreHighTemp, foreLowTemp,
+icon, dow, dts} = this.state;
     return (
         <View style={styles.container}>
         <SafeAreaView style={styles.mainContainer}>
@@ -172,57 +225,58 @@ export default class HomePage extends Component {
             <Text style={styles.text}>{recordVoice}</Text>
             <Text style={styles.text}>{answerVoice}</Text>
           </View>
+          <ScrollView>
           {isFirst ? (
             <View></View>
           ) : (
+            <ImageBackground style={styles.backImage} source={{ uri: 'https://images.pexels.com/photos/255379/pexels-photo-255379.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500'}}>
             <View>
             <View style={styles.topWeather}>
             <View style={styles.childTopWeather}>
+            <Text style={styles.text}>{dts}</Text>
             <Text style={styles.regionText}>{region}</Text>
-            <Text style={styles.weatherText}>대체로 흐림</Text>
+            <Text style={styles.weatherText}>{weather}</Text>
             <Text style={styles.tempText}>{temp}°C</Text>
             <Text style={styles.weatherText}>최고:{highTemp}°C 최저: {lowTemp}°C</Text>
             </View>
           </View>
           <View style={styles.centerWeather}>
             <View style={styles.childCenterWeather}>
-              <Text style={styles.weatherText}>시간</Text>
-              <Text style={styles.weatherText}>아이콘</Text>
-              <Text style={styles.weatherText}>22°C</Text>
+              <Text style={styles.weatherText}>강수량</Text>
+              <Text style={styles.weatherText}>{rain}</Text>
             </View>
             <View style={styles.childCenterWeather}>
-              <Text style={styles.weatherText}>시간</Text>
-              <Text style={styles.weatherText}>아이콘</Text>
-              <Text style={styles.weatherText}>22°C</Text>
+              <Text style={styles.weatherText}>습도</Text>
+              <Text style={styles.weatherText}>{humidity}%</Text>
             </View>
             <View style={styles.childCenterWeather}>
-              <Text style={styles.weatherText}>시간</Text>
-              <Text style={styles.weatherText}>아이콘</Text>
-              <Text style={styles.weatherText}>22°C</Text>
+              <Text style={styles.weatherText}>풍속</Text>
+              <Text style={styles.weatherText}>{wind}m/s</Text>
             </View>
             <View style={styles.childCenterWeather}>
-              <Text style={styles.weatherText}>시간</Text>
-              <Text style={styles.weatherText}>아이콘</Text>
-              <Text style={styles.weatherText}>22°C</Text>
+              <Text style={styles.weatherText}>체감온도</Text>
+              <Text style={styles.weatherText}>{feeling}°C</Text>
             </View>
             <View style={styles.childCenterWeather}>
-              <Text style={styles.weatherText}>시간</Text>
-              <Text style={styles.weatherText}>아이콘</Text>
-              <Text style={styles.weatherText}>22°C</Text>
+              <Text style={styles.weatherText}>일출/일몰</Text>
+              <Text style={styles.weatherText}>{sunRise}/{sunFall}</Text>
             </View>
           </View>
           <View style={styles.bottomWeather}>
-            <Text style={styles.describeText}>일요일                                    아이콘 습도       최고온도 최저온도</Text>
-            <Text style={styles.describeText}>일요일                                    아이콘 습도       최고온도 최저온도</Text>
-            <Text style={styles.describeText}>일요일                                    아이콘 습도       최고온도 최저온도</Text>
-            <Text style={styles.describeText}>일요일                                    아이콘 습도       최고온도 최저온도</Text>
-            <Text style={styles.describeText}>일요일                                    아이콘 습도       최고온도 최저온도</Text>
-            <Text style={styles.describeText}>일요일                                    아이콘 습도       최고온도 최저온도</Text>
-            <Text style={styles.describeText}>일요일                                    아이콘 습도       최고온도 최저온도</Text>
+            <Text style={styles.describeText}>{dow[0]}요일                  <Image style={styles.iconItem} resizeMode= 'contain' source={{uri : icon[0]}}/> {foreHumidity[0]}%       {foreHighTemp[0]} / {foreLowTemp[0]}</Text>
+            <Text style={styles.describeText}>{dow[1]}요일                  <Image style={styles.iconItem} resizeMode= 'contain' source={{uri : icon[1]}}/> {foreHumidity[1]}%       {foreHighTemp[1]} / {foreLowTemp[1]}</Text>
+            <Text style={styles.describeText}>{dow[2]}요일                  <Image style={styles.iconItem} resizeMode= 'contain' source={{uri : icon[2]}}/> {foreHumidity[2]}%       {foreHighTemp[2]} / {foreLowTemp[2]}</Text>
+            <Text style={styles.describeText}>{dow[3]}요일                  <Image style={styles.iconItem} resizeMode= 'contain' source={{uri : icon[3]}}/> {foreHumidity[3]}%       {foreHighTemp[3]} / {foreLowTemp[3]}</Text>
+            <Text style={styles.describeText}>{dow[4]}요일                  <Image style={styles.iconItem} resizeMode= 'contain' source={{uri : icon[4]}}/> {foreHumidity[4]}%       {foreHighTemp[4]} / {foreLowTemp[4]}</Text>
+            <Text style={styles.describeText}>{dow[5]}요일                  <Image style={styles.iconItem} resizeMode= 'contain' source={{uri : icon[5]}}/> {foreHumidity[5]}%       {foreHighTemp[5]} / {foreLowTemp[5]}</Text>
+            <Text style={styles.describeText}>{dow[6]}요일                  <Image style={styles.iconItem} resizeMode= 'contain' source={{uri : icon[6]}}/> {foreHumidity[6]}%       {foreHighTemp[6]} / {foreLowTemp[6]}</Text>
           </View>
           </View>
+          </ImageBackground>
           )}
-        </SafeAreaView>
+          </ScrollView>
+          
+          </SafeAreaView>
         <TouchableOpacity 
             onPress={this.isRecordingHandler} 
             style={styles.speakContainer}>

@@ -10,19 +10,20 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
   },
   talkArea: {
+    maxWidth: '100%',
     height: '15%',
-    backgroundColor: 'steelblue',
+    // backgroundColor: 'steelblue',
     alignItems: 'center',
     justifyContent: 'space-around',
-    borderBottomWidth: 1,
   },
   topWeather: {
     // flex:1,
     // maxWidth: '100%',
-    height: '34%',
-    backgroundColor: 'red',
+    height: '30%',
+    // backgroundColor: 'red',
     // alignItems: 'center',
     justifyContent: 'space-around',
+    borderTopWidth: 1,
     borderBottomWidth: 1,
   },
   childTopWeather: {
@@ -32,9 +33,9 @@ const styles = StyleSheet.create({
   },
   centerWeather: {
     borderBottomWidth: 1,
-    height: '17%',
+    height: '10%',
     alignItems: 'center',
-    backgroundColor: 'green',
+    // backgroundColor: 'green',
     flexDirection: 'row'
     // justifyContent: 'space-around',
   },
@@ -42,13 +43,13 @@ const styles = StyleSheet.create({
     width: '20%',
     height: '100%',
     alignItems: 'center',
-    backgroundColor: 'pink',
+    // backgroundColor: 'pink',
     justifyContent: 'space-around',
   },
   bottomWeather: {
-    height: '34%',
+    height: 500,
     alignItems: 'center',
-    backgroundColor: 'yellow',
+    // backgroundColor: 'yellow',
     justifyContent: 'space-around',
     borderBottomWidth: 1,
   },
@@ -91,6 +92,10 @@ const styles = StyleSheet.create({
   weatherText: {
     fontSize: 15,
   },
+  boldWeatherText: {
+    fontSize: 15,
+    fontWeight: 'bold',
+  },
   tempText: {
     fontSize: 50,
   },
@@ -101,9 +106,20 @@ const styles = StyleSheet.create({
     height: 90,
     width: 80,
   },
+  iconItem: {
+    width: 40,
+    height : 80,
+    transform: [{scale: 1}]
+  },
   clickedImageItem: {
     height: 120,
     width: 110,
+  },
+  backImage: {
+    flex: 1,
+    resizeMode: 'cover',
+    justifyContent: 'center',
+    height: 800,
   },
 });
 
