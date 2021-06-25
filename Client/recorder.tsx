@@ -75,6 +75,7 @@ export default class Recorder extends Component {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         'http://10.0.2.2:8080/ask',
 =======
         'http://172.20.10.3:8080/ask',
@@ -85,6 +86,12 @@ export default class Recorder extends Component {
 =======
         'http://172.24.122.154:8080/ask',
 >>>>>>> 0eaf966e (connects)
+=======
+        'http://172.24.122.154:8080/ask',
+=======
+        'http://192.168.35.227:8080/ask',
+>>>>>>> 766abe7c (cache delete)
+>>>>>>> 0342dedb (cache delete)
           {voice: {data : myVoice},
           coordinates: {lat: lat, lon: lon}},);
       this.setState({
@@ -93,7 +100,11 @@ export default class Recorder extends Component {
       console.log("heee");
       console.log(askResponse.data.voice.text);
       resResponse = await axios.post(
+<<<<<<< HEAD
         'http://172.24.122.154:8080/response',
+=======
+        'http://192.168.35.227:8080/response',
+>>>>>>> 766abe7c (cache delete)
           {voice: {id : askResponse.data.voice.id},
           coordinates : {id : askResponse.data.coordinates.id}},
       );
