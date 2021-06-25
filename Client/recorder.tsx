@@ -151,8 +151,4 @@ export default class Recorder extends Component {
       </View>
     );
   }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> front-dev
