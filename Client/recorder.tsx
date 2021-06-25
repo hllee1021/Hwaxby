@@ -97,15 +97,16 @@ export default class Recorder extends Component {
       console.log(lon);
       // console.log(myVoice);
       askResponse = await axios.post(
-        'http://192.168.35.227:8080/ask',
+        'http://172.24.122.154:8080/ask',
           {voice: {data : myVoice},
           coordinates: {lat: lat, lon: lon}},);
       this.setState({
         recordVoice: askResponse.data.voice.text,
       });
+      console.log("heee");
       console.log(askResponse.data.voice.text);
       resResponse = await axios.post(
-        'http://192.168.35.227:8080/response',
+        'http://172.24.122.154:8080/response',
           {voice: {id : askResponse.data.voice.id},
           coordinates : {id : askResponse.data.coordinates.id}},
       );
