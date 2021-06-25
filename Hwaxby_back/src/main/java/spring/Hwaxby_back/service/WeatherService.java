@@ -23,6 +23,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.URL;
 import java.net.URLEncoder;
+import java.util.ArrayList;
 import java.util.Properties;
 
 @Service
@@ -36,48 +37,75 @@ public class WeatherService {
      * @return OpenWeather Entity
      * @throws Exception
      */
-    public OpenWeather getCurrentByCoor(OpenWeather response, OpenWeatherType type, double lat, double lon) throws Exception {
+    public ArrayList<OpenWeather> getCurrentByCoor(OpenWeather response, OpenWeatherType type, double lat, double lon) throws Exception {
 
         String BASE_URL = "https://api.openweathermap.org/data/2.5/onecall";
 
         Properties prop = PropertyFileReader.readPropertyFile("api-key.properties");
         String apiKey = prop.getProperty("weather.api.accesskey");
 
-        StringBuilder urlBuilder = new StringBuilder(BASE_URL);
+
+        OpenWeather currentResponse, forecastResponse;
+        ArrayList<OpenWeather> resultResponse = new ArrayList<>();
 
         try {
-            if (type.equals(OpenWeatherType.CURRENT)){
-                urlBuilder.append("?" + URLEncoder.encode("lat", "UTF-8") + "=" + lat);
-                urlBuilder.append("&" + URLEncoder.encode("lon", "UTF-8") + "=" + lon);
-                urlBuilder.append("&" + URLEncoder.encode("appid", "UTF-8") + "=" + apiKey);
-                urlBuilder.append("&" + URLEncoder.encode("lang", "UTF-8") + "=kr");
-                urlBuilder.append("&" + URLEncoder.encode("units", "UTF-8") + "=metric");
-                urlBuilder.append("&" + URLEncoder.encode("exclude", "UTF-8") + "=minutely,hourly,alerts,daily");
+//            if (type.equals(OpenWeatherType.CURRENT)){
+//                urlBuilder.append("?" + URLEncoder.encode("lat", "UTF-8") + "=" + lat);
+//                urlBuilder.append("&" + URLEncoder.encode("lon", "UTF-8") + "=" + lon);
+//                urlBuilder.append("&" + URLEncoder.encode("appid", "UTF-8") + "=" + apiKey);
+//                urlBuilder.append("&" + URLEncoder.encode("lang", "UTF-8") + "=kr");
+//                urlBuilder.append("&" + URLEncoder.encode("units", "UTF-8") + "=metric");
+//                urlBuilder.append("&" + URLEncoder.encode("exclude", "UTF-8") + "=minutely,hourly,alerts,daily");
+//
+//                System.out.println("[urlBuilder]: " + urlBuilder);
+//                RestTemplate restTemplate = new RestTemplate();
+//                response = restTemplate.getForObject(urlBuilder.toString(), CurrentWeather.class);
+//            } else if (type.equals(OpenWeatherType.FORECAST)){
+//                urlBuilder.append("?" + URLEncoder.encode("lat", "UTF-8") + "=" + lat);
+//                urlBuilder.append("&" + URLEncoder.encode("lon", "UTF-8") + "=" + lon);
+//                urlBuilder.append("&" + URLEncoder.encode("appid", "UTF-8") + "=" + apiKey);
+//                urlBuilder.append("&" + URLEncoder.encode("lang", "UTF-8") + "=kr");
+//                urlBuilder.append("&" + URLEncoder.encode("units", "UTF-8") + "=metric");
+//                urlBuilder.append("&" + URLEncoder.encode("exclude", "UTF-8") + "=minutely,hourly,alerts,current");
+//
+//                System.out.println("[urlBuilder]: " + urlBuilder);
+//                RestTemplate restTemplate = new RestTemplate();
+//                response = restTemplate.getForObject(urlBuilder.toString(), ForecastWeather.class);
+//            }
+            StringBuilder urlBuilder = new StringBuilder(BASE_URL);
+            urlBuilder.append("?" + URLEncoder.encode("lat", "UTF-8") + "=" + lat);
+            urlBuilder.append("&" + URLEncoder.encode("lon", "UTF-8") + "=" + lon);
+            urlBuilder.append("&" + URLEncoder.encode("appid", "UTF-8") + "=" + apiKey);
+            urlBuilder.append("&" + URLEncoder.encode("lang", "UTF-8") + "=kr");
+            urlBuilder.append("&" + URLEncoder.encode("units", "UTF-8") + "=metric");
+            urlBuilder.append("&" + URLEncoder.encode("exclude", "UTF-8") + "=minutely,hourly,alerts,daily");
 
-                System.out.println(urlBuilder);
-                RestTemplate restTemplate = new RestTemplate();
-                response = restTemplate.getForObject(urlBuilder.toString(), CurrentWeather.class);
-            } else if (type.equals(OpenWeatherType.FORECAST)){
-                urlBuilder.append("?" + URLEncoder.encode("lat", "UTF-8") + "=" + lat);
-                urlBuilder.append("&" + URLEncoder.encode("lon", "UTF-8") + "=" + lon);
-                urlBuilder.append("&" + URLEncoder.encode("appid", "UTF-8") + "=" + apiKey);
-                urlBuilder.append("&" + URLEncoder.encode("lang", "UTF-8") + "=kr");
-                urlBuilder.append("&" + URLEncoder.encode("units", "UTF-8") + "=metric");
-                urlBuilder.append("&" + URLEncoder.encode("exclude", "UTF-8") + "=minutely,hourly,alerts,current");
+            System.out.println("[urlBuilder]: " + urlBuilder);
+            RestTemplate restTemplate = new RestTemplate();
+//            response = restTemplate.getForObject(urlBuilder.toString(), CurrentWeather.class);
+            currentResponse = restTemplate.getForObject(urlBuilder.toString(), CurrentWeather.class);
 
-                System.out.println(urlBuilder);
-                RestTemplate restTemplate = new RestTemplate();
-                response = restTemplate.getForObject(urlBuilder.toString(), ForecastWeather.class);
-            }
+            urlBuilder = new StringBuilder(BASE_URL);
+            urlBuilder.append("?" + URLEncoder.encode("lat", "UTF-8") + "=" + lat);
+            urlBuilder.append("&" + URLEncoder.encode("lon", "UTF-8") + "=" + lon);
+            urlBuilder.append("&" + URLEncoder.encode("appid", "UTF-8") + "=" + apiKey);
+            urlBuilder.append("&" + URLEncoder.encode("lang", "UTF-8") + "=kr");
+            urlBuilder.append("&" + URLEncoder.encode("units", "UTF-8") + "=metric");
+            urlBuilder.append("&" + URLEncoder.encode("exclude", "UTF-8") + "=minutely,hourly,alerts,current");
 
+            System.out.println("[urlBuilder]: " + urlBuilder);
+            restTemplate = new RestTemplate();
+            forecastResponse = restTemplate.getForObject(urlBuilder.toString(), ForecastWeather.class);
 
+            resultResponse.add(currentResponse);
+            resultResponse.add(forecastResponse);
 //            System.out.println("trial");
-            System.out.println(response);
+            System.out.println("[Response in Service]: "+response);
         } catch (Exception e) {
             e.printStackTrace();
         }
 
-        return response;
+        return resultResponse;
     }
 
     public Coordinates geocoder(String city) throws Exception {

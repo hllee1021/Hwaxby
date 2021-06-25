@@ -13,6 +13,8 @@ public class Response {
     private Voice voice; // Type : Response
     private Display display;
     private OpenWeather apiData;
+    private OpenWeather currentApiData;
+    private OpenWeather forecastApiData;
     private OpenWeatherType type;
     private int day;
 

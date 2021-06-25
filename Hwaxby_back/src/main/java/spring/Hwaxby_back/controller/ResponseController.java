@@ -1,6 +1,7 @@
 package spring.Hwaxby_back.controller;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.google.gson.Gson;
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -98,14 +99,16 @@ public class ResponseController {
             api_result = new ForecastWeather();
         }
 
-        response.setApiData(weatherService.getCurrentByCoor(api_result, type, coordinates.getLat(), coordinates.getLon()));
+//        response.setApiData(weatherService.getCurrentByCoor(api_result, type, coordinates.getLat(), coordinates.getLon()));
+        response.setCurrentApiData(weatherService.getCurrentByCoor(api_result, type, coordinates.getLat(), coordinates.getLon()).get(0));
+        response.setForecastApiData(weatherService.getCurrentByCoor(api_result, type, coordinates.getLat(), coordinates.getLon()).get(1));
 
         /** 4. Model Input 문장 생성 및 Model 요청 -> Voice(Type:Response) 객체 생성*/
         Voice resvoice = new Voice();
         resvoice.setId(voice.getId());
         resvoice.setText(voice.getText());
         System.out.println(voice.getText());
-        resvoice.setData(voice.getData());
+        resvoice.setData(voice.getData().substring(0, 300));
         response.setVoice(resvoice);
 
 
@@ -122,110 +125,112 @@ public class ResponseController {
         ArrayList<String> needed_Info = voice.getTextParsed().getInfo();
         display.setInfo(needed_Info);
 
+
 //        System.out.println(needed_Info.size());
 
         if (type.equals(OpenWeatherType.CURRENT)){
-            CurrentWeather apiData = (CurrentWeather) response.getApiData();
+            CurrentWeather currentApiData = (CurrentWeather) response.getCurrentApiData();
 
             for (int i = 0 ; i < needed_Info.size() ; i++){
                 if (needed_Info.get(i).equals("습도")){
-                    data.setHumidity(apiData.getCurrent().getHumidity());
-//                    data.put(needed_Info.get(i), apiData.getCurrent().getHumidity());
+                    data.setHumidity(currentApiData.getCurrent().getHumidity());
+//                    data.put(needed_Info.get(i), currentApiData.getCurrent().getHumidity());
                 } else if (needed_Info.get(i).equals("바람")){  // speed, gust, deg
                     System.out.println("바람");
                     data.setWind(new Display.DisplayINFO.Wind(
-                            apiData.getCurrent().getWind_speed(),
-                            apiData.getCurrent().getWind_gust(),
-                            apiData.getCurrent().getWind_deg()
+                            currentApiData.getCurrent().getWind_speed(),
+                            currentApiData.getCurrent().getWind_gust(),
+                            currentApiData.getCurrent().getWind_deg()
                     ));
                 } else if (needed_Info.get(i).equals("온도")){
                     System.out.println("온도");
                     data.setTemp(new Display.DisplayINFO.Temp(
-                            apiData.getCurrent().getTemp(),
-                            apiData.getCurrent().getFeels_like()
+                            currentApiData.getCurrent().getTemp(),
+                            currentApiData.getCurrent().getFeels_like()
                     ));
                 } else if (needed_Info.get(i).equals("구름")){
                     System.out.println("구름");
-                    data.setClouds(apiData.getCurrent().getClouds());
+                    data.setClouds(currentApiData.getCurrent().getClouds());
                 } else if (needed_Info.get(i).equals("자외선")){
                     System.out.println("자외선");
-                    data.setUvi(apiData.getCurrent().getUvi());
+                    data.setUvi(currentApiData.getCurrent().getUvi());
                 } else if (needed_Info.get(i).equals("비")){
                     System.out.println("비");
                     data.setRain(new Display.DisplayINFO.Rain(
-                        apiData.getCurrent().getRain().getRain1h()
+                            currentApiData.getCurrent().getRain().getRain1h()
                     ));
                 } else if (needed_Info.get(i).equals("눈")){
                     System.out.println("눈");
                     data.setSnow(new Display.DisplayINFO.Snow(
-                            apiData.getCurrent().getSnow().getSnow1h()
+                            currentApiData.getCurrent().getSnow().getSnow1h()
                     ));
                 }
             }
             display.setDisplayData(data);
 
         } else if (type.equals(OpenWeatherType.FORECAST)){
-            ForecastWeather apiData = (ForecastWeather) response.getApiData();
-
+            ForecastWeather forecastApiData = (ForecastWeather) response.getForecastApiData();
+            response.setDay(voice.getTextParsed().getDay());
             System.out.println(voice.getTextParsed().getDay());
 
             for (int i = 0 ; i < needed_Info.size() ; i++){
                 if (needed_Info.get(i).equals("습도")){
                     System.out.println("습도");
-                    data.setHumidity(apiData.getDaily().get(voice.getTextParsed().getDay()).getHumidity());
+                    data.setHumidity(forecastApiData.getDaily().get(voice.getTextParsed().getDay()).getHumidity());
                 } else if (needed_Info.get(i).equals("바람")){  // speed, gust, deg
                     System.out.println("바람");
                     data.setWind(new Display.DisplayINFO.Wind(
-                            apiData.getDaily().get(voice.getTextParsed().getDay()).getWind_speed(),
-                            apiData.getDaily().get(voice.getTextParsed().getDay()).getWind_gust(),
-                            apiData.getDaily().get(voice.getTextParsed().getDay()).getWind_deg()
+                            forecastApiData.getDaily().get(voice.getTextParsed().getDay()).getWind_speed(),
+                            forecastApiData.getDaily().get(voice.getTextParsed().getDay()).getWind_gust(),
+                            forecastApiData.getDaily().get(voice.getTextParsed().getDay()).getWind_deg()
                     ));
                 } else if (needed_Info.get(i).equals("온도")){
                     System.out.println("온도");
                     data.setTemp(new Display.DisplayINFO.Temp(
                             // 온도 관련 (Min, Max, Morn, Day, Eve, Night)
-                            apiData.getDaily().get(voice.getTextParsed().getDay()).getTemp().getMin(),
-                            apiData.getDaily().get(voice.getTextParsed().getDay()).getTemp().getMax(),
-                            apiData.getDaily().get(voice.getTextParsed().getDay()).getTemp().getMorn(),
-                            apiData.getDaily().get(voice.getTextParsed().getDay()).getTemp().getDay(),
-                            apiData.getDaily().get(voice.getTextParsed().getDay()).getTemp().getEve(),
-                            apiData.getDaily().get(voice.getTextParsed().getDay()).getTemp().getNight(),
+                            forecastApiData.getDaily().get(voice.getTextParsed().getDay()).getTemp().getMin(),
+                            forecastApiData.getDaily().get(voice.getTextParsed().getDay()).getTemp().getMax(),
+                            forecastApiData.getDaily().get(voice.getTextParsed().getDay()).getTemp().getMorn(),
+                            forecastApiData.getDaily().get(voice.getTextParsed().getDay()).getTemp().getDay(),
+                            forecastApiData.getDaily().get(voice.getTextParsed().getDay()).getTemp().getEve(),
+                            forecastApiData.getDaily().get(voice.getTextParsed().getDay()).getTemp().getNight(),
 
                             // 체감 온도 관련 (Morn, Day, Eve, Night)
-                            apiData.getDaily().get(voice.getTextParsed().getDay()).getFeels_like().getMorn(),
-                            apiData.getDaily().get(voice.getTextParsed().getDay()).getFeels_like().getDay(),
-                            apiData.getDaily().get(voice.getTextParsed().getDay()).getFeels_like().getEve(),
-                            apiData.getDaily().get(voice.getTextParsed().getDay()).getFeels_like().getNight()
+                            forecastApiData.getDaily().get(voice.getTextParsed().getDay()).getFeels_like().getMorn(),
+                            forecastApiData.getDaily().get(voice.getTextParsed().getDay()).getFeels_like().getDay(),
+                            forecastApiData.getDaily().get(voice.getTextParsed().getDay()).getFeels_like().getEve(),
+                            forecastApiData.getDaily().get(voice.getTextParsed().getDay()).getFeels_like().getNight()
                     ));
                 } else if (needed_Info.get(i).equals("구름")){
                     System.out.println("구름");
-                    data.setClouds(apiData.getDaily().get(voice.getTextParsed().getDay()).getClouds());
+                    data.setClouds(forecastApiData.getDaily().get(voice.getTextParsed().getDay()).getClouds());
                 } else if (needed_Info.get(i).equals("자외선")){
                     System.out.println("자외선");
-                    data.setUvi(apiData.getDaily().get(voice.getTextParsed().getDay()).getUvi());
+                    data.setUvi(forecastApiData.getDaily().get(voice.getTextParsed().getDay()).getUvi());
                 } else if (needed_Info.get(i).equals("비")){
                     System.out.println("비");
-                    System.out.println(apiData.getDaily().get(voice.getTextParsed().getDay()).getRain());
+                    System.out.println(forecastApiData.getDaily().get(voice.getTextParsed().getDay()).getRain());
                     data.setRain(new Display.DisplayINFO.Rain(
-                            apiData.getDaily().get(voice.getTextParsed().getDay()).getRain()
+                            forecastApiData.getDaily().get(voice.getTextParsed().getDay()).getRain()
                     ));
                 } else if (needed_Info.get(i).equals("눈")){
                     System.out.println("눈");
-                    System.out.println(apiData.getDaily().get(voice.getTextParsed().getDay()).getSnow());
+                    System.out.println(forecastApiData.getDaily().get(voice.getTextParsed().getDay()).getSnow());
                     data.setSnow(new Display.DisplayINFO.Snow(
-                            apiData.getDaily().get(voice.getTextParsed().getDay()).getSnow()
+                            forecastApiData.getDaily().get(voice.getTextParsed().getDay()).getSnow()
                     ));
                 }
             }
             display.setDisplayData(data);
         }
 
-        response.setDisplay(display);
-
+        response.setDisplayData(display);
+        Gson gson = new Gson();
+        String json = gson.toJson(response);
+        System.out.println(json);
         /** 6. return */
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
-
 
     @GetMapping("test")
     public ResponseEntity<?> tester(@RequestBody TextParsed askData) throws Exception {
