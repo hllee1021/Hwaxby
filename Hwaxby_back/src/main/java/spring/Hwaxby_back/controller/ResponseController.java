@@ -223,8 +223,7 @@ public class ResponseController {
             }
             display.setDisplayData(data);
         }
-
-        response.setDisplayData(display);
+        response.setDisplay(display);
         Gson gson = new Gson();
         String json = gson.toJson(response);
         System.out.println(json);
