@@ -98,10 +98,14 @@ export default class Recorder extends Component {
       // console.log(myVoice);
       askResponse = await axios.post(
 <<<<<<< HEAD
+<<<<<<< HEAD
         'http://10.0.2.2:8080/ask',
 =======
         'http://172.20.10.3:8080/ask',
 >>>>>>> 86b9557c (음성 16000 완료)
+=======
+        'http://192.168.35.227:8080/ask',
+>>>>>>> 730b1f8a (cache delete)
           {voice: {data : myVoice},
           coordinates: {lat: lat, lon: lon}},);
       this.setState({
@@ -109,7 +113,7 @@ export default class Recorder extends Component {
       });
       console.log(askResponse.data.voice.text);
       resResponse = await axios.post(
-        'http://10.0.2.2:8080/response',
+        'http://192.168.35.227:8080/response',
           {voice: {id : askResponse.data.voice.id},
           coordinates : {id : askResponse.data.coordinates.id}},
       );
