@@ -9,20 +9,48 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: 'white',
   },
-  top: {
-    height: '10%',
+  talkArea: {
+    height: '15%',
     backgroundColor: 'steelblue',
     alignItems: 'center',
     justifyContent: 'space-around',
+    borderBottomWidth: 1,
   },
-  center: {
-    height: '60%',
+  topWeather: {
+    // flex:1,
+    // maxWidth: '100%',
+    height: '34%',
+    backgroundColor: 'red',
+    // alignItems: 'center',
+    justifyContent: 'space-around',
+    borderBottomWidth: 1,
+  },
+  childTopWeather: {
+    // backgroundColor: 'red',
     alignItems: 'center',
+    // justifyContent: 'space-around',
+  },
+  centerWeather: {
+    borderBottomWidth: 1,
+    height: '17%',
+    alignItems: 'center',
+    backgroundColor: 'green',
+    flexDirection: 'row'
+    // justifyContent: 'space-around',
+  },
+  childCenterWeather: {
+    width: '20%',
+    height: '100%',
+    alignItems: 'center',
+    backgroundColor: 'pink',
     justifyContent: 'space-around',
   },
-  bottom: {
-    height: '30%',
+  bottomWeather: {
+    height: '34%',
     alignItems: 'center',
+    backgroundColor: 'yellow',
+    justifyContent: 'space-around',
+    borderBottomWidth: 1,
   },
   title: {
     fontSize: 10,
@@ -45,6 +73,7 @@ const styles = StyleSheet.create({
   mainContainer: {
     flex: 1,
     color: '#000',
+    // alignItems: 'center',
   },
   speakContainer: {
     minHeight: 100,
@@ -54,6 +83,19 @@ const styles = StyleSheet.create({
   text: {
     fontSize: 20,
     fontWeight: 'bold',
+  },
+  regionText: {
+    fontSize: 30,
+    fontWeight: 'bold',
+  },
+  weatherText: {
+    fontSize: 15,
+  },
+  tempText: {
+    fontSize: 50,
+  },
+  describeText: {
+    fontSize: 15,
   },
   imageItem: {
     height: 90,

@@ -15,12 +15,18 @@ export default class HomePage extends Component {
   state = {
     recordFile: '',
     audioFile: '',
+    isFirst: true,
     recording: false,
     loaded: false,
     paused: true,
     recordVoice: 'not yet',
     answerVoice: 'not yet',
     isRecording: false,
+    region: '',
+    weather: '',
+    temp: '',
+    highTemp: '',
+    lowTemp: '',
   };
 
   async componentDidMount() {
@@ -125,7 +131,7 @@ export default class HomePage extends Component {
       lon = coords.longitude;
       console.log(lat, lon);
       askResponse = await axios.post(
-        'http://10.0.2.2:8080/ask',
+        'http://172.20.10.9:8080/ask',
           {voice: {data : myVoice},
           coordinates: {lat: lat, lon: lon}},);
       this.setState({
@@ -133,42 +139,89 @@ export default class HomePage extends Component {
       });
       console.log("askResponse data: " , askResponse.data.voice.text);
       resResponse = await axios.post(
-        'http://10.0.2.2:8080/response',
+        'http://172.20.10.9:8080/response',
           {voice: {id : askResponse.data.voice.id},
           coordinates : {id : askResponse.data.coordinates.id}},
       );
-      console.log("resResponse voice text: ", resResponse.data.voice.text)
+      console.log("resResponse voice text: ", resResponse.data.voice.text);
+      console.log(JSON.stringify(resResponse.data));
       this.setState({
         answerVoice: resResponse.data.voice.text,
         audioFile: resResponse.data.voice.data,
+        region: resResponse.data.currentApiData.timezone,
+        weather: resResponse.data.currentApiData.current.weather[0].description,
+        temp: resResponse.data.currentApiData.current.temp,
+        highTemp: resResponse.data.forecastApiData.daily[0].temp.max,
+        lowTemp: resResponse.data.forecastApiData.daily[0].temp.min,
+        isFirst: false,
       });
       this.play();
       console.log('done');
     });
   };
-  // play = () => {
-  //   if (this.state.loaded) {
-  //     AudioPlayer.unpause();
-  //     this.setState({ paused: false });
-  //   } else {
-  //     AudioPlayer.play(this.state.recordFile);
-  //     this.setState({ paused: false, loaded: true });
-  //   }
-  // };
-
-  // pause = () => {
-  //   AudioPlayer.pause();
-  //   this.setState({ paused: true });
-  // };
 
   render() {
-    const { recording, paused, recordFile, recordVoice, answerVoice, isRecording } = this.state;
+    const { recording, paused, recordFile, 
+      recordVoice, answerVoice, isRecording,
+     region, weather, temp,
+    highTemp, lowTemp, isFirst} = this.state;
     return (
         <View style={styles.container}>
         <SafeAreaView style={styles.mainContainer}>
-          <Text style={styles.text}>This is Home Page</Text>
-          <Text>{recordVoice}</Text>
-          <Text>{answerVoice}</Text>
+          <View style={styles.talkArea}>
+            <Text style={styles.text}>{recordVoice}</Text>
+            <Text style={styles.text}>{answerVoice}</Text>
+          </View>
+          {isFirst ? (
+            <View></View>
+          ) : (
+            <View>
+            <View style={styles.topWeather}>
+            <View style={styles.childTopWeather}>
+            <Text style={styles.regionText}>{region}</Text>
+            <Text style={styles.weatherText}>대체로 흐림</Text>
+            <Text style={styles.tempText}>{temp}°C</Text>
+            <Text style={styles.weatherText}>최고:{highTemp}°C 최저: {lowTemp}°C</Text>
+            </View>
+          </View>
+          <View style={styles.centerWeather}>
+            <View style={styles.childCenterWeather}>
+              <Text style={styles.weatherText}>시간</Text>
+              <Text style={styles.weatherText}>아이콘</Text>
+              <Text style={styles.weatherText}>22°C</Text>
+            </View>
+            <View style={styles.childCenterWeather}>
+              <Text style={styles.weatherText}>시간</Text>
+              <Text style={styles.weatherText}>아이콘</Text>
+              <Text style={styles.weatherText}>22°C</Text>
+            </View>
+            <View style={styles.childCenterWeather}>
+              <Text style={styles.weatherText}>시간</Text>
+              <Text style={styles.weatherText}>아이콘</Text>
+              <Text style={styles.weatherText}>22°C</Text>
+            </View>
+            <View style={styles.childCenterWeather}>
+              <Text style={styles.weatherText}>시간</Text>
+              <Text style={styles.weatherText}>아이콘</Text>
+              <Text style={styles.weatherText}>22°C</Text>
+            </View>
+            <View style={styles.childCenterWeather}>
+              <Text style={styles.weatherText}>시간</Text>
+              <Text style={styles.weatherText}>아이콘</Text>
+              <Text style={styles.weatherText}>22°C</Text>
+            </View>
+          </View>
+          <View style={styles.bottomWeather}>
+            <Text style={styles.describeText}>일요일                                    아이콘 습도       최고온도 최저온도</Text>
+            <Text style={styles.describeText}>일요일                                    아이콘 습도       최고온도 최저온도</Text>
+            <Text style={styles.describeText}>일요일                                    아이콘 습도       최고온도 최저온도</Text>
+            <Text style={styles.describeText}>일요일                                    아이콘 습도       최고온도 최저온도</Text>
+            <Text style={styles.describeText}>일요일                                    아이콘 습도       최고온도 최저온도</Text>
+            <Text style={styles.describeText}>일요일                                    아이콘 습도       최고온도 최저온도</Text>
+            <Text style={styles.describeText}>일요일                                    아이콘 습도       최고온도 최저온도</Text>
+          </View>
+          </View>
+          )}
         </SafeAreaView>
         <TouchableOpacity 
             onPress={this.isRecordingHandler} 
@@ -187,46 +240,6 @@ export default class HomePage extends Component {
             )}
         </TouchableOpacity>
       </View>
-    //   <View style={styles.bottom}>
-    //     <TouchableHighlight
-    //       style={styles.button}
-    //       onPress={this.start}
-    //       disabled={recording}>
-    //       <Text>Click to talk</Text>
-    //     </TouchableHighlight>
-    //     <TouchableHighlight
-    //       style={styles.button}
-    //       onPress={this.stop}
-    //       disabled={!recording}>
-    //       <Text>Click to stop</Text>
-    //     </TouchableHighlight>
-    //     <TouchableHighlight
-    //       style={styles.button}
-    //       onPress={this.ask}>
-    //       <Text>Click to ask</Text>
-    //     </TouchableHighlight>
-    //     {/* <TouchableHighlight
-    //       style={styles.button}
-    //       onPress={this.play}
-    //       disabled={!audioFile}>
-    //       <Text>Click to talk</Text>
-    //     </TouchableHighlight>
-    //     <TouchableHighlight
-    //       style={styles.button}
-    //       onPress={this.pause}
-    //       disabled={!audioFile}>
-    //       <Text>Click to talk</Text>
-    //     </TouchableHighlight> */}
-    //     {/* <View style={styles.row}>
-    //       <Button onPress={this.start} title="Record" disabled={recording} />
-    //       <Button onPress={this.stop} title="Stop" disabled={!recording} />
-    //       {paused ? (
-    //         <Button onPress={this.play} title="Play" disabled={!audioFile} />
-    //       ) : (
-    //         <Button onPress={this.pause} title="Pause" disabled={!audioFile} />
-    //       )}
-    //     </View> */}
-    //   </View>
     );
   }
 }
