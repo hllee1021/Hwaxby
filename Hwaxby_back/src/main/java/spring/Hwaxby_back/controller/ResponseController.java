@@ -17,6 +17,7 @@ import spring.Hwaxby_back.domain.OpenWeather.OpenWeather;
 import spring.Hwaxby_back.domain.VoiceItem.TextParsed;
 import spring.Hwaxby_back.repository.ResponseRepository;
 import spring.Hwaxby_back.domain.VoiceItem.VoiceType;
+import spring.Hwaxby_back.service.*;
 
 import java.util.ArrayList;
 import java.util.Optional;
@@ -106,29 +107,11 @@ public class ResponseController {
         response.setCurrentApiData(weatherService.getCurrentByCoor(api_result, type, coordinates.getLat(), coordinates.getLon()).get(0));
         response.setForecastApiData(weatherService.getCurrentByCoor(api_result, type, coordinates.getLat(), coordinates.getLon()).get(1));
 
-        /** 4. Model Input 문장 생성 및 Model 요청 -> Voice(Type:Response) 객체 생성*/
-        Voice resvoice = new Voice();
-        String testString = "내일 날씨는 흐립니다.";
-        resvoice.setType(VoiceType.RESPONSE);
-        resvoice.setText(testString);
-        resvoice.setData(voiceService.textToVoice(resvoice, "ipconfig"));
-        System.out.println("--------------------------------------");
-        System.out.println(resvoice.getText());
-        System.out.println(testString);
-        resvoice.setData(resvoice.getData().substring(0, 300));
-        response.setVoice(resvoice);
-
-
         /** 5. Display 객체 생성 및 setting */
         Display display = new Display();
 //        JSONObject data = new JSONObject();
         Display.DisplayINFO data = new Display.DisplayINFO();
 
-        System.out.println("testtesttest");
-
-        System.out.println(askData.getVoice().getId());
-        System.out.println(voice.getId());
-        System.out.println(response.getVoice().getId());
         ArrayList<String> needed_Info = voice.getTextParsed().getInfo();
         display.setInfo(needed_Info);
 
@@ -231,6 +214,33 @@ public class ResponseController {
             display.setDisplayData(data);
         }
         response.setDisplay(display);
+
+        /** 4. Model Input 문장 생성 및 Model 요청 -> Voice(Type:Response) 객체 생성*/
+        Voice resvoice = new Voice();
+        String testString = "내일 날씨는 흐립니다.";
+        Script script = new Script();
+        if (response.getType().equals(OpenWeatherType.CURRENT) && response.getDisplay().getInfo().size() == 0){ // current, 요청x
+            scriptService.current_begin(((CurrentWeather)response.getCurrentApiData()).getCurrent().getWeather().get(0).getId(), script);
+            scriptService.current_temp(script, (CurrentWeather) response.getCurrentApiData(), (ForecastWeather) response.getForecastApiData());
+        } else if (response.getType().equals(OpenWeatherType.FORECAST) && response.getDisplay().getInfo().size() == 0){ // forecast, 요청x
+            scriptService.forecast_begin(((CurrentWeather)response.getCurrentApiData()).getCurrent().getWeather().get(0).getId(), script, response.getDay());
+            scriptService.forecast_temp(script, (CurrentWeather) response.getCurrentApiData(), (ForecastWeather) response.getForecastApiData(), response.getDay());
+        } else if (response.getType().equals(OpenWeatherType.CURRENT)) { // current, 요청 o
+            scriptService.specific_current(response.getDisplay().getInfo(), script, (CurrentWeather) response.getCurrentApiData(), (ForecastWeather) response.getForecastApiData());
+        } else if (response.getType().equals(OpenWeatherType.FORECAST)){ // forecast, 요청 o
+            scriptService.specific_forecast(response.getDisplay().getInfo(), script, (CurrentWeather) response.getCurrentApiData(), (ForecastWeather) response.getForecastApiData(), response.getDay());
+        }
+
+        resvoice.setType(VoiceType.RESPONSE);
+        resvoice.setText(script.getScript());
+        resvoice.setData(voiceService.textToVoice(resvoice, "ls"));
+        System.out.println("--------------------------------------");
+        System.out.println(resvoice.getText());
+        System.out.println(resvoice.getData());
+//        resvoice.setData(resvoice.getData().substring(0, 300));
+        response.setVoice(resvoice);
+
+
         Gson gson = new Gson();
         String json = gson.toJson(response);
         System.out.println(json);

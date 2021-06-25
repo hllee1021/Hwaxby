@@ -85,6 +85,16 @@ public class WeatherService {
 //            response = restTemplate.getForObject(urlBuilder.toString(), CurrentWeather.class);
             currentResponse = restTemplate.getForObject(urlBuilder.toString(), CurrentWeather.class);
             ((CurrentWeather) currentResponse).getCurrent().setDtsnDow();
+            try {
+                ((CurrentWeather) currentResponse).getCurrent().getRain().getRain1h();
+            } catch (Exception e){
+                ((CurrentWeather) currentResponse).getCurrent().setRain(new CurrentWeather.Rain());
+            }
+            try {
+                ((CurrentWeather) currentResponse).getCurrent().getSnow().getSnow1h();
+            } catch (Exception e){
+                ((CurrentWeather) currentResponse).getCurrent().setSnow(new CurrentWeather.Snow());
+            }
             System.out.println(((CurrentWeather) currentResponse).getCurrent());
 
             urlBuilder = new StringBuilder(BASE_URL);
@@ -98,6 +108,7 @@ public class WeatherService {
             System.out.println("[urlBuilder]: " + urlBuilder);
             restTemplate = new RestTemplate();
             forecastResponse = restTemplate.getForObject(urlBuilder.toString(), ForecastWeather.class);
+
             for (int i=0; i<8; i++) {
                 ((ForecastWeather) forecastResponse).getDaily().get(i).setDtsnDow();
             }
