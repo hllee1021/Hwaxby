@@ -24,6 +24,7 @@
     "react-native-audio-record": "^0.2.2",
     "react-native-audio-recorder-player": "^3.0.10",
     "react-native-fs": "^2.18.0",
+    "react-native-geolocation-service": "^5.3.0-beta.1",
     "react-native-gesture-handler": "^1.10.3",
     "react-native-reanimated": "^2.2.0",
     "react-native-safe-area-context": "^3.2.0",

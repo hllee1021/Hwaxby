@@ -7,7 +7,7 @@ import AudioRecord from 'react-native-audio-record';
 import styles from './styles';
 import fs from 'react-native-fs';
 import axios from 'axios';
-import Geolocation from '@react-native-community/geolocation';
+import Geolocation from 'react-native-geolocation-service';
 export default class Recorder extends Component {
   sound = null;
   state = {
@@ -62,6 +62,7 @@ export default class Recorder extends Component {
 
   ask = async() => {
     console.log('ask start');
+    
     let myVoice = await fs.readFile('/data/user/0/com.client/files/test.wav', 'base64');
     let lat;
     let lon;
