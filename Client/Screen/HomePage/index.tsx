@@ -5,7 +5,7 @@ import { Buffer } from 'buffer';
 import AudioRecord from 'react-native-audio-record';
 import Sound from 'react-native-sound';
 // import { AudioPlayer } from 'react-native-audio-player-recorder';
-import styles from '../..//styles';
+import styles from '../../styles';
 import fs from 'react-native-fs';
 import axios from 'axios';
 import Geolocation from 'react-native-geolocation-service';
@@ -13,13 +13,14 @@ import Geolocation from 'react-native-geolocation-service';
 export default class HomePage extends Component {
   sound = new Sound('./heykakao.wav');
   state = {
+    recordFile: '',
     audioFile: '',
     recording: false,
     loaded: false,
     paused: true,
-    isRecording: false,
     recordVoice: 'not yet',
     answerVoice: 'not yet',
+    isRecording: false,
   };
 
   async componentDidMount() {
@@ -27,7 +28,6 @@ export default class HomePage extends Component {
     this.initAudioRecord();
     // this.initAudioPlayer();
   }
-
 
   initAudioRecord = () => {
     const options = {
@@ -46,7 +46,7 @@ export default class HomePage extends Component {
     });
   };
 
-  isRecordingHandler = () => {
+  isRecordingHandler = async () => {
     this.setState({ 
         isRecording: !(this.state.isRecording) 
     });
@@ -56,23 +56,23 @@ export default class HomePage extends Component {
         this.start();
     }
     else {
-        this.stop();
+        await this.stop();
         this.ask();
     }
   }
 
   start = () => {
     console.log('start record');
-    this.setState({ audioFile: '', recording: true, loaded: false });
+    this.setState({ recordFile: '', recording: true, loaded: false });
     AudioRecord.start();
   };
 
   stop = async () => {
     if (!this.state.recording) return;
     console.log('stop record');
-    let audioFile = await AudioRecord.stop();
-    console.log('audioFile', audioFile);
-    this.setState({ audioFile, recording: false });
+    let recordFile = await AudioRecord.stop();
+    console.log('recordFile', recordFile);
+    this.setState({ recordFile, recording: false });
   };
 
   load = () => {
@@ -126,7 +126,7 @@ export default class HomePage extends Component {
       lon = coords.longitude;
       console.log(lat, lon);
       askResponse = await axios.post(
-        'http://172.20.10.3:8080/ask',
+        'http://10.0.2.2:8080/ask',
           {voice: {data : myVoice},
           coordinates: {lat: lat, lon: lon}},);
       this.setState({
@@ -134,7 +134,7 @@ export default class HomePage extends Component {
       });
       console.log(askResponse.data.voice.text);
       resResponse = await axios.post(
-        'http://172.20.10.3:8080/response',
+        'http://10.0.2.2:8080/response',
           {voice: {id : askResponse.data.voice.id},
           coordinates : {id : askResponse.data.coordinates.id}},
       );
@@ -143,6 +143,7 @@ export default class HomePage extends Component {
         answerVoice: resResponse.data.voice.text,
         audioVoice: resResponse.data.voice.data,
       });
+      this.play();
       console.log('done');
     });
   };
@@ -151,7 +152,7 @@ export default class HomePage extends Component {
   //     AudioPlayer.unpause();
   //     this.setState({ paused: false });
   //   } else {
-  //     AudioPlayer.play(this.state.audioFile);
+  //     AudioPlayer.play(this.state.recordFile);
   //     this.setState({ paused: false, loaded: true });
   //   }
   // };
@@ -162,11 +163,12 @@ export default class HomePage extends Component {
   // };
 
   render() {
-    const { recording, paused, recordFile, answerVoice, isRecording } = this.state;
+    const { recording, paused, recordFile, recordVoice, answerVoice, isRecording } = this.state;
     return (
         <View style={styles.container}>
         <SafeAreaView style={styles.mainContainer}>
           <Text style={styles.text}>This is Home Page</Text>
+          <Text>{recordVoice}</Text>
           <Text>{answerVoice}</Text>
         </SafeAreaView>
         <TouchableOpacity 
