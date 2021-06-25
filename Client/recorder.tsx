@@ -3,6 +3,7 @@ import React, { Component, useState, useEffect, useDebugValue } from 'react';
 import {SafeAreaView, StyleSheet, Text, View, Image, TouchableHighlight, Button} from 'react-native';
 import { Buffer } from 'buffer';
 import AudioRecord from 'react-native-audio-record';
+// import { AudioPlayer } from 'react-native-audio-player-recorder';
 import styles from './styles';
 import fs from 'react-native-fs';
 import axios from 'axios';
@@ -15,24 +16,12 @@ export default class Recorder extends Component {
     loaded: false,
     paused: true,
   };
-
   async componentDidMount() {
     // await this.checkPermission();
     this.initAudioRecord();
     // this.initAudioPlayer();
   }
 
-  // checkPermission = async () => {
-  //   const p = await Permissions.check('microphone');
-  //   console.log('permission check', p);
-  //   if (p === 'authorized') return;
-  //   return this.requestPermission();
-  // };
-
-  // requestPermission = async () => {
-  //   const p = await Permissions.request('microphone');
-  //   console.log('permission request', p);
-  // };
 
   initAudioRecord = () => {
     const options = {
@@ -51,18 +40,6 @@ export default class Recorder extends Component {
     });
   };
 
-  // initAudioPlayer = () => {
-  //   AudioPlayer.onFinished = () => {
-  //     console.log('finished playback');
-  //     this.setState({ paused: true, loaded: false });
-  //   };
-  //   AudioPlayer.setFinishedSubscription();
-
-  //   AudioPlayer.onProgress = data => {
-  //     console.log('progress', data);
-  //   };
-  //   AudioPlayer.setProgressSubscription();
-  // };
 
   start = () => {
     console.log('start record');
@@ -78,10 +55,10 @@ export default class Recorder extends Component {
     this.setState({ audioFile, recording: false });
   };
 
-  read = async () => {
-    let myVoice = await fs.readFile('/data/user/0/com.client/files/test.wav', 'base64');
-    console.log(myVoice);
-  };
+  // read = async () => {
+  //   let myVoice = await fs.readFile('/data/user/0/com.client/files/test.wav', 'base64');
+  //   console.log(myVoice);
+  // };
 
   ask = async() => {
     console.log('ask start');
@@ -93,9 +70,7 @@ export default class Recorder extends Component {
     Geolocation.getCurrentPosition( async({ coords }) => {
       lat = coords.latitude;
       lon = coords.longitude;
-      console.log(lat);
-      console.log(lon);
-      // console.log(myVoice);
+      console.log(lat, lon);
       askResponse = await axios.post(
         'http://172.24.122.154:8080/ask',
           {voice: {data : myVoice},
@@ -111,11 +86,10 @@ export default class Recorder extends Component {
           coordinates : {id : askResponse.data.coordinates.id}},
       );
       this.setState({
-        answerVoice: resResponse.data.text,
+        answerVoice: resResponse.data.voice.text,
       });
       console.log('done');
     });
-    // let askResponse = await axios.get('http://10.0.2.2:8080/ask', {params: {data: myVoice, lat: lat, lon: lon }});
   };
   // play = () => {
   //   if (this.state.loaded) {
