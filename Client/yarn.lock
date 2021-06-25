@@ -1022,6 +1022,7 @@
     hermes-profile-transformer "^0.0.6"
     ip "^1.1.5"
 
+
 "@react-native-community/cli-platform-android@^5.0.1", "@react-native-community/cli-platform-android@^5.0.1-alpha.1":
   version "5.0.1"
   resolved "https://registry.npmjs.org/@react-native-community/cli-platform-android/-/cli-platform-android-5.0.1.tgz"
@@ -1037,6 +1038,7 @@
     logkitty "^0.7.1"
     slash "^3.0.0"
     xmldoc "^1.1.2"
+
 
 "@react-native-community/cli-platform-ios@^5.0.1-alpha.1":
   version "5.0.1"
@@ -1085,10 +1087,12 @@
   dependencies:
     ora "^3.4.0"
 
+
 "@react-native-community/cli@^5.0.1-alpha.1":
   version "5.0.1"
   resolved "https://registry.npmjs.org/@react-native-community/cli/-/cli-5.0.1.tgz"
   integrity sha512-9VzSYUYSEqxEH5Ib2UNSdn2eyPiYZ4T7Y79o9DKtRBuSaUIwbCUdZtIm+UUjBpLS1XYBkW26FqL8/UdZDmQvXw==
+
   dependencies:
     "@react-native-community/cli-debugger-ui" "^5.0.1"
     "@react-native-community/cli-hermes" "^5.0.1"
@@ -1153,9 +1157,55 @@
   integrity sha512-W/J0fNYVO01tioHjvYWQ9m6RgndVtbElzYozBq1ZPrHO/iCzlqoySHl4gO/fpCl9QEFjvJfjPgtPMTMlsoq5DQ==
 
 "@react-native-community/geolocation@^2.0.2":
-  version "2.0.2"
-  resolved "https://registry.yarnpkg.com/@react-native-community/geolocation/-/geolocation-2.0.2.tgz#ba8b40f560ead8d014740d1cdea970b33f19312e"
-  integrity sha512-tTNXRCgnhJBu79mulQwzabXRpDqfh/uaDqfHVpvF0nX4NTpolpy6mvTRiFg7eWFPGRArsnZz1EYp6rHfJWGgEA==
+  "integrity" "sha512-tTNXRCgnhJBu79mulQwzabXRpDqfh/uaDqfHVpvF0nX4NTpolpy6mvTRiFg7eWFPGRArsnZz1EYp6rHfJWGgEA=="
+  "resolved" "https://registry.npmjs.org/@react-native-community/geolocation/-/geolocation-2.0.2.tgz"
+  "version" "2.0.2"
+
+"@react-native-windows/cli@0.64.4":
+  "integrity" "sha512-4I5dJ/FFiU0oEEXMgAdLo61XS5zuIOKhREP7cCbsYIISV1I/Q9IHnujpAyqgqXlXlxc6OLhjTI3ZKAgmQyd6DQ=="
+  "resolved" "https://registry.npmjs.org/@react-native-windows/cli/-/cli-0.64.4.tgz"
+  "version" "0.64.4"
+  dependencies:
+    "@react-native-windows/package-utils" "0.64.0"
+    "@react-native-windows/telemetry" "0.64.0"
+    "chalk" "^4.1.0"
+    "cli-spinners" "^2.2.0"
+    "envinfo" "^7.5.0"
+    "find-up" "^4.1.0"
+    "glob" "^7.1.1"
+    "inquirer" "^3.0.6"
+    "mustache" "^4.0.1"
+    "ora" "^3.4.0"
+    "semver" "^7.3.2"
+    "shelljs" "^0.8.4"
+    "username" "^5.1.0"
+    "uuid" "^3.3.2"
+    "xml-parser" "^1.2.1"
+    "xmldom" "^0.5.0"
+    "xpath" "^0.0.27"
+
+"@react-native-windows/find-repo-root@0.64.0":
+  "integrity" "sha512-qGWr5wdJrJIraQv7i2v17l3uazhYDMSeqyH96PiJ7XVuPS4dYnsxj4mIXqEneQwaS8T/xs5unAOHKMkGxlkynA=="
+  "resolved" "https://registry.npmjs.org/@react-native-windows/find-repo-root/-/find-repo-root-0.64.0.tgz"
+  "version" "0.64.0"
+  dependencies:
+    "find-up" "^4.1.0"
+
+"@react-native-windows/package-utils@0.64.0":
+  "integrity" "sha512-rzfZlNlrFtt0BRH1Pis2oEHpEDSgeLoS72VnSw4lLasfRR22bckGvB40SXSK15+CjPLgyycf0i65q1prR/Ciig=="
+  "resolved" "https://registry.npmjs.org/@react-native-windows/package-utils/-/package-utils-0.64.0.tgz"
+  "version" "0.64.0"
+  dependencies:
+    "@react-native-windows/find-repo-root" "0.64.0"
+    "get-monorepo-packages" "^1.2.0"
+    "lodash" "^4.17.15"
+
+"@react-native-windows/telemetry@0.64.0":
+  "integrity" "sha512-63tRE65qwahH+9iencPxDq31n/k/VVS4aG3aLDvAmBjnjIqS67ZLv7ewWrVQ0XJLBKn9Xcx38lU2xnJ9IhQN6A=="
+  "resolved" "https://registry.npmjs.org/@react-native-windows/telemetry/-/telemetry-0.64.0.tgz"
+  "version" "0.64.0"
+  dependencies:
+    "applicationinsights" "^1.8.8"
 
 "@react-native/assets@1.0.0":
   version "1.0.0"
@@ -4485,6 +4535,7 @@ makeerror@1.0.x:
   dependencies:
     tmpl "1.0.x"
 
+
 map-cache@^0.2.2:
   version "0.2.2"
   resolved "https://registry.npmjs.org/map-cache/-/map-cache-0.2.2.tgz"
@@ -6273,6 +6324,7 @@ table@^6.0.9:
     slice-ansi "^4.0.0"
     string-width "^4.2.0"
     strip-ansi "^6.0.0"
+
 
 temp@0.8.3, temp@^0.8.1:
   version "0.8.3"
