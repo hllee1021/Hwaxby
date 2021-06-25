@@ -219,7 +219,7 @@ public class ResponseController {
             display.setDisplayData(data);
         }
 
-        response.setDisplayData(display);
+        response.setDisplay(display);
 
         /** 6. return */
         return new ResponseEntity<>(response, HttpStatus.OK);

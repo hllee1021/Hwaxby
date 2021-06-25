@@ -11,7 +11,7 @@ public class Response {
 
     // 가공한 데이터
     private Voice voice; // Type : Response
-    private Display displayData;
+    private Display display;
     private OpenWeather apiData;
     private OpenWeatherType type;
 
