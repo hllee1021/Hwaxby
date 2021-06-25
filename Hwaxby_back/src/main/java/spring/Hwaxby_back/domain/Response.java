@@ -14,6 +14,7 @@ public class Response {
     private Display display;
     private OpenWeather apiData;
     private OpenWeatherType type;
+    private int day;
 
 //    // 제공받은 데이터
 //    private Float lat;

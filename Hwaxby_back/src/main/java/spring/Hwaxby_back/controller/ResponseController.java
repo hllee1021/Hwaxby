@@ -79,6 +79,7 @@ public class ResponseController {
         OpenWeatherType type;
         type = voice.getTextParsed().getOpenWeatherType();
         response.setType(type);
+        response.setDay(voice.getTextParsed().getDay());
 
         // city(지역)이 주어진 경우 -> geocoder 함수 호출 -> Coordinates 추출
         if (!voice.getTextParsed().getCity().equals("HERE")){ // city가 HERE이 아니다 = 별도의 city 요청
