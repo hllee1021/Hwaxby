@@ -62,7 +62,6 @@ export default class Recorder extends Component {
 
   ask = async() => {
     console.log('ask start');
-    
     let myVoice = await fs.readFile('/data/user/0/com.client/files/test.wav', 'base64');
     let lat;
     let lon;
@@ -80,7 +79,6 @@ export default class Recorder extends Component {
         recordVoice: askResponse.data.voice.text,
       });
       console.log("heee");
-      console.log(myVoice);
       console.log(askResponse.data.voice.text);
       resResponse = await axios.post(
         'http://10.0.2.2:8080/response',
@@ -153,4 +151,8 @@ export default class Recorder extends Component {
       </View>
     );
   }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> front-dev
