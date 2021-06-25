@@ -232,17 +232,17 @@ public class VoiceService {
                 morphemes
                         .stream()
                         .filter(morpheme -> {
-                            return morpheme.text.equals("습도") ||
-                                    morpheme.text.equals("바람") ||
-                                    morpheme.text.equals("온도") ||
-                                    morpheme.text.equals("체감온도") ||
-                                    morpheme.text.equals("구름") ||
-                                    morpheme.text.equals("자외선") ||
+                            return morpheme.text.contains("습도") ||
+                                    morpheme.text.contains("바람") ||
+                                    morpheme.text.contains("온도") ||
+                                    morpheme.text.contains("구름") ||
+                                    morpheme.text.contains("자외선") ||
                                     morpheme.text.equals("비") ||
                                     morpheme.text.equals("눈");
                         })
                         .forEach(morpheme -> {
                             infoList.add(morpheme.text);
+
 
                         });
             }
@@ -298,13 +298,13 @@ public class VoiceService {
                         })
                         .forEach(nameEntity -> {
                             if (nameEntity.type.equals("DT_OTHERS") && !nameEntity.text.contains("전")) {
-                                if (nameEntity.text.contains("하루") || nameEntity.text.contains("1일")) { textParsed.setDay(1);}
-                                else if (nameEntity.text.contains("이틀") || nameEntity.text.contains("2일")) { textParsed.setDay(2); }
-                                else if (nameEntity.text.contains("사흘") || nameEntity.text.contains("3일")) { textParsed.setDay(3); }
-                                else if (nameEntity.text.contains("나흘") || nameEntity.text.contains("4일")) { textParsed.setDay(4); }
-                                else if (nameEntity.text.contains("닷새") || nameEntity.text.contains("5일")) { textParsed.setDay(5); }
-                                else if (nameEntity.text.contains("엿새") || nameEntity.text.contains("6일")) { textParsed.setDay(6); }
-                                else if (nameEntity.text.contains("이레") || nameEntity.text.contains("7일")) { textParsed.setDay(7); }
+                                if (nameEntity.text.contains("하루") || nameEntity.text.contains("1일") || nameEntity.text.contains("일일")) { textParsed.setDay(1);}
+                                else if (nameEntity.text.contains("이틀") || nameEntity.text.contains("2일") || nameEntity.text.contains("이일")) { textParsed.setDay(2); }
+                                else if (nameEntity.text.contains("사흘") || nameEntity.text.contains("3일") || nameEntity.text.contains("삼일")) { textParsed.setDay(3); }
+                                else if (nameEntity.text.contains("나흘") || nameEntity.text.contains("4일") || nameEntity.text.contains("사일")) { textParsed.setDay(4); }
+                                else if (nameEntity.text.contains("닷새") || nameEntity.text.contains("5일") || nameEntity.text.contains("오일")) { textParsed.setDay(5); }
+                                else if (nameEntity.text.contains("엿새") || nameEntity.text.contains("6일") || nameEntity.text.contains("육일")) { textParsed.setDay(6); }
+                                else if (nameEntity.text.contains("이레") || nameEntity.text.contains("7일") || nameEntity.text.contains("칠일")) { textParsed.setDay(7); }
                             } else  {
                                 if (nameEntity.text.contains("오늘")) { textParsed.setDay(0); }
                                 else if (nameEntity.text.contains("내일")) { textParsed.setDay(1);}
