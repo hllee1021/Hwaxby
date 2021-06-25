@@ -15,10 +15,8 @@ import spring.Hwaxby_back.domain.OpenWeather.CurrentWeather;
 import spring.Hwaxby_back.domain.OpenWeather.ForecastWeather;
 import spring.Hwaxby_back.domain.OpenWeather.OpenWeather;
 import spring.Hwaxby_back.domain.VoiceItem.TextParsed;
-import spring.Hwaxby_back.service.CoordService;
-import spring.Hwaxby_back.service.ScriptService;
-import spring.Hwaxby_back.service.VoiceService;
-import spring.Hwaxby_back.service.WeatherService;
+import spring.Hwaxby_back.repository.ResponseRepository;
+import spring.Hwaxby_back.service.*;
 
 import java.util.ArrayList;
 import java.util.Optional;
@@ -30,13 +28,15 @@ public class ResponseController {
     private final WeatherService weatherService;
     private final CoordService coordService;
     private final ScriptService scriptService;
+    private final ResponseService responseService;
 
     @Autowired
-    public ResponseController(VoiceService voiceService, WeatherService weatherService, CoordService coordService, ScriptService scriptService) {
+    public ResponseController(VoiceService voiceService, WeatherService weatherService, CoordService coordService, ScriptService scriptService, ResponseService responseService) {
         this.voiceService = voiceService;
         this.weatherService = weatherService;
         this.coordService = coordService;
         this.scriptService = scriptService;
+        this.responseService = responseService;
     }
 
     @PostMapping("response")
@@ -231,6 +231,8 @@ public class ResponseController {
         String json = gson.toJson(response);
         System.out.println(json);
         /** 6. return */
+
+        responseService.save(response);
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
@@ -242,10 +244,31 @@ public class ResponseController {
     }
 
     @GetMapping("script")
-    public ResponseEntity<?> tester(@RequestBody Ask askData) throws Exception {
+    public ResponseEntity<?> tester(@RequestBody Response dd) throws Exception {
         System.out.println("script 작성 중");
         Script script = new Script();
-        String response = scriptService.current_begin(200, script);
-        return new ResponseEntity<>(response, HttpStatus.OK);
+
+        Response data = responseService.findOne(dd.getId()).get();
+        CurrentWeather currentApiData = (CurrentWeather) data.getCurrentApiData();
+        ForecastWeather forecastApiData = (ForecastWeather) data.getForecastApiData();
+//        System.out.println(data.getDay());
+//        System.out.println(data.getType());
+//        System.out.println(data.getDisplay().getInfo().size());
+//        System.out.println("script 시작하기");
+
+        if (data.getType().equals(OpenWeatherType.CURRENT) && data.getDisplay().getInfo().size() == 0){ // current, 요청x
+            scriptService.current_begin(currentApiData.getCurrent().getWeather().get(0).getId(), script);
+            scriptService.current_temp(script, currentApiData, forecastApiData);
+        } else if (data.getType().equals(OpenWeatherType.FORECAST) && data.getDisplay().getInfo().size() == 0){ // forecast, 요청x
+            scriptService.forecast_begin(currentApiData.getCurrent().getWeather().get(0).getId(), script, data.getDay());
+            scriptService.forecast_temp(script, currentApiData, forecastApiData, data.getDay());
+        } else if (data.getType().equals(OpenWeatherType.CURRENT)) { // current, 요청 o
+            scriptService.specific_current(data.getDisplay().getInfo(), script, currentApiData, forecastApiData);
+        } else if (data.getType().equals(OpenWeatherType.FORECAST)){ // forecast, 요청 o
+            scriptService.specific_forecast(data.getDisplay().getInfo(), script, currentApiData, forecastApiData, data.getDay());
+        }
+
+
+        return new ResponseEntity<>(script.getScript(), HttpStatus.OK);
     }
 }
