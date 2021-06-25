@@ -124,6 +124,12 @@ const styles = StyleSheet.create({
     flex: 1,
     resizeMode: 'cover',
     justifyContent: 'center',
+    height: 350,
+  },
+  main: {
+    flex: 1,
+    resizeMode: 'cover',
+    justifyContent: 'center',
     height: 800,
   },
 });

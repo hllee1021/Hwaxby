@@ -233,8 +233,8 @@ icon, dow, dts} = this.state;
           {isFirst ? (
             <View></View>
           ) : (
-            <ImageBackground style={styles.backImage} source={{ uri: 'https://images.pexels.com/photos/255379/pexels-photo-255379.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500'}}>
-            <View>
+            <View style={styles.main}>
+              <ImageBackground style={styles.backImage} source={{ uri: 'https://images.pexels.com/photos/255379/pexels-photo-255379.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500'}}>
             <View style={styles.topWeather}>
             <View style={styles.childTopWeather}>
             <Text style={styles.text}>{dts}</Text>
@@ -244,6 +244,7 @@ icon, dow, dts} = this.state;
             <Text style={styles.weatherText}>최고:{highTemp}°C 최저: {lowTemp}°C</Text>
             </View>
           </View>
+          </ImageBackground>
           <View style={styles.centerWeather}>
             <View style={styles.childCenterWeather}>
               <Text style={styles.weatherText}>강수량</Text>
@@ -276,10 +277,8 @@ icon, dow, dts} = this.state;
             <Text style={styles.describeText}>{dow[6]}요일                  <Image style={styles.iconItem} resizeMode= 'contain' source={{uri : icon[6]}}/> {foreHumidity[6]}%       {foreHighTemp[6]} / {foreLowTemp[6]}</Text>
           </View>
           </View>
-          </ImageBackground>
           )}
           </ScrollView>
-          
           </SafeAreaView>
         <TouchableOpacity 
             onPress={this.isRecordingHandler} 
