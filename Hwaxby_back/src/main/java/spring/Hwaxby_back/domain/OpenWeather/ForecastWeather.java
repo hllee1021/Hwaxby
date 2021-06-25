@@ -3,6 +3,8 @@ package spring.Hwaxby_back.domain.OpenWeather;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 @Data
@@ -20,10 +22,14 @@ public class ForecastWeather extends OpenWeather{
 
         /** 데이터 계산 시간, 유닉스, UTC */
         private long dt;
+        private String dts;
+        private String dow;
 
         /** sun & moon */
         private long sunrise;
+        private String sunrises;
         private long sunset;
+        private String sunsets;
         private long moonrise;
         private long moonset;
         private float moon_phase;
@@ -58,6 +64,22 @@ public class ForecastWeather extends OpenWeather{
         /** 강우량 (비, 눈), mm */
         private long rain;
         private long snow;
+
+        public void setDtsnDow() {
+            SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd a");
+            SimpleDateFormat dateTimeFormat = new SimpleDateFormat("h:d");
+            SimpleDateFormat dateWeekFormat = new SimpleDateFormat("E");
+            Date date = new Date();
+            date.setTime(this.dt * 1000);
+            this.dts = dateFormat.format(date);
+            this.dow = dateWeekFormat.format(date);
+            date = new Date();
+            date.setTime(this.sunrise * 1000);
+            this.sunrises =dateTimeFormat.format(date);
+            date = new Date();
+            date.setTime(this.sunset * 1000);
+            this.sunsets =dateTimeFormat.format(date);
+        }
 
     }
 

@@ -3,7 +3,11 @@ package spring.Hwaxby_back.domain.OpenWeather;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
+import java.util.TimeZone;
 
 @Data
 public class CurrentWeather extends OpenWeather{
@@ -12,7 +16,7 @@ public class CurrentWeather extends OpenWeather{
     private Current current;
 
     @Data
-    public static class Current{
+    public static class Current {
 
         private List<Weather> weather;
         private Rain rain;
@@ -20,10 +24,14 @@ public class CurrentWeather extends OpenWeather{
 
         /** 데이터 계산 시간, 유닉스, UTC */
         private long dt;
+        private String dts;
+        private String dow;
 
         /** sun */
         private long sunrise;
+        private String sunrises;
         private long sunset;
+        private String sunsets;
 
         /** 온도. 단위 기본값 : 켈빈, 미터법 : 섭씨, 임페리얼 : 화씨 */
         private int temp;
@@ -57,6 +65,22 @@ public class CurrentWeather extends OpenWeather{
 
         /** 풍향,도 (기상) */
         private int wind_deg;
+
+        public void setDtsnDow() {
+            SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd a");
+            SimpleDateFormat dateTimeFormat = new SimpleDateFormat("h:d");
+            SimpleDateFormat dateWeekFormat = new SimpleDateFormat("E");
+            Date date = new Date();
+            date.setTime(this.dt * 1000);
+            this.dts = dateFormat.format(date);
+            this.dow = dateWeekFormat.format(date);
+            date = new Date();
+            date.setTime(this.sunrise * 1000);
+            this.sunrises =dateTimeFormat.format(date);
+            date = new Date();
+            date.setTime(this.sunset * 1000);
+            this.sunsets =dateTimeFormat.format(date);
+        }
     }
 
     @Data
@@ -90,4 +114,5 @@ public class CurrentWeather extends OpenWeather{
         @JsonProperty("1h")
         private long snow1h;
     }
+
 }

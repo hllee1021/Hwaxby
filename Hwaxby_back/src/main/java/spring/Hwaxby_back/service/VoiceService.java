@@ -226,7 +226,7 @@ public class VoiceService {
                 for( Map<String, Object> rayInfo : rayRecognitionResult ) {
                     String name = (String) rayInfo.get("text");
                     Morpheme rayEntity = morphemesMap.get(name);
-                    if (rayEntity == null && name.equals("자외선") ) {
+                    if (rayEntity == null && name.equals("자외선")) {
                         System.out.println("[ray]"+ name);
                         rayEntity = new Morpheme(name, "ray");
                         morphemesMap.put(name, rayEntity);
@@ -250,7 +250,8 @@ public class VoiceService {
                                     morpheme.text.contains("구름") ||
                                     morpheme.text.contains("자외선") ||
                                     morpheme.text.equals("비") ||
-                                    morpheme.text.equals("눈");
+                                    morpheme.text.equals("눈") ||
+                                    morpheme.text.equals("해");
                         })
                         .forEach(morpheme -> {
                             infoList.add(morpheme.text);

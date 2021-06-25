@@ -84,6 +84,8 @@ public class WeatherService {
             RestTemplate restTemplate = new RestTemplate();
 //            response = restTemplate.getForObject(urlBuilder.toString(), CurrentWeather.class);
             currentResponse = restTemplate.getForObject(urlBuilder.toString(), CurrentWeather.class);
+            ((CurrentWeather) currentResponse).getCurrent().setDtsnDow();
+            System.out.println(((CurrentWeather) currentResponse).getCurrent());
 
             urlBuilder = new StringBuilder(BASE_URL);
             urlBuilder.append("?" + URLEncoder.encode("lat", "UTF-8") + "=" + lat);
@@ -96,6 +98,9 @@ public class WeatherService {
             System.out.println("[urlBuilder]: " + urlBuilder);
             restTemplate = new RestTemplate();
             forecastResponse = restTemplate.getForObject(urlBuilder.toString(), ForecastWeather.class);
+            for (int i=0; i<8; i++) {
+                ((ForecastWeather) forecastResponse).getDaily().get(i).setDtsnDow();
+            }
 
             resultResponse.add(currentResponse);
             resultResponse.add(forecastResponse);
@@ -162,6 +167,8 @@ public class WeatherService {
 
         return coordinates;
     }
+
+//    public String dateFormat(int) throws Exception {
 
 }
 
