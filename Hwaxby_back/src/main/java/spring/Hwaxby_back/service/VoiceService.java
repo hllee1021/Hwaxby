@@ -226,7 +226,7 @@ public class VoiceService {
                 for( Map<String, Object> rayInfo : rayRecognitionResult ) {
                     String name = (String) rayInfo.get("text");
                     Morpheme rayEntity = morphemesMap.get(name);
-                    if (rayEntity == null && name.equals("자외선")) {
+                    if (rayEntity == null && name.contains("자외선")) {
                         System.out.println("[ray]"+ name);
                         rayEntity = new Morpheme(name, "ray");
                         morphemesMap.put(name, rayEntity);
@@ -254,9 +254,11 @@ public class VoiceService {
                                     morpheme.text.equals("해");
                         })
                         .forEach(morpheme -> {
-                            infoList.add(morpheme.text);
-
-
+                            if (morpheme.text.contains("자외선")) {
+                                infoList.add("자외선");
+                            } else {
+                                infoList.add(morpheme.text);
+                            }
                         });
             }
             textParsedJson = gson.toJson(infoList);
@@ -336,6 +338,36 @@ public class VoiceService {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        return voice;
+    }
+
+    public Voice textToVoice( Voice voice, String cmd) {
+        StringBuffer buffer = new StringBuffer();
+        Process process;
+        BufferedReader bufferdReader;
+        StringBuffer readBuffer;
+
+        buffer.append("cmd.exe ");
+        buffer.append("/c ");
+        buffer.append(cmd);
+        String command = buffer.toString();
+        String result = null;
+        try {
+            process = Runtime.getRuntime().exec(command);
+            bufferdReader = new BufferedReader(new InputStreamReader(process.getInputStream()));
+            String line = null;
+            readBuffer = new StringBuffer();
+
+            while((line = bufferdReader.readLine()) != null) {
+                readBuffer.append(line);
+                readBuffer.append("\n");
+            }
+            result = readBuffer.toString();
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.exit(1);
+        }
+        voice.setData(result);
         return voice;
     }
 }
