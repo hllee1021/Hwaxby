@@ -12,8 +12,10 @@
   "dependencies": {
     "@react-native-community/geolocation": "^2.0.2",
     "axios": "^0.21.1",
+    "buffer": "^6.0.3",
     "react": "17.0.1",
     "react-native": "0.64.2",
+    "react-native-audio-record": "^0.2.2",
     "react-native-audio-recorder-player": "^3.0.10",
     "react-native-fs": "^2.18.0",
     "rn-fetch-blob": "^0.12.0"

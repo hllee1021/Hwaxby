@@ -1,6 +1,6 @@
 /* eslint-disable prettier/prettier */
-import React, { useState, useEffect, useDebugValue } from 'react';
-import {Component, SafeAreaView, StyleSheet, Text, View, Image, TouchableHighlight, Button} from 'react-native';
+import React, { Component, useState, useEffect, useDebugValue } from 'react';
+import {SafeAreaView, StyleSheet, Text, View, Image, TouchableHighlight, Button} from 'react-native';
 import axios from 'axios';
 import styles from './styles';
 import Recorder from './recorder';
