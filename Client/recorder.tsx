@@ -61,10 +61,10 @@ export default class Recorder extends Component {
 
   load = () => {
     return new Promise(async(resolve, reject) => {
-      // let myVoice = await fs.readFile('/data/user/0/com.ttest/files/test.wav', 'base64');
-      fs.writeFile('/data/user/0/com.ttest/files/response.wav',this.state.audioFile, 'base64');
+      // let myVoice = await fs.readFile('/data/user/0/com.client/files/test.wav', 'base64');
+      fs.writeFile('/data/user/0/com.client/files/response.wav',this.state.audioFile, 'base64');
       // console.log(myVoice);
-      this.sound = new Sound('/data/user/0/com.ttest/files/response.wav', '', error => {
+      this.sound = new Sound('/data/user/0/com.client/files/response.wav', '', error => {
         if (error) {
           console.log('failed to load the file', error);
           return reject(error);
