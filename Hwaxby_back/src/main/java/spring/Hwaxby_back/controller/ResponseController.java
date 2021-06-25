@@ -16,6 +16,7 @@ import spring.Hwaxby_back.domain.OpenWeather.ForecastWeather;
 import spring.Hwaxby_back.domain.OpenWeather.OpenWeather;
 import spring.Hwaxby_back.domain.VoiceItem.TextParsed;
 import spring.Hwaxby_back.service.CoordService;
+import spring.Hwaxby_back.service.ScriptService;
 import spring.Hwaxby_back.service.VoiceService;
 import spring.Hwaxby_back.service.WeatherService;
 
@@ -28,12 +29,14 @@ public class ResponseController {
     private final VoiceService voiceService;
     private final WeatherService weatherService;
     private final CoordService coordService;
+    private final ScriptService scriptService;
 
     @Autowired
-    public ResponseController(VoiceService voiceService, WeatherService weatherService, CoordService coordService) {
+    public ResponseController(VoiceService voiceService, WeatherService weatherService, CoordService coordService, ScriptService scriptService) {
         this.voiceService = voiceService;
         this.weatherService = weatherService;
         this.coordService = coordService;
+        this.scriptService = scriptService;
     }
 
     @PostMapping("response")
@@ -235,6 +238,14 @@ public class ResponseController {
     public ResponseEntity<?> tester(@RequestBody TextParsed askData) throws Exception {
         System.out.println("testing");
         Coordinates response = weatherService.geocoder(askData.getCity());
+        return new ResponseEntity<>(response, HttpStatus.OK);
+    }
+
+    @GetMapping("script")
+    public ResponseEntity<?> tester(@RequestBody Ask askData) throws Exception {
+        System.out.println("script 작성 중");
+        Script script = new Script();
+        String response = scriptService.begin(200, script);
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 }
