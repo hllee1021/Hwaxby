@@ -245,7 +245,7 @@ public class ResponseController {
     public ResponseEntity<?> tester(@RequestBody Ask askData) throws Exception {
         System.out.println("script 작성 중");
         Script script = new Script();
-        String response = scriptService.begin(200, script);
+        String response = scriptService.current_begin(200, script);
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 }
