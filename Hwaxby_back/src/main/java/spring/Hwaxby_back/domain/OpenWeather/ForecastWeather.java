@@ -38,7 +38,7 @@ public class ForecastWeather extends OpenWeather{
         private int pressure;
 
         /** 습도, % */
-        private long humidity;
+        private int humidity;
 
         /** dew_point 단위 기본값 : 켈빈, 미터법 : 섭씨, 임페리얼 : 화씨 */
         private long dew_point;
@@ -62,8 +62,8 @@ public class ForecastWeather extends OpenWeather{
         private float pop;
 
         /** 강우량 (비, 눈), mm */
-        private long rain;
-        private long snow;
+        private int rain;
+        private int snow;
 
         public void setDtsnDow() {
             SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd a");
