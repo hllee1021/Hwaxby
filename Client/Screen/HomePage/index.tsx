@@ -222,8 +222,12 @@ icon, dow, dts} = this.state;
         <View style={styles.container}>
         <SafeAreaView style={styles.mainContainer}>
           <View style={styles.talkArea}>
-            <Text style={styles.text}>{recordVoice}</Text>
+            <View>
+              <Text style={styles.text}>{recordVoice}</Text>
+            </View>
+            <View>
             <Text style={styles.text}>{answerVoice}</Text>
+            </View>
           </View>
           <ScrollView>
           {isFirst ? (

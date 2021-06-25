@@ -11,7 +11,12 @@ const styles = StyleSheet.create({
   },
   talkArea: {
     maxWidth: '100%',
-    height: '15%',
+    height: '20%',
+    // backgroundColor: 'steelblue',
+    // alignItems: 'center',
+    justifyContent: 'space-around',
+  },
+  inputTalkArea: {
     // backgroundColor: 'steelblue',
     alignItems: 'center',
     justifyContent: 'space-around',
