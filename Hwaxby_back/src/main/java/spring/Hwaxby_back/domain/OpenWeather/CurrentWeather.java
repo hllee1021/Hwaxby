@@ -26,19 +26,19 @@ public class CurrentWeather extends OpenWeather{
         private long sunset;
 
         /** 온도. 단위 기본값 : 켈빈, 미터법 : 섭씨, 임페리얼 : 화씨 */
-        private float temp;
+        private int temp;
 
         /** 체감 온도. 단위 기본값 : 켈빈, 미터법 : 섭씨, 임페리얼 : 화씨 */
-        private float feels_like;
+        private int feels_like;
 
         /** 대기압 (해수면, 해수면 또는 grnd_level 데이터가 없는 경우), hPa */
         private int pressure;
 
         /** 습도, % */
-        private float humidity;
+        private int humidity;
 
         /** dew_point 단위 기본값 : 켈빈, 미터법 : 섭씨, 임페리얼 : 화씨 */
-        private float dew_point;
+        private int dew_point;
 
         /** 구름 % */
         private int clouds;
@@ -50,10 +50,10 @@ public class CurrentWeather extends OpenWeather{
         private int visibility;
 
         /** 바람의 속도. 단위 기본값 : meter/sec, 미터법 : meter/sec, 임페리얼 : miles/hour */
-        private float wind_speed;
+        private int wind_speed;
 
         /**  바람 돌풍. 단위 기본값 : meter/sec, 미터법 : meter/sec, 임페리얼 : miles/hour */
-        private float wind_gust;
+        private int wind_gust;
 
         /** 풍향,도 (기상) */
         private int wind_deg;

@@ -32,16 +32,16 @@ public class ForecastWeather extends OpenWeather{
         private int pressure;
 
         /** 습도, % */
-        private float humidity;
+        private long humidity;
 
         /** dew_point 단위 기본값 : 켈빈, 미터법 : 섭씨, 임페리얼 : 화씨 */
-        private float dew_point;
+        private long dew_point;
 
         /** 바람의 속도. 단위 기본값 : meter/sec, 미터법 : meter/sec, 임페리얼 : miles/hour */
-        private float wind_speed;
+        private int wind_speed;
 
         /**  바람 돌풍. 단위 기본값 : meter/sec, 미터법 : meter/sec, 임페리얼 : miles/hour */
-        private float wind_gust;
+        private int wind_gust;
 
         /** 풍향,도 (기상) */
         private int wind_deg;
@@ -64,21 +64,21 @@ public class ForecastWeather extends OpenWeather{
     @Data
     public static class Temp {
         /** 온도 */
-        private float day;
-        private float min;
-        private float max;
-        private float night;
-        private float eve;
-        private float morn;
+        private int day;
+        private int min;
+        private int max;
+        private int night;
+        private int eve;
+        private int morn;
     }
 
     @Data
     public static class FeelsLike {
         /** 체감온도 */
-        private float day;
-        private float night;
-        private float eve;
-        private float morn;
+        private int day;
+        private int night;
+        private int eve;
+        private int morn;
     }
 
     @Data
