@@ -4,7 +4,11 @@ import android.app.Application;
 import android.content.Context;
 import com.facebook.react.PackageList;
 import com.facebook.react.ReactApplication;
+<<<<<<< HEAD
 import com.goodatlas.audiorecord.RNAudioRecordPackage;
+=======
+import com.swmansion.gesturehandler.react.RNGestureHandlerPackage;
+>>>>>>> 609edc57 ([front] home page added)
 import com.reactnativecommunity.geolocation.GeolocationPackage;
 import com.dooboolab.audiorecorderplayer.RNAudioRecorderPlayerPackage;
 import com.facebook.react.ReactInstanceManager;

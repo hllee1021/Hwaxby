@@ -17,6 +17,7 @@ target 'Client' do
   pod 'react-native-geolocation', :path => '../node_modules/@react-native-community/geolocation'
 
   pod 'RNAudioRecord', :path => '../node_modules/react-native-audio-record'
+  pod 'RNGestureHandler', :path => '../node_modules/react-native-gesture-handler'
 
   target 'ClientTests' do
     inherit! :complete
