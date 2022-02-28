@@ -1,3 +1,5 @@
+<img src = "https://user-images.githubusercontent.com/35593748/156006882-74d01f1e-22bf-4176-b246-d380a213b9b7.png" width="30%" height="30%">
+
 - Client
   - style.js: style 관련 code
   - Screen
