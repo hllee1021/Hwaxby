@@ -28,8 +28,8 @@ React-Native, Spring, Glow-TTS, HiFi-GAN 을 활용했습니다.
     - react 17.0.1
     - react-native 0.64.2
     - typescript 4.3.4
-    - [raect-native-sound]([https://www.npmjs.com/package/react-native-sound](https://www.npmjs.com/package/react-native-sound)) 0.11.0
-    - [react-native-audio-record]([https://www.npmjs.com/package/react-native-sound](https://www.npmjs.com/package/react-native-sound)) 0.2.2
+    - [raect-native-sound](https://www.npmjs.com/package/react-native-sound) 0.11.0
+    - [react-native-audio-record](https://www.npmjs.com/package/react-native-sound) 0.2.2
 - **Back-End**
     - Spring Framework 5.1.18
     - Spring Boot 2.4.7
@@ -40,8 +40,8 @@ React-Native, Spring, Glow-TTS, HiFi-GAN 을 활용했습니다.
     - Glow-TTS
     - HiFi-GAN
 - **External API**
-    - [OpenWeatherAPI]([https://openweathermap.org/api](https://openweathermap.org/api))
-    - [AIHub]([https://aiopen.etri.re.kr/service_api.php](https://aiopen.etri.re.kr/service_api.php))
+    - [OpenWeatherAPI](https://openweathermap.org/api)
+    - [AIHub](https://aiopen.etri.re.kr/service_api.php)
 
 # 프로젝트 아키텍처 & 플로우
 
@@ -70,12 +70,12 @@ Server에서 요청한 문자열을 미리 학습된 모델에 넣어 음성 데
 
 
 
-- [Client]([https://github.com/2hwayoung/Hwaxby/tree/main/Client](https://github.com/2hwayoung/Hwaxby/tree/main/Client)/README.md)
-- [Hwaxby_back]([https://github.com/2hwayoung/Hwaxby/tree/main/Hwaxby_back](https://github.com/2hwayoung/Hwaxby/tree/main/Hwaxby_back)/README.md)
-- [Model]([https://github.com/2hwayoung/Hwaxby/tree/main/Model](https://github.com/2hwayoung/Hwaxby/tree/main/Model)/README.md)
+- [Client](https://github.com/2hwayoung/Hwaxby/tree/main/Client/README.md)
+- [Hwaxby_back](https://github.com/2hwayoung/Hwaxby/tree/main/Hwaxby_back/README.md)
+- [Model](https://github.com/2hwayoung/Hwaxby/tree/main/Model/README.md)
 
 # 프로젝트 결과물
 
 
 
-21-1 YBIGTA Conference에서 발표했던 영상은 [Youtube]([https://www.youtube.com/watch?v=-DDcqjeOwEs&list=PLIZ3mKAU9rah0SrBdKdzqZJYcCmEZH_-r&index=7](https://www.youtube.com/watch?v=-DDcqjeOwEs&list=PLIZ3mKAU9rah0SrBdKdzqZJYcCmEZH_-r&index=7))에 업로드되어 있습니다.
+21-1 YBIGTA Conference에서 발표했던 영상은 [Youtube](https://www.youtube.com/watch?v=-DDcqjeOwEs&list=PLIZ3mKAU9rah0SrBdKdzqZJYcCmEZH_-r&index=7)에 업로드되어 있습니다.
